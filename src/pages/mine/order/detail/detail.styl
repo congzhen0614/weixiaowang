@@ -1,0 +1,245 @@
+.mine-order-detail
+  padding-top 0.88rem
+  background-color #f3f4f5
+  .mine-order-detail-top
+    position fixed
+    width 100%
+    left 0
+    top 0
+    z-index 3
+    line-height 0.88rem
+    height 0.88rem
+    background-color #fff
+    > .back-icon
+      position absolute
+      left 0.26rem
+      top 0
+      line-height 0.88rem
+      > img
+        display inline-block
+        width 0.6rem
+        height 0.6rem
+        vertical-align middle
+    .title
+      width 100%
+      font-size 0.34rem
+      color #523f1a
+      text-align center
+      vertical-align middle
+  .remind-line
+    width 100%
+    padding 0 0.2rem
+    background-color #ff6060
+    font-size 0
+    line-height 0.6rem
+    > img
+      display inline-block
+      width 0.6rem
+      height 0.32rem
+      vertical-align middle
+    > .text
+      margin-left 0.1rem
+      font-size 0.26rem
+      // line-height 0.26rem
+      color #fffef5
+      vertical-align middle
+  .refund-icon
+    background-image url("./refund_logo.png")
+    background-repeat no-repeat
+    background-size 1.4rem 1.2rem
+    background-position-x 70%
+  .stamp
+    background-image url("./complete-icon.png")
+    background-repeat no-repeat
+    background-size 1.4rem 1.2rem
+    background-position-x 70%
+  .main-info
+    padding 0.2rem
+    background-color #fff9ab
+    position relative
+    .status
+      position absolute
+      display inline-block
+      right 0.2rem
+      top 0.2rem
+      font-size 0.26rem
+      line-height 1
+      color #523f1a
+      padding 0.1rem 0.16rem
+      border 0.01rem solid #523f1a
+      border-radius 0.1rem
+    > p
+      margin-top 0.2rem
+      font-size 0
+      line-height 0.26rem
+      display flex
+      > .label-name
+        font-size 0.26rem
+        color #8d8850
+      > .text
+        flex 1
+        font-size 0.26rem
+        color #523f1a
+        margin-left 0.2rem
+        &.activity
+          line-height 0.4rem
+          margin-top -0.07rem
+      > .time-text
+        font-size 0.26rem
+        color #523f1a
+        margin-left 0.2rem
+    .time
+      margin-top 0.1rem
+    .bottom-btns
+      margin-top 0.2rem
+      text-align right
+      font-size 0
+      > .add-evaluate
+        margin-right 0.2rem
+      > .button
+        display inline-block
+        font-size 0.3rem
+        color #fff
+        line-height 1
+        padding 0.15rem 0.2rem
+        border-radius 0.1rem
+        &.cancel
+          background-color #ff6060
+        &.pay, &.add-evaluate, &.refund
+          background-color #78c61a
+  .margin-top-10
+    height 0.16rem
+  .logistics
+    display flex
+    margin-bottom 1px
+    padding 0.2rem 0.3rem
+    background-color #fff
+    .left-media
+      margin-top 0.6rem
+      > img
+        display inline-block
+        width 0.44rem
+        height 0.34rem
+        vertical-align middle
+    .right-text
+      flex 1
+      margin-left 0.2rem
+      .logistics-content
+        margin-top 0.3rem
+        font-size 0.3rem
+        color #2F2D28
+      .logistics-time
+        font-size 0.26rem
+        color #9C9890
+        margin-top 0.24rem
+  .address-part
+    padding 0.3rem 0.2rem
+    display flex
+    background-color #fff
+    .left-media
+      padding 0.2rem
+      > img
+        display inline-block
+        width 0.36rem
+        height 0.44rem
+        vertical-align middle
+    .right-text
+      flex 1
+      margin-left 0.2rem
+      > p
+        margin-top 0.2rem
+        font-size 0.3rem
+        line-height 0.44rem
+        color #302d28
+        &:first-child
+          margin-top 0
+        &.name-mobile
+          line-height 1
+          .mobile
+            float right
+  .message-board
+    margin-top 0.16rem
+    padding 0.3rem 0.2rem
+    font-size 0.26rem
+    line-height 0.36rem
+    color #52504c
+    background-color #fff
+  .other-buttons
+    position fixed
+    width 1rem
+    right 0.4rem
+    bottom 18%
+    text-align center
+    > img
+      display block
+      width 1rem
+      height 1rem
+      &:last-child
+        margin-top 0.4rem
+  // 活动联系方式
+  .activity-service
+    width 100%
+    > p
+      margin-top 0.16rem
+      width 100%
+      padding 0 0.2rem
+      line-height 0.88rem
+      background-color #fff
+      display flex
+      > img
+        margin-top 0.18rem
+        margin-left 0.2rem
+        display inline-block
+        width 0.52rem
+        height 0.52rem
+        vertical-align middle
+      > .label-name
+        font-size 0.3rem
+        color #c7c7cc
+        vertical-align middle
+      > .text
+        flex 1
+        text-align right
+        font-size 0.3rem
+        color #333
+  // 遮罩
+  .mask
+    position fixed
+    width 100%
+    top 0
+    left 0
+    bottom 0
+    z-index 5
+    background rgba(0, 0, 0, 0.5)
+    transition 0.3s all linear
+    .bottom-box
+      position absolute
+      width 100%
+      bottom 0
+      left 0
+      padding 0.4rem
+      background-color #fff
+      > p
+        margin-top 0.2rem
+        font-size 0.26rem
+        line-height 1
+        color #c7c7cc
+        text-align center
+        &:first-child
+          font-size 0.3rem
+      > .bar
+        margin-top 0.4rem
+        width 100%
+        font-size 0.34rem
+        line-height 0.88rem
+        color #fff
+        text-align center
+        border-radius 0.44rem
+        &.call-bar
+          margin-top 0.6rem
+          background-color #f8bd48
+        &.cancel-bar
+          margin-bottom 0.2rem
+          background-color #ff6060
+  .recommend .book-list .side-list .item
+    background-color #fff

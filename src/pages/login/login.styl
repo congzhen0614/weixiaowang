@@ -1,0 +1,320 @@
+.login
+	padding-top: 0.8rem
+.text-limit
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+
+.break-word
+	word-break: break-word
+
+.link-obj
+	display: block
+	overflow: hidden
+	position: absolute
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+
+/*form wxw*/
+.form-wxw 
+	input::placeholder
+		color: #D8D8D8
+
+.form-wxw .hr-wxw 
+	height: 0.16rem
+
+.form-wxw 
+	.form-group 
+		position: relative
+		margin-bottom: 0
+		padding: 0 0.4rem
+
+.form-wxw 
+	.form-control 
+		padding: 0.12rem 0.6rem
+		height: 1rem
+		border-radius: 0
+		box-shadow: none
+		border: none
+		border-bottom: #E6E6E6 solid 0.02rem
+		color: #232326
+		font-size 0.28rem
+
+.form-wxw .form-group+.form-group .form-control 
+	border-top: none
+
+.form-wxw 
+	.tag-input 
+		position: absolute
+		left: 0.4rem
+		top: 50%
+		margin-top: -0.18rem
+		width: 0.28rem
+		height: 0.4rem
+		background: center no-repeat
+		background-size: 100% 100%
+
+.form-wxw 
+	.tag-mobile 
+		background-image: url('tag-mobile.png')
+
+.form-wxw 
+	.tag-pwd 
+		background-image: url('tag-pwd.png')
+
+.form-wxw 
+	.tag-captcha 
+		background-image: url('tag-captcha.png')
+
+.form-wxw 
+	.tag-input
+	&+.form-control
+		padding-left: 0.30rem
+
+.form-wxw 
+	.actions-group 
+		position: absolute
+		right: 0.4rem
+		top: 0
+		bottom: 0
+		line-height: 0.96rem
+
+.form-wxw 
+	.actions-group 
+		.btn-action 
+			float: left
+			width: 0.80rem
+			height: 1.0rem
+			background: no-repeat center
+			background-size: 0.40rem
+
+.form-wxw 
+	.actions-group 
+		.btn-action:last-child 
+			margin-right: -0.20rem
+
+.form-wxw 
+	.actions-group 
+		.btn-clear
+			background-image: url('icon-clear.png')
+
+.form-wxw 
+	.actions-group 
+		.btn-visible
+			background-image: url('icon-visible.png')
+
+.form-wxw 
+	.actions-group 
+		.btn-visible.active
+			background-image: url('icon-visible-active.png')
+
+/*box msg*/
+.box-msg 
+	position: fixed
+	left: 50%
+	top: 50%
+	margin-top: -0.60rem
+	margin-left: -1.20rem
+	width: 2.40rem
+	height: 1.20rem
+	background-color: rgba(0,0,0,.85)
+	color: #FFF
+	line-height: 1.20rem
+	text-align: center
+	border-radius: 0.15rem
+	font-size: 0.32rem
+
+.box-msg 
+	.btn-close
+		position: absolute
+		right: 0
+		top: 0
+		width: 0.32rem
+		height: 0.32rem
+		background: url('icon-close.png') no-repeat center
+		background-size: 0.12rem
+.page-sign-login .img-avatar 
+	margin: 0 auto
+	width: 1.6rem
+	height: 1.6rem
+	border-radius: 50%
+	border: 0.02rem solid #E6E6E6
+
+.page-sign-login .avatar 
+	margin: 0.6rem auto
+	width: 1.6rem
+	height: 1.6rem
+	border-radius: 50%
+
+.page-sign-login .form-wxw 
+	margin-bottom: 0.5rem
+
+.page-sign-login .btn-login 
+	background-color: #f8bd48
+	border-color: #f8bd48
+	border-radius: 10rem
+
+.page-sign-login .btn-login[disabled]
+	background-color: #ffeac1
+	border-color: #ffeac1
+	color: #FFF
+
+.page-sign-login .form-group-login 
+	margin-top: 0.6rem
+	> button
+		font-size: 0.36rem
+		padding: 0.2rem 0.32rem
+		line-height: 1.3333333
+
+.page-sign-login .line-sign 
+	padding: 0 0.4rem
+
+.page-sign-login .link-sign 
+	padding: 0.08rem 0.24rem
+	color: #646464
+	background-color: #F0F0F0
+	border-radius: 0.20rem
+	font-size: 0.24rem
+
+.page-sign-login .link-sign+.link-sign
+	float right
+	// margin-right: 0.25rem
+
+.page-sign-login .line-third 
+	overflow: visible
+	position: relative
+	margin: 2.4rem 0.8rem 0.8rem
+	color: #C6C6C6
+	border-bottom: dashed 0.02rem
+
+.page-sign-login .text-third 
+	position: absolute
+	top: 0
+	left: 50%
+	margin-left: -1.1rem
+	margin-top: -0.1rem
+	width: 2.2rem
+	background-color: #FFF
+	font-size: 0.24rem
+
+.page-sign-login .third-list 
+	display: flex
+	overflow: hidden
+	margin: 0 auto
+	width: 72%
+
+.page-sign-login .third-list .third 
+	display: block
+	overflow: hidden
+	position: relative
+	flex 1
+	padding: 0
+	text-align center
+	> img
+		display inline-block
+		width 1.2rem
+		height 1.2rem
+
+/*sign register*/
+.page-sign-register .form-register 
+	margin-top: 1.2rem
+
+.page-sign-register .tag-cb 
+	display: inline-block
+	vertical-align: middle
+	margin-right: 0.3rem
+	width: 0.4rem
+	height: 0.4rem
+	background: url('icon-checkbox.png') no-repeat center
+	background-size: 0.4rem
+
+.page-sign-register .label-ua 
+	margin-bottom: 0
+	font-weight: normal
+	color: #646464
+	font-size: 0.28rem
+
+.page-sign-register .link-ua 
+	text-decoration: underline
+	color: #008DD7
+
+.page-sign-register .btn-captcha 
+	background-color: #F44845
+	color: #FFF
+	border-radius: 500.00rem
+
+.page-sign-register .btn-captcha[disabled]
+	background-color: #BBB
+
+.page-sign-register .btn-captcha.focus,
+.page-sign-register .btn-captcha:focus,
+.page-sign-register .btn-captcha:hover 
+	color: #FFF
+
+.page-sign-register .form-group-ua 
+	margin-top: 0.5rem
+
+.page-sign-register .form-group-submit 
+	margin-top: 0.5rem
+	padding: 0 0.2rem
+
+.page-sign-register .active .tag-cb 
+	background-image: url('icon-checkbox-active.png')
+
+.page-sign-register .btn-submit 
+	border-radius: 10.00rem
+	background-color: #f8bd48
+	border-color: #f8bd48
+	font-size: 0.36rem
+	padding: 0.2rem 0.32rem
+	font-size: 0.36rem
+	line-height: 1.3333333
+
+.page-sign-register .btn-submit[disabled]
+	background-color: #E2E2E2
+	border-color: #E2E2E2
+	color: #BABABA
+
+/*sign recovery*/
+.page-sign-recovery .form-recovery 
+	margin-top: 1.2rem
+
+.btn-captcha 
+	background-color: #F44845
+	color: #FFF
+	border-radius: 10.00rem
+	font-size: 0.36rem
+	padding: 0.12rem 0.24rem
+	font-size: 0.28rem
+	line-height: 1.3333333
+
+.page-sign-recovery .btn-captcha[disabled]
+	background-color: #BBB
+
+.page-sign-recovery .btn-captcha.focus,
+.page-sign-recovery .btn-captcha:focus,
+.page-sign-recovery .btn-captcha:hover 
+	color: #FFF
+
+.page-sign-recovery .form-group-submit 
+	margin-top: 1.5rem
+	padding: 0 0.20rem
+
+.page-sign-recovery .btn-submit 
+	border-radius: 10.00rem
+	background-color: #f8bd48
+	border-color: #f8bd48
+	font-size: 0.36rem
+	padding: 0.2rem 0.32rem
+	font-size: 0.36rem
+	line-height: 1.3333333
+
+.page-sign-recovery .btn-submit[disabled]
+	background-color: #E2E2E2
+	border-color: #E2E2E2
+	color: #BABABA
+	
+.page-sign-reset
+	margin-top 2rem

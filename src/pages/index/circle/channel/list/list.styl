@@ -1,0 +1,58 @@
+@import '../../../../../common/stylus/mixin.styl'
+.circle-community-list
+	padding 0
+	.list-item
+		padding 0.3rem 0.2rem
+		overflow hidden
+		display flex
+		border-1px(#e6e6e6)
+		.left-part
+			margin-right 0.2rem
+			width 2.4rem
+			height 1.44rem
+			line-height 1.44rem
+			text-align center
+			overflow hidden
+			> img
+				display inline-block
+				width 100%
+				// min-height 100%
+				vertical-align middle
+		.right-part
+			flex 1
+			overflow hidden
+			> p
+				max-width 100%
+				overflow hidden
+				text-overflow ellipsis
+				white-space nowrap
+				line-height 1
+			.title
+				margin-top 0.1rem
+				font-size 0.3rem
+				color #333
+			.content
+				margin-top 0.24rem
+				font-size 0.26rem
+				color #999
+		.info
+			margin-top 0.24rem
+			font-size 0
+			line-height 0.2rem
+			> img
+				display inline-block
+				width 0.2rem
+				height 0.2rem
+				vertical-align middle
+				margin-left 0.3rem
+				&:first-child
+					margin-left 0
+			> span
+				display inline-block
+				font-size 0.2rem
+				margin-left 0.1rem
+				vertical-align middle
+				&:first-child
+					max-width 1.4rem
+			
+				

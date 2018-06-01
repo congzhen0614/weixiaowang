@@ -1,0 +1,161 @@
+.mine-order-detail-list
+  margin-top 0.16rem
+  width 100%
+  padding-top 0.1rem
+  background-color #fff
+  .refunded
+    background-image url("./refunded-signet.png")
+    background-repeat no-repeat
+    background-position 98% 0
+    background-size 1.4rem
+  .list-item
+    width 100%
+    padding 0.2rem
+    overflow hidden
+    display flex
+    overflow hidden
+    border-bottom 0.01rem solid #e6e6e6
+    position relative
+    &:last-child
+      border-bottom none
+    .left-media
+      width 1.4rem
+      height 1.4rem
+      line-height 1.4rem
+      text-align center
+      border 0.01rem solid #d6d6d6
+      border-radius 0.1rem
+      overflow hidden
+      > img
+        display inline-block
+        min-width 50%
+        min-height 50%
+        max-width 100%
+        max-height 100%
+        vertical-align middle
+    .right-part
+      margin-left 0.2rem
+      flex 1
+      .name
+        margin-top 0.1rem
+        font-size 0.3rem
+        line-height 1
+        color #302d28
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+      .numbers
+        margin-top 0.2rem
+        font-size 0
+        line-height 0.26rem
+        display flex
+        position relative
+        .refuse-refund
+          display block
+          float right
+          width 1.6rem
+          height 0.6rem
+          text-align center
+          line-height 0.6rem
+          font-size 0.3rem
+          border-radius 3px
+          background-color #F3F4F5
+          color #BEBBB5
+        > .label-name
+          font-size 0.26rem
+          color #9c9890
+        > .value
+          flex 1
+          margin-left 0.2rem
+          font-size 0.26rem
+          color #302d28
+          &.two-line
+            margin-top -0.07rem
+            line-height 0.4rem
+        .show-all
+          position absolute
+          bottom 0
+          right 0
+          margin-left 0.4rem
+          font-size 0.26rem
+          line-height 0.4rem
+          color #523f1a
+          text-decoration underline
+          .arrow-bottom
+            margin-top -0.12rem
+            margin-left 0.1rem
+            display inline-block
+            width 0.13rem
+            height 0.13rem
+            border 0.04rem solid #523f1a
+            border-bottom none
+            border-right none
+            transform rotate(225deg)
+            transition 0.1s all linear
+            &.up
+              margin-top -0rem
+              transform rotate(45deg)
+        &.price
+          position relative
+          .btn-box
+            position absolute
+            bottom -0.1rem
+            right 0
+            text-align right
+            > span
+              display inline-block
+              font-size 0.3rem
+              line-height 1
+              padding 0.15rem 0.25rem
+              border-radius 0.1rem
+              color #fff
+              background-color #f8bd48
+  // 活动
+  .activity-item
+    width 100%
+    padding 0.3rem
+    display flex
+    .left-text
+      flex 1
+      overflow hidden
+      .name
+        width 100%
+        font-size 0.3rem
+        line-height 1
+        color #302d28
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+      .code
+        margin-top 0.2rem
+        font-size 0
+        line-height 0.26rem
+        color #999
+        .label-name
+          font-size 0.26rem
+        .text
+          font-size 0.26rem
+          margin-left 0.14rem
+      .bottom-btn
+        margin-top 0.22rem
+        .refund-btn
+          display inline-block
+          font-size 0.26rem
+          line-height 1
+          padding 0.18rem
+          color #fff
+          background-color #f8bd48
+          border-radius 0.1rem
+    .right-media
+      margin-left 0.2rem
+      width 1.6rem
+      height 1.6rem
+      line-height 1.6rem
+      text-align center
+      > img
+        display inline-block
+        width 100%
+        min-height 100%
+        vertical-align middle
+
+

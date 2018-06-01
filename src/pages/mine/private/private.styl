@@ -1,0 +1,121 @@
+.mine-private
+	padding-top 0.88rem
+	background-color #fff
+	.mine-private-top
+		position fixed
+		width 100%
+		left 0
+		top 0
+		z-index 3
+		line-height 0.88rem
+		height 0.88rem
+		background-color #fff
+		&.underline
+			border-bottom 0.01rem solid #d6d6d6
+		> .back-icon
+			position absolute
+			left 0.26rem
+			top 0
+			line-height 0.88rem
+			> img
+				display inline-block
+				width 0.6rem
+				height 0.6rem
+				vertical-align middle
+		.title
+			width 100%
+			font-size 0.34rem
+			color #523f1a
+			text-align center
+			vertical-align middle
+	// 列表
+	.private-list
+		width 100%
+		.private-item
+			position relative
+			overflow hidden
+			transition 0.3s all linear
+			&.deleteShow
+				.content
+					transform translate(-1.6rem, 0)
+				.delete-button
+					right 0
+			.content
+				width 100%
+				display flex
+				overflow hidden
+				position relative
+				transition 0.3s all linear
+				.left-media
+					margin 0.2rem
+					width 1rem
+					height 1rem
+					line-height 1rem
+					text-align center
+					> img
+						display inline-block
+						width 100%
+						min-height 100%
+						vertical-align middle
+				.right-part
+					flex 1
+					padding 0.3rem 0.2rem 0.3rem 0
+					overflow hidden
+					height 1.4rem
+					border-bottom 0.01rem solid #d6d6d6
+					.top-line
+						margin-top 0.1rem
+						width 100%
+						display flex
+						.nickname
+							font-size 0.34rem
+							line-height 1
+							vertical-align top
+						.time
+							flex 1
+							text-align right
+							font-size 0.26rem
+							line-height 1
+							color #999
+							vertical-align top
+					.bottom-line
+						margin-top 0.15rem
+						width 100%
+						// overflow hidden
+						display flex
+						.content
+							display inline-block
+							flex 1
+							font-size 0.26rem
+							line-height 1
+							color #999
+							overflow hidden
+							text-overflow ellipsis
+							white-space nowrap
+							vertical-align middle
+						.number
+							margin-left 0.2rem
+							display inline-block
+							margin-top -0.07rem
+							padding 0 0.12rem
+							font-size 0.26rem
+							line-height 0.4rem
+							color #fff
+							min-width 0.4rem
+							text-align center
+							background-color #ff6060
+							border-radius 50%
+							vertical-align middle
+			.delete-button
+				position absolute
+				right -1.6rem
+				top 0
+				width 1.6rem
+				height 1.4rem
+				font-size 0.34rem
+				line-height 1.4rem
+				text-align center
+				color #6e5627
+				background-color #f8bd48
+				transition 0.3s all linear
+					

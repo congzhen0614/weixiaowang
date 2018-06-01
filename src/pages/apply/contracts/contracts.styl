@@ -1,0 +1,138 @@
+@import '../../../common/stylus/mixin.styl'
+.list-item-arrow::before 
+  content: ''
+  width: 0.3rem
+  height: 0.3rem
+  position: absolute
+  top: 50%
+  right: 0.15rem
+  margin-top: -0.15rem
+  border: 1px solid #dddddd
+  border-top: none
+  border-right: none
+  z-index: 2
+  transform: rotate(225deg)
+  border-radius: 0
+.underline
+	border-1px(#d6d6d6)
+.contracts
+	padding: 0.1rem 0 1.2rem
+	background: #fff
+	margin-top: 0.8rem
+	.main
+		margin: 0 0.2rem
+		margin-top: 0.4rem
+		border-radius: 0.1rem
+		box-shadow: 0 0 6px 1px #ccc
+		.main-header
+			width: 100%
+			line-height: 1rem
+			background-color: #F6F7F7
+			font-size: 0.28rem
+			color: #B4B5B5
+			.left
+				width: 4.5rem
+				.type
+					display: inline-block
+					width: 3.5rem
+					overflow: hidden
+					text-overflow: ellipsis
+					white-space: nowrap
+					vertical-align: middle
+				> .group
+					display: inline-block
+					color: #ffffff
+					line-height: 0.3rem
+					padding: 0.02rem 0.02rem
+					background-color: #B6D114
+					vertical-align: middle
+			.right
+				flex: 1
+				text-align: right
+				padding-right: 0.2rem
+				.price
+					vertical-align: middle
+				> img
+					display: inline-block
+					width: 0.4rem
+					height: 0.4rem
+					vertical-align: middle
+		.list
+			width: 100%
+			> li
+				display: flex
+				padding: 0 0.2rem
+				line-height: 1rem
+				font-size: 0.28rem
+				color: #b4b5b5
+				&.relation
+					position: relative
+					padding-right: 0.4rem
+				> input
+					text-align: right
+					outline: none
+					vertical-align middle
+					display: inline-block
+				> input::placeholder
+					color: #b7b7b7
+				> .desc
+					display: inline-block
+					flex: 1
+				> .box
+					flex: 1
+					font-size: 0
+					> .item
+						display: inline-block
+						font-size: 0.28rem
+						text-align: right
+						float: right
+						> .img
+							display: inline-block
+							width: 0.4rem
+							height: 0.4rem
+							vertical-align: middle
+							background url('gender_check.png') no-repeat center
+							background-size 100%
+							&.active
+								background url('gender_check_active.png') no-repeat center
+								background-size: 100%
+					> .man
+						margin-right: 1rem
+		> div
+			display: flex
+			padding-left: 0.3rem
+			font-size: 0.31rem
+			line-height: 1rem
+			&.underline
+				border-1px(#d6d6d6)
+			> span
+				display: inline-block
+				width: 3rem
+				color: #D4D4D4
+				font-size: 0.32rem
+			> input
+				padding-right: 0.2rem
+				display: inline-block
+				flex: 1
+				outline: none
+				text-align: right
+				font-size: 0.32rem
+			> input::placeholder
+				color: #d8d8d8
+	.footer
+		position: fixed
+		bottom: 0
+		left: 0
+		right: 0
+		font-size: 0.34rem
+		line-height: 1rem
+		height: 1rem
+		background: rgb(248, 192, 79)
+		text-align: center
+		color: #fff
+		z-index: 3
+	.info
+		> .main
+			margin-bottom: 0
+			margin-top: 0.4rem
+				

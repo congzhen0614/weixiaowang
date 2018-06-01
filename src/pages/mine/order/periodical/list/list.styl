@@ -1,0 +1,126 @@
+@import '../../../../../common/stylus/mixin.styl'
+.mine-order-list
+  width 100%
+  position absolute
+  left 0
+  .list-item
+    margin-top 0.16rem
+    width 100%
+    position relative
+    overflow hidden
+    transition 0.3s all linear
+    &.deleteShow
+      .list_item_content
+        transform translate(-2.4rem, 0)
+      .delete-button
+        transform translate(-2.4rem, 0)
+    .list_item_content
+      position relative
+      transition 0.3s all linear
+      .list-body
+        padding 0.2rem
+        display flex
+        background-color #fff
+        .left-media
+          width 1.6rem
+          height 1.6rem
+          text-align center
+          border 0.02rem solid #d6d6d6
+          border-radius 0.06rem
+          overflow hidden
+          background-repeat no-repeat
+          background-size contain
+          background-position center center
+          > img
+            display inline-block
+            width 100%
+            min-height 100%
+            vertical-align middle
+        .right-part
+          margin-left 0.2rem
+          flex 1
+          .title
+            font-size 0.34rem
+            line-height 0.44rem
+            color #302d28
+            position relative
+            // 状态
+            > .status
+              position absolute
+              right 0
+              top -0.2rem
+              font-size 0
+              vertical-align middle
+              > img
+                display inline-block
+                width 1.4rem
+                height 1.2rem
+                vertical-align top
+              > .text
+                display inline-block
+                padding-top 0.2rem
+                margin-left 0.4rem
+                font-size 0.34rem
+                line-height 0.36rem
+                color #302d28
+                vertical-align middle
+                &.fail
+                  color #f23030
+          .id, .price
+            margin-top 0.2rem
+            font-size 0.3rem
+            line-height 0.3rem
+            color #9c9890
+      .list-bottom
+        padding 0 0.2rem
+        font-size 0
+        height 1rem
+        line-height 1rem
+        background-color #fafafa
+        text-align right
+        > .button
+          display inline-block
+          padding 0.15rem 0.25rem
+          font-size 0.3rem
+          line-height 0.3rem
+          color #fff
+          background-color #78c61a
+          border-radius 0.06rem
+          outline none
+          border none
+          vertical-align middle
+        .check-logistics
+          background-color #F8BD48
+          color #fff
+          margin-right 0.2rem
+          &.logistics
+            background-color #f8bd48
+            margin-right 0.2rem
+    .delete-button
+      position absolute
+      right -2.4rem
+      top 0
+      width 2.4rem
+      height 3rem
+      font-size 0.34rem
+      line-height 3rem
+      text-align center
+      background-color #f8bd48
+      transition 0.3s all linear
+  .empty-box
+    width 100%
+    margin-top 50%
+    text-align center
+    > img
+      display inline-block
+      width 2rem
+      height 2rem
+      margin 0 auto
+    .text
+      margin-top 0.3rem
+      font-size 0.3rem
+      line-height 0.3rem
+      color #d6d6d6
+      text-align center
+
+

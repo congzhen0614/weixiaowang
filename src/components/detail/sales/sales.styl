@@ -1,0 +1,50 @@
+@import '../../../common/stylus/mixin.styl'
+.sales-comment
+	background-color: #f0f0f0
+	.sales
+		padding-bottom: 0.2rem
+		.list
+			padding: 0.2rem 0 0.2rem 0rem
+			.item
+				display inline-block
+				width 0.6rem
+				height: 0.6rem
+				margin-left: 0.2rem
+				margin-bottom 0.1rem
+				border-radius 0.1rem
+				> img
+					display: block
+					width: 100%
+					border-radius 0.1rem
+.show-all
+	text-align: center
+	line-height: 1.4
+	font-size: 0.28rem
+	color: #232326
+	.text
+		display: inline-block
+		position: relative
+		border-bottom: 1px solid #232326
+	.down::after
+		content: ''
+		position: absolute
+		width: 0.2rem
+		height: 0.2rem
+		right: -0.35rem
+		top: 0.06rem
+		border 1px solid #232326
+		border-top: none
+		border-right: none
+		transform: rotate(-45deg)
+	.up::after
+		content: ''
+		position: absolute
+		width: 0.2rem
+		height: 0.2rem
+		right: -0.35rem
+		top: 50%
+		border 1px solid #232326
+		border-top: none
+		border-right: none
+		transform: rotate(135deg)
+					

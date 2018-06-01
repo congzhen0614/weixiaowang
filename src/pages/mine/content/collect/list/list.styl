@@ -1,0 +1,109 @@
+@import '../../../../../common/stylus/mixin.styl'
+.mine-collect-list
+	width 100%
+	position absolute
+	left 0
+	.list-item
+		width 100%
+		position relative
+		overflow hidden
+		transition 0.3s all linear
+		&.deleteShow
+			.content
+				transform translate(-1.6rem, 0)
+			.delete-button
+				transform translate(-1.6rem, 0)
+		.content
+			position relative
+			transition 0.3s all linear
+			border-bottom 0.01rem solid #e6e6e6
+			.list-body
+				padding 0.2rem
+				display flex
+				background-color #fff
+				.left-media
+					width 1.4rem
+					height 1.4rem
+					text-align center
+					border 0.01rem solid #d6d6d6
+					border-radius 0.1rem
+					overflow hidden
+					> img
+						display inline-block
+						width 100%
+						min-height 100%
+						vertical-align middle
+				.right-part
+					margin-left 0.2rem
+					flex 1
+					height 1.4rem
+					overflow hidden
+					display -webkit-box
+					-webkit-box-orient horizontal
+					-webkit-box-pack center
+					-webkit-box-align center
+					.box
+						width 100%
+						.name
+							font-size 0.3rem
+							line-height 0.4rem
+							color #333
+							font-weight 500
+						.price, .datas
+							margin-top 0.2rem
+							font-size 0
+							line-height 0
+							color #f8bd48
+							> .small
+								font-size 0.26rem
+								line-height 0.34rem
+								vertical-align baseline
+							> .big
+								font-size 0.34rem
+								line-height 0.34rem
+								vertical-align baseline
+						> .datas
+							line-height 0.26rem
+							> img
+								display inline-block
+								width 0.24rem
+								height 0.24rem
+								vertical-align middle
+							> .comment-icon
+								margin-left 0.4rem
+							> .text
+								margin-left 0.1rem
+								font-size 0.24rem
+								color #999
+								vertical-align middle
+		.delete-button
+			position absolute
+			right -1.6rem
+			top 0
+			width 1.6rem
+			height 100%
+			padding 0.54rem 0
+			color #fffcf5
+			font-size 0.34rem
+			line-height 0.36rem
+			text-align center
+			background-color #f8bd48
+			transition 0.3s all linear
+	.empty-box
+		width 100%
+		margin-top 50%
+		text-align center
+		> img
+			display inline-block
+			width 2rem
+			height 2rem
+			margin 0 auto
+		.text
+			margin-top 0.3rem
+			font-size 0.3rem
+			line-height 0.3rem
+			color #d6d6d6
+			text-align center
+			
+				
+		

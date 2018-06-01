@@ -1,0 +1,86 @@
+.periodical-ording
+	width 100%
+	&.topNeedPadding
+		padding-top 1rem
+	.fixed_desc_text
+		position fixed
+		left 0
+		z-index 9
+		width 100%
+		top 0.88rem
+		font-size 0.24rem
+		line-height 1.5
+		color #37362e
+		background-color #fff5a0
+		padding 0.2rem
+	.ball-container
+		.ball
+			position fixed
+			left 32px
+			bottom 22px
+			z-index 8
+			transition: all 0.4s cubic-bezier(0.9, -0.15, 0.8, 0.3)
+			.inner
+				width 16px
+				height 16px
+				border-radius 50%
+				background #f8bd48
+				transition all 0.4s ease-in
+	.child-page
+		position relative
+		width 100%
+		top 0
+		left 0
+		height auto
+	// 按钮
+	.other-buttons
+		position fixed
+		width 1rem
+		right 0.2rem
+		bottom 18%
+		text-align center
+		> img
+			display block
+			width 1rem
+			height 1rem
+			&:last-child
+				margin-top 0.4rem
+	// 遮罩
+	> .mask
+		position fixed
+		width 100%
+		top 0
+		left 0
+		bottom 0
+		z-index 10
+		background rgba(0, 0, 0, 0.5)
+		transition 0.3s all linear
+		.bottom-box
+			position absolute
+			width 100%
+			bottom 0
+			left 0
+			padding 0.4rem
+			background-color #fff
+			> p
+				margin-top 0.2rem
+				font-size 0.26rem
+				line-height 1
+				color #c7c7cc
+				text-align center
+				&:first-child
+					font-size 0.3rem
+			> .bar
+				margin-top 0.4rem
+				width 100%
+				font-size 0.34rem
+				line-height 0.88rem
+				color #fff
+				text-align center
+				border-radius 0.44rem
+				&.call-bar
+					margin-top 0.6rem
+					background-color #f8bd48
+				&.cancel-bar
+					margin-bottom 0.2rem
+					background-color #ff6060

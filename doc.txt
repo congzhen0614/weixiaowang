@@ -1,0 +1,151 @@
+share
+
+	|- build	--- 打包相关配置目录
+
+	|- config	--- npm相关配置
+
+	|- dist	--- 打包生成文件
+
+	|- node_modules	--- 项目依赖
+
+	|- src	--- 项目编写目录
+
+		|- api	--- 接口文档
+
+		|- assets	--- 静态图片资源
+
+		|- common	--- 公共文件
+
+			|- fonts	--- 字体图标
+
+			|- icons	--- 图标图片
+
+			|- js		--- js公用方法
+
+			|- stylus	--- stylus样式文件
+
+		|- components	--- vue组件
+
+			|- activity	--- 活动相关(详情、列表)
+
+			|- book	--- 图书相关(列表)
+
+			|- circle --- 列表相关(列表)
+
+			|- common	--- 公用组件
+
+				|- banner、empty、link、loading等。
+
+			|- detail	--- 分享详情相关组件
+
+			|- header	--- 头部
+
+			|- magazine	--- 杂志相关(列表)
+
+			|- mall --- 微商城相关(列表)
+
+			|- periodical-ording	--- H5单独杂志、刊物征订相关(幼儿园、双十一、双十二、双旦活动等)。
+
+			|- shopcat	--- 购物车相关(底部购物车按钮等)。
+
+			|- train	--- 培训相关(详情、列表)
+
+		|- pages	--- 所有页面模块
+
+			|- apply	--- 申请、下单相关(活动培训)
+
+				|- choose	--- 选择套餐
+
+				|- contracts	--- 联系人(实名制和非实名制)
+
+				|- pay	--- 支付相关
+
+				|- result	--- 支付结果
+
+			|- book	--- 微书城
+
+				|- detail	--- 详情
+
+				|- list	--- 列表
+
+				|- recommend	--- 猜您喜欢
+
+				|- search	--- 根据条件搜索列表
+
+				|- single	--- 单独类型列表
+
+				|- top	--- 头部内容
+
+			|- circle	--- 圈子(暂未开发)
+
+			|- index	--- app首页
+
+				|- circle	--- 圈子首页
+
+				|- home	--- 首页内容
+
+				|- mine --- 我的
+
+				|- shopcat 	--- 首页购物车
+
+			|- login	--- 注册登录相关页面
+
+			|- match	--- 贝乐国际少儿大赛活动页面
+
+			|- mine 	--- 我的相关页面
+
+				|- address	--- 我的地址(列表、编辑)
+
+				|- children	--- 我的孩子(列表、编辑)(图片上传还有问题)
+
+				|- content	--- 内容部分
+
+				|- message	--- 消息列表(数据未调，目前为静态数据)
+
+				|- order	--- 订单相关
+
+				|- private	--- 私信相关(数据未调，目前为静态数据)
+
+				|- setting	--- 设置(数据未调，目前为静态数据)
+
+			|- search	--- 搜索
+
+				|- reminder	--- 搜索提示
+
+				|- result	--- 搜索结果
+
+				|- selector	--- 筛选条件
+
+			|- shopcat	--- 购物车相关模块
+
+				|- index	--- 购物车首页
+
+				|- address	--- 下单地址管理
+
+				|- coupon	--- 优惠券
+
+				|- leave	--- 留言
+
+				|- order	--- 下单页
+
+		|- router
+
+			|- index.js 	--- 前端路由目录
+
+		|- vuex
+
+			|- index.js 	--- 状态管理目录
+
+	|- static	--- 静态打包资源(css、data、imgs、js)
+
+		|- data	--- 地址数据文件
+
+	|- index.dev.html	--- 开发页
+
+	|- index.prod.html	--- 打包页
+
+	|- .babelrc	--- 兼容es6配置
+
+	|- .eslintrc.js 	--- 代码检查相关配置
+
+	|- package.json	--- npm配置

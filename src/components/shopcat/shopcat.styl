@@ -1,0 +1,241 @@
+@import '../../common/stylus/mixin.styl'
+.animated
+	animation-duration 0.3s
+.v-shopcat
+	display flex
+	width: 100%
+	height: 1rem
+	position: fixed
+	bottom: 0
+	z-index 9
+	.underline
+		border-1px(#e6e6e6)
+	.item
+		flex: 1
+		text-align: center
+		color: #fff
+	.buttons
+		display flex
+		.button
+			flex: 1
+			position: relative
+			> .img
+				display: inline-block
+				width: 0.4rem
+				margin-top 0.15rem
+				background url('collect.png') no-repeat center
+				background-size: 100%
+				&.active
+					background url('collect_active.png') no-repeat center
+			.dot
+				position absolute
+				width: 0.24rem
+				height: 0.24rem
+				top 0.1rem
+				right: 0.2rem
+				background-color: #f23030
+				border-radius: 50%
+				line-height: 0.24rem
+				font-size: 0.12rem
+		> img
+			display: inline-block
+			width: 0.4rem
+			margin-top 0.15rem
+		.text
+			font-size: 0.24rem
+			line-height: 1
+	.buy
+		line-height: 1rem
+		background-color: #4387dd
+		font-size: 0.32rem
+		&.activity
+			background-color: #f8bd48
+		> img
+			display: inline-block
+			width: 0.32rem
+			vertical-align: middle
+		> span
+			vertical-align: middle
+	.add
+		line-height: 1rem
+		background-color: #f23030
+		font-size: 0.32rem
+	.ording-bottom
+		position: fixed
+		bottom: 0
+		z-index 10
+		width 100%
+		display flex
+		line-height 1rem
+		.left-part
+			flex 2
+			padding-left 0.3rem
+			background-color: rgba(0, 0, 0, 0.9)
+			font-size 0
+			.shopcat-icon
+				display inline-block
+				position relative
+				width 0.78rem
+				height 0.78rem
+				background url('shopcat_icon.png') no-repeat center
+				background-size 100% 100%
+				vertical-align middle
+				.dot
+					position absolute
+					display inline-block
+					top -0.04rem
+					left 66%
+					z-index 3
+					border-radius 0.15rem
+					width auto
+					min-width 0.3rem
+					text-align center
+					padding 0.02rem 0.08rem
+					font-size 0.24rem
+					line-height 0.24rem
+					color #fff
+					background-color #ff3a3f
+			.now-sum
+				display inline-block
+				margin-left 0.3rem
+				margin-top 0.08rem
+				font-size 0.24rem
+				color #fff
+				line-height 0.48rem
+				vertical-align middle
+				> .big
+					font-size 0.48rem
+					font-weight 400
+					vertical-align baseline
+			.old-sum
+				display inline-block
+				font-size 0.24rem
+				line-height 0.24rem
+				vertical-align middle
+				margin-left 0.2rem
+				margin-top 0.08rem
+				color #cec7bb
+		.right-button
+			flex 1
+			text-align center
+			font-size 0.34rem
+			line-height 1rem
+			color rgba(255, 255, 255, 1)
+			background linear-gradient(to left, #fe7a56, #ff5050)
+	.mask
+		position fixed
+		width 100%
+		height 100%
+		top 0
+		left 0
+		background rgba(0, 0, 0, 0.5)
+		opacity 1
+		z-index 8
+		visibility visible
+		transition-duration 300ms
+	.list-box
+		width 100%
+		position absolute
+		z-index 9
+		bottom 1rem
+		left 0
+		background #fff
+		transition-duration 300ms
+		.list-header
+			position relative
+			left 0
+			top 0
+			width 100%
+			height 1.2rem
+			line-height 1.2rem
+			display flex
+			padding 0 0.3rem
+			z-index 11
+			background-color #fff
+			.title
+				flex 1
+				// height 0.28rem
+				margin 0.46rem 0
+				padding 0 0.1rem
+				font-size 0.28rem
+				line-height 0.28rem
+				color #bebbb5
+				font-family PingFangSC-Regular
+				vertical-align middle
+				border-left 0.04rem solid #f8bd48
+			.clear-button
+				padding 0 0.2rem
+				font-size 0
+				line-height 0.6rem
+				height 0.6rem
+				margin 0.3rem 0
+				&.clear-button::after
+					content ''
+					width 100%
+					height 100%
+				  border 1px solid #bebbb5
+				  border-radius 0.1rem
+				> img
+					display inline-block
+					width 0.28rem
+					height 0.28rem
+					vertical-align middle
+				> span
+					margin-left 0.1rem
+					display inline-block
+					font-size 0.28rem
+					vertical-align middle
+		.list-body
+			width 100%
+			overflow scroll
+			.list-item
+				display flex
+				padding 0 0.3rem
+				line-height 1.4rem
+				.left-part
+					width 3.2rem
+					line-height inherit
+					font-size 0
+					> img
+						display inline-block
+						width 0.6rem
+						vertical-align middle
+					> span
+						margin-left 0.2rem
+						display inline-block
+						width 2.4rem
+						overflow hidden
+						text-overflow ellipsis
+						white-space nowrap
+						font-size 0.32rem
+						color #523f1a
+						font-family PingFangSC-Regular
+						vertical-align middle
+				.price
+					flex 1
+					display inline-block
+					font-size 0.24rem
+					line-height inherit
+					color #262626
+					text-align center
+					> .big
+						font-size 0.32rem
+						vertical-align baseline
+				.list-buttons
+					padding 0
+					line-height inherit
+					font-size 0
+					> span
+						display inline-block
+						vertical-align middle
+						width 0.96rem
+						font-size 0.34rem
+						text-align center
+					> img
+						display inline-block
+						width 0.48rem
+						height 0.48rem
+						vertical-align middle
+	
+
+		

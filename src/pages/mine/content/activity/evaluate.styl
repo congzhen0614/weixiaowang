@@ -1,0 +1,153 @@
+.mine-activity-evaluate
+	padding-top 0.88rem
+	background-color #fff
+	.mine-activity-evaluate-top
+		position fixed
+		width 100%
+		left 0
+		top 0
+		z-index 3
+		line-height 0.88rem
+		height 0.88rem
+		background-color #fff
+		&.underline
+			border-bottom 0.01rem solid #d6d6d6
+		> .back-icon
+			position absolute
+			left 0.26rem
+			top 0
+			line-height 0.88rem
+			> img
+				display inline-block
+				width 0.6rem
+				height 0.6rem
+				vertical-align middle
+		.title
+			width 100%
+			font-size 0.34rem
+			color #523f1a
+			text-align center
+			vertical-align middle
+		.submit-btn
+			position absolute
+			right 0.1rem
+			top 0
+			font-size 0.34rem
+			line-height 0.4rem
+			color #f8bd48
+			padding 0.2rem
+	.evaluate-list
+		border-bottom 0.01rem solid #e6e6e6
+	// 评分
+	.score-box
+		padding 0.2rem 0
+		.score-item
+			padding 0 0.32rem
+			display flex
+			&:nth-child(2)
+				.left-part
+					> .text
+						background-color #65a2e7
+			&:nth-child(3)
+				.left-part
+					> .text
+						background-color #f8bd48
+			.left-part
+				height 1.18rem
+				line-height 1.18rem
+				font-size 0
+				overflow hidden
+				padding 0.02rem
+				> .text
+					display inline-block
+					padding 0 0.22rem
+					font-size 0.28rem
+					line-height 0.52rem
+					color #fff
+					vertical-align middle
+					background-color #7fcb2c
+					border-radius 0.26rem
+			.right-part
+				margin-left 0.2rem
+				flex 1
+				text-align right
+				height 1.18rem
+				line-height 1.18rem
+				.star-list
+					// margin-top 0.26rem
+					display inline-block
+					vertical-align middle
+					font-size 0
+					.star-item
+						display inline-block
+						margin-right 0.2rem
+						width 0.56rem
+						height 0.56rem
+						line-height 0.56rem
+						position relative
+						> img
+							position absolute
+							left 0
+							top 0
+							display inline-block
+							width 100%
+							height 100%
+							transition 1s all linear !important
+	.evaluate-content
+		padding 0.4rem
+		.text-box
+			width 100%
+			height 3.6rem
+			border 0.02rem dashed #c7c7cc
+			border-radius 0.1rem 0.1rem 0.1rem 0
+			padding 0.3rem
+			position relative
+			> textarea
+				width 100%
+				height 80%
+				font-size 0.34rem
+				line-height 0.56rem
+				border none
+				outline none
+				resize none
+				color #302d28
+				&::placeholder
+					color #c7c7cc
+			.limit
+				position absolute
+				right 0.3rem
+				bottom 0.3rem
+				font-size 0
+				line-height 0.3rem
+				color #666
+				> .numbers
+					font-size 0.3rem
+					&.red
+						color #fc474e
+				> .max
+					font-size 0.3rem
+	.pic-list
+		margin-top 0.2rem
+		display flex
+		flex-wrap wrap
+		font-size 0
+		.pic-item
+			display inline-block
+			width 1.2rem
+			height 1.2rem
+			line-height 1.2rem
+			margin-right 0.2rem
+			position relative
+			text-align center
+			> .pic
+				display inline-block
+				max-width 100%
+				max-height 100%
+				vertical-align middle
+			.close-icon
+				position absolute
+				top 0.04rem
+				right 0.04rem
+				display inline-block
+				width 0.3rem
+				height 0.3rem

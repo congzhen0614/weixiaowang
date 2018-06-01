@@ -1,0 +1,40 @@
+@import '../../../common/stylus/mixin.styl'
+.address
+	width 100%
+	.input-list
+		width 100%
+		.list-item
+			border-1px(#e6e6e6)
+			display flex
+			line-height 1.08rem
+			padding 0 0.32rem
+			.name
+				margin-right 0.2rem
+				font-size 0.3rem
+				color #333333
+			> .input, input
+				flex 1
+				outline none
+				text-align right
+				font-size 0.3rem
+				&::placeholder, &.placeholder
+					color #c7c7cc
+			> img
+				display inline-block
+				width 0.16rem
+				height 0.28rem
+				margin-left 0.32rem
+				margin-top 0.41rem
+				vertical-align middle
+	> footer
+		position fixed
+		width 100%
+		bottom 0
+		left 0
+		line-height 0.98rem
+		font-size 0.32rem
+		font-weight 500
+		color #523f1a
+		background #f8bd48
+		text-align center
+				

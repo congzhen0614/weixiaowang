@@ -1,0 +1,376 @@
+@import "../../../common/stylus/mixin.styl"
+.list-item-arrow::before 
+  content: ''
+  width: 0.2rem
+  height: 0.2rem
+  position: absolute
+  top: 50%
+  right: 0.15rem
+  margin-top: -0.1rem
+  border: 1px solid #dddddd
+  border-top: none
+  border-right: none
+  z-index: 2
+  transform: rotate(225deg)
+  border-radius: 0
+.content-body
+	// padding-top: 0.88rem
+	.swiper
+		background-color: #323232
+		width: 100%
+		margin-top: 0.8rem
+		// height: 4.32rem
+		position relative
+		> .img-logo
+			position absolute
+			right 0.2rem
+			top 0.2rem
+			z-index 9
+			padding 0.1rem 0.2rem
+			background rgba(0, 0, 0, 0.5)
+			border-radius 0.36rem
+			font-size 0
+			> img
+				display inline-block
+				width 0.24rem
+				height 0.24rem
+				vertical-align middle
+				margin-right 0.08rem
+			> span
+				font-size: 0.24rem
+				color #ffffff
+				vertical-align middle
+	.underline
+		border-1px(#f0f0f0)
+	.desc
+		display: inline-block
+		margin-right: 0.2rem
+		padding: 0
+		color: #888888
+		font-size: 0.24rem
+	.detail
+		width: 100%
+		padding: 0.2rem 0.2rem 0
+		line-height: 1.4
+		border-1px(#f0f0f0)
+		.name
+			font-weight: bold
+			color: #323232
+			font-size: 0.32rem
+		// 描述 slot
+		.desc
+			width: 100%
+			padding-top: 0.2rem
+			position: relative
+			&.activity
+				border-1px(#f0f0f0)
+			.hard-cover
+				width: 1.6rem
+				height: 1.6rem
+				position: absolute
+				top: 0.3rem
+				right: 0
+				img
+					display: block
+					width: 100%
+			> .age
+				font-size: 0.24rem
+				color: #4760ca
+			.now-price
+				margin-top: 0.3rem
+				font-size: 0
+				line-height: 1
+				.price
+					display: inline-block
+					font-size: 0.32rem
+					color: #f23030
+			.old-price
+				margin-top: 0.2rem
+				font-size: 0
+				line-height: 1
+				vertical-align: bottom
+				.price
+					display: inline-block
+					color: #888888
+					font-size: 0.24rem
+					text-decoration: line-through
+				.discount
+					display: inline-block
+					margin-left: 0.5rem
+					font-size: 0.24rem
+					color: #323232
+					font-weight: bold
+			.activity
+				margin-top 0.04rem
+				padding-bottom: 0.1rem
+				line-height: 0.4rem
+				.img
+					display: inline-block
+					width: 0.4rem
+					height: 0.4rem
+					vertical-align: bottom
+					> img
+						display: block
+						width: 100%
+				.desc
+					display: inline-block
+					margin-left: 0.1rem
+					font-size: 0.24rem
+					color: #646464
+					vertical-align: bottom
+			// 活动
+			.title
+				width: 100%
+				height: 0.32rem
+				line-height: 0.32rem
+				font-size: 0
+				.age
+					width: 1.15rem
+					height: 0.32rem
+					padding: 0 0.08rem
+					font-size: 0.24rem
+					color: #fff
+					background-color: #fb7575
+					vertical-align: middle
+				.hot
+					// margin-left: 0.15rem
+					padding: 0 0.04rem
+					font-size: 0.24rem
+					color: #fff
+					background-color: rgb(255, 136, 83)
+					vertical-align: middle
+				.time
+					display: inline-block
+					float: right
+					> img
+						display: inline-block
+						vertical-align: middle
+						width: 0.3rem
+					.text
+						margin-left: 0.08rem
+						font-size: 0.24rem
+						color: #999999
+						vertical-align: middle
+			.text
+				margin: 0.2rem 0 0.3rem
+				line-height: 0.34rem
+				font-size: 0.24rem
+				color: #999999
+			.price
+				margin-bottom: 0.3rem
+				font-size: 0.24rem
+				color: #999999
+				line-height: 0.34rem
+				letter-spacing: 0.02rem
+				.num
+					font-size: 0.34rem
+					color: rgb(255, 136, 83)
+		.desc-perio
+			padding-top: 0.2rem
+			line-height: 1
+			font-size: 0.24rem
+			.activity
+				color: #008dd7
+			.age
+				margin-top: 0.16rem
+				color: #646464
+			.price
+				margin: 0.2rem 0 0.2rem
+				color: #f23030
+				.big
+					font-size: 0.36rem
+					vertical-align baseline
+	.other
+		padding: 0.2rem
+		border-1px(#d6d6d6)
+		.freight
+			display: inline-block
+			.price
+				font-size: 0.24rem
+				color: #323232
+		.sales
+			display: inline-block
+			margin-left: 1rem
+			.num
+				font-size: 0.24rem
+				color: #323232
+	.company
+		width: 100%
+		border-1px(#d6d6d6)
+		.item
+			position: relative
+			line-height: 0.4rem
+			padding: 0.2rem
+			.img
+				display: inline-block
+				width: 0.4rem
+				height: 0.4rem
+				vertical-align: bottom
+				> img
+					display: block
+					width: 100%
+			.desc
+				display: inline-block
+				margin-left: 0.1rem
+				font-size: 0.24rem
+				color: #646464
+				vertical-align: bottom
+			.deal
+				margin-left: 1rem
+			.download
+				display: inline-block
+				width: 1.6rem
+				height: 0.6rem
+				line-height: 0.6rem
+				position: absolute
+				right: 0.2rem
+				top: 0.1rem
+				background-color: #1fb739
+				border-radius: 0.1rem
+				color: #fff
+				font-size: 0.28rem
+				text-align: center
+		.bottom-line
+			border-1px(#f0f0f0)
+	// 链接
+	.links
+		width: 100%
+		padding: 0 0.2rem
+		&.activity
+			padding-right: 0
+		> div
+			position: relative
+			font-size: 0.28rem
+			line-height: 0.8rem
+			color: #323232
+		.list-item-arrow
+			> a
+				display: block
+		.item
+			font-size: 0
+			.img
+				display: inline-block
+				width: 0.3rem
+				vertical-align: middle
+				margin-right: 0.23rem
+				&.map
+					width: 0.58rem
+					margin-right: 0.15rem
+			.desc
+				display: inline-block
+				padding: 0.05rem 0.1rem
+				line-height: 0.3rem
+				vertical-align: middle
+				font-size: 0.2rem
+				text-align: center
+				color: #f23030
+				background-color: yellow
+				border: 1px solid #ccc
+				border-radius: 0.06rem
+			.text
+				display: inline-block
+				flex: 1
+				vertical-align: middle
+				font-size: 0.24rem
+				color: #232326
+				&.has-apply
+					color: #f17200
+			&.location
+				display: flex
+				height: 0.8rem
+				> .img
+					margin-top: 0.2rem
+					&.map
+						margin-top: 0.1rem
+				> .text
+					margin-top: 0.13rem
+					line-height: 0.3rem
+	// 活动公司列表
+	.company-list
+		padding-left: 0.2rem
+		.list-item
+			display: flex
+			font-size: 0
+			height: 1rem
+			.img
+				width: 0.8rem
+				margin: 0.1rem 0.2rem 0.1rem 0
+			.content
+				flex: 1
+				line-height: 1
+				.title
+					font-size: 0
+					margin: 0.2rem 0.2rem 0.04rem 0
+					.name
+						display: inline-block
+						margin-right: 0.08rem
+						font-size: 0.28rem
+						color: #646464
+					.desc
+						display: inline-block
+						padding: 0.05rem 0.07rem
+						font-size: 0.2rem
+						color: #fff
+						background-color: #008dd7
+					.button
+						float: right
+						display: inline-block
+						padding: 0.05rem 0.07rem
+						font-size: 0.2rem
+						color: #fff
+						background-color: #f8d800
+						border-radius: 0.04rem
+						&.active
+							background-color: #fb7575
+				.text
+					width: 5rem
+					font-size: 0.24rem
+					color: #999
+					overflow: hidden
+					white-space: nowrap
+					text-overflow: ellipsis
+	.dead-line
+		display: flex
+		padding: 0 0.2rem
+		line-height: 0.8rem
+		.left
+			width: 2.2rem
+			> img
+				display: inline-block
+				vertical-align: middle
+				width: 0.3rem
+			.text
+				margin-left: 0.08rem
+				font-size: 0.24rem
+				color: #999999
+				vertical-align: middle
+		.right
+			flex: 1
+			text-align: right
+			font-size: 0.24rem
+			.num
+				width: 0.4rem
+				height: 0.4rem
+				padding: 0 0.06rem
+				font-size: 0.24rem
+				color: #ffffff
+				background-color: #646464
+				border-radius: 0.08rem
+	.activity-detail
+		> .content
+			padding: 0.2rem
+			background-color: #fff
+			font-size: 0.24rem !important
+			color: #232326
+			line-height: 1.5 !important
+			width: 100%
+			overflow-x: hidden
+			p, span
+				font-size: 0.24rem !important
+				line-height: 1.5 !important
+			img
+				width: 100%
+				margin-top: 0.1rem
+
+			
+				

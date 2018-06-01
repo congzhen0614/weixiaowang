@@ -1,0 +1,212 @@
+@import '../../../../common/stylus/mixin.styl'
+.book-top
+	position fixed
+	width 100%
+	left 0
+	top 0
+	z-index 4
+	.book-search-header
+		width 100%
+		display flex
+		line-height 0.58rem
+		padding-top 0.15rem
+		padding-right 0.3rem
+		padding-left 0.26rem
+		padding-bottom 0.15rem
+		background #fff
+		.back-icon
+			font-size 0
+			margin-right 0.36rem
+			line-height inherit
+			> img
+				width 0.6rem
+				height 0.6rem
+				vertical-align middle
+		.search-area
+			line-height inherit
+			padding 0 0.2rem
+			flex 1
+			display flex
+			background #f8f7f6
+			border-radius 0.1rem
+			font-size 0.26rem
+			color #c6c6c6
+			.left-part
+				line-height inherit
+				flex 1
+				> input
+					width 90%
+					font-size 0.26rem
+					line-height inherit
+					outline none
+					color #333
+					background none
+					&::placeholder
+						color #c6c6c6
+			.right-part
+				line-height inherit
+				text-align right
+				> img
+					width 0.34rem
+					height 0.34rem
+					display inline-block
+					vertical-align middle
+		.search_top_shopcat
+			line-height inherit
+			margin-left 0.4rem
+			position relative
+			> .dot
+				position absolute
+				display inline-block
+				top 0.04rem
+				right -0.16rem
+				z-index 3
+				border-radius 0.15rem
+				width auto
+				min-width 0.3rem
+				text-align center
+				padding 0.04rem 0.06rem
+				font-size 0.2rem
+				line-height 0.2rem
+				color #fff
+				background-color #ff3a3f
+			> img
+				width 0.4rem
+				height 0.4rem
+				display inline-block
+				vertical-align middle
+	.search-tab
+		display flex
+		flex-wrap wrap
+		box-shadow 0 0.01rem 0 0 #d6d6d6
+		background #fff
+		.tab-item
+			flex 0 0 33.333%
+			max-width 33.333%
+			-webkit-box-flex 0
+			padding 0.34rem 0
+			&:last-child > .box
+				border-right none
+			.box
+				width 100%
+				font-size 0
+				line-height 0.32rem
+				text-align center
+				border-right 0.01rem solid #d6d6d6
+				> .text
+					display inline-block
+					font-size 0.3rem
+					color #6e5627
+					vertical-align middle
+					max-width 1.54rem
+					overflow hidden
+					text-overflow ellipsis
+					white-space nowrap
+				> .arrow
+					transition .3s all
+					margin-left 0.16rem
+					display inline-block
+					width 0.13rem
+					height 0.13rem
+					margin-top -0.04rem
+					border 0.02rem solid #d6d6d6
+					border-top none
+					border-left none
+					transform rotate(45deg)
+					&.up
+						transform rotate(225deg) translate(-0.1rem, -0rem)
+	.select-box
+		width 100%
+		// background #fff
+		position relative
+		.select-area
+			background #fff
+			position absolute
+			width 100%
+			left 0
+			top 0
+			z-index -1
+			animation-duration .5s !important
+			.select-row
+				display flex
+				flex-wrap wrap
+				padding 0 0.16rem
+				width 100%
+				.select-col
+					// margin 0 -0.16rem
+					flex 0 0 33.333%
+					max-width 33.333%
+					-webkit-box-flex 0
+					padding 0 0.16rem
+					margin-top 0.32rem
+					.select-item
+						display inline-block
+						width 100%
+						text-align center
+						font-size 0.26rem
+						line-height 0.26rem
+						color #52504c
+						padding 0.26rem 0
+						background #f8f7f6
+						border-radius 0.16rem
+						&.active
+							background #f8bd48
+			.price-box
+				margin-top 0.6rem
+				width 100%
+				padding 0 0.32rem
+				display flex
+				.input-box
+					flex 1
+					border 0.02rem solid #c7c7cc
+					border-radius 0.04rem
+					line-height 0.3rem
+					> input
+						padding 0.28rem
+						display inline-block
+						width 100%
+						font-size 0.3rem
+						height 0.88rem
+						outline none
+						color #F8BD48
+						background none
+						&.red
+							color #f23030
+						&::placeholder
+							color #c7c7cc
+				.center-text
+					font-size 0.26rem
+					line-height 0.26rem
+					text-align center
+					color #52504c
+					padding 0.32rem
+			.select-footer
+				margin-top 0.32rem
+				display flex
+				width 100%
+				> div
+					flex 1
+					font-size 0.3rem
+					line-height 0.3rem
+					text-align center
+					padding 0.3rem 0
+					&.reset
+						color #52504c
+						background #fff6e5
+					&.confirm
+						color #fff
+						background #f8bd48
+				&.price-footer
+					margin-top 4.36rem
+	.mask
+		position fixed
+		width 100%
+		height 100%
+		top 0
+		left 0
+		background rgba(0, 0, 0, 0.5)
+		opacity 1
+		z-index -2
+		visibility visible
+		transition-duration 300ms
+	

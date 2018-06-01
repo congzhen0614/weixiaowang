@@ -1,0 +1,244 @@
+// 内容部分
+.shopcat-main
+	// padding-bottom 3rem
+	position relative
+	.login-box
+		position absolute
+		margin-top 75%
+		margin-left 50%
+		transform translateX(-50%)
+		> button
+			display inline-block
+			padding 0 0.5rem
+			font-size 0.34rem
+			line-height 0.8rem
+			color #fff
+			vertical-align middle
+			background #f8bd48
+			border-radius 0.1rem
+			text-decoration none
+			outline none
+			-webkit-appearance button
+			border none
+	.no-data-box
+		position absolute
+		width 100%
+		margin-top 50%
+		text-align center
+		transform translateY(-50%)
+		> img
+			display inline-block
+			width 2rem
+			height 2rem
+	.periodical-part, .goods-part
+		margin-top 0.16rem
+		.content-header
+			display flex
+			line-height 0.88rem
+			background-color #fbfaf9
+			> .check-box
+				padding 0 0.24rem
+				line-height inherit
+				> img
+					display inline-block
+					width 0.44rem
+					height 0.44rem
+					vertical-align middle
+			.title
+				flex 1
+				font-size 0.3rem
+				line-height inherit
+				color #333
+		.shopcat-list
+			.list-item
+				position relative
+				padding 0.3rem 0 0 0
+				background-color #fff
+				overflow hidden
+				&:last-child
+					> .content
+						> .list-body
+							border none
+				&.deleteShow
+					.content, .delete-box
+						transform translate(-1.6rem, 0)
+				.content
+					width 100%
+					display flex
+					position relative
+					transition 0.3s all linear
+					> .check-box
+						padding 0 0.24rem
+						line-height 1.6rem
+						> img
+							display inline-block
+							width 0.44rem
+							height 0.44rem
+							vertical-align middle
+					.list-body
+						flex 1
+						overflow hidden
+						display flex
+						padding-bottom 0.3rem
+						padding-right 0.32rem
+						border-bottom 0.01rem solid #e6e6e6
+						.left-part
+							width 1.6rem
+							height 1.6rem
+							font-size 0
+							border 0.01rem solid #d6d6d6
+							border-radius 0.1rem
+							text-align center
+							overflow hidden
+							> img
+								display inline-block
+								max-width 100%
+								max-height 100%
+								min-width 50%
+								min-height 50%
+								vertical-align middle
+						.right-part
+							margin-left 0.2rem
+							flex 1
+							.periodical-detail
+								position relative
+								height 1.6rem
+								overflow hidden
+								.name
+									font-size 0.3rem
+									line-height 0.38rem
+									color #333
+									height 0.76rem
+									overflow hidden
+									text-overflow ellipsis
+									display -webkit-box
+									-webkit-box-orient vertical
+									-webkit-line-clamp 2
+								.price
+									margin-top 0.4rem
+									font-size 0
+									color #f8bd48
+									line-height 0.34rem
+									.small
+										font-size 0.2rem
+										vertical-align baseline
+									.big
+										font-size 0.34rem
+										vertical-align baseline
+								.cart-control
+									position absolute
+									right -0.2rem
+									bottom 0rem
+									display flex
+									.left-icon, .right-icon
+										padding 0 0.2rem
+										> img
+											display inline-block
+											width 0.48rem
+											height 0.48rem
+									> .num
+										font-size 0.34rem
+										line-height 0.48rem
+										color #523f1a
+										width 0.56rem
+										text-align center
+							.integral
+								margin-top 0.2rem
+								font-size 0
+								line-height 0.24rem
+								> img
+									display inline-block
+									width 0.24rem
+									height 0.24rem
+									vertical-align middle
+								.text
+									margin-left 0.1rem
+									font-size 0.2rem
+									color #94712c
+									vertical-align middle
+				.delete-box
+					position absolute
+					right -1.6rem
+					top 0
+					width 1.6rem
+					height 100%
+					font-size 0.34rem
+					text-align center
+					color #523f1a
+					background-color #f8bd48
+					transition 0.3s all linear
+	.shopcat-footer
+		position fixed
+		bottom 0
+		left 0
+		width 100%
+		height 0.98rem
+		overflow hidden
+		display flex
+		background-color #fff
+		box-shadow 0 -0.04rem 0.1rem 0 rgba(0, 0, 0, 0.1)
+		line-height 0.98rem
+		&.homepage
+			bottom 1.04rem
+		.left-foot
+			flex 2
+			background-color #fff
+			display flex
+			.check-box
+				padding 0 0.3rem
+				line-height inherit
+				> img
+					display inline-block
+					width 0.44rem
+					height 0.44rem
+					vertical-align middle
+			.select-text
+				flex 1
+				font-size 0.3rem
+				line-height inherit
+				color #333
+				overflow hidden
+			.price-info
+				padding 0 0.3rem
+				.result-price
+					margin-top 0.18rem
+					font-size 0
+					line-height 0.25rem
+					color #523f1a
+					text-align right
+					.small
+						line-height 0.25rem
+						font-size 0.2rem
+						vertical-align baseline
+					.big
+						line-height 0.25rem
+						font-size 0.4rem
+						vertical-align baseline
+				.other-price
+					margin-top 0.06rem
+					font-size 0
+					color #9a968d
+					line-height 0.2rem
+					text-align right
+					.origin-price
+						font-size 0.2rem
+					.discount-price
+						font-size 0.2rem
+						margin-left 0.2rem
+		.right-foot
+			flex 1
+			font-size 0.34rem
+			line-height inherit
+			color rgba(255, 255, 255, 0.9)
+			text-align center
+			background linear-gradient(to left, #fe7a56, #ff5050)
+	.fixed-title
+		width 100%
+		position fixed
+		top 0.88rem
+		font-size 0.26rem
+		line-height 0.6rem
+		color #523f1a
+		padding 0 0.32rem
+		z-index 3
+		background-color #fff9ab

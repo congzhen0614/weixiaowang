@@ -1,0 +1,52 @@
+.book-detail-detail
+	width 100%
+	overflow scroll
+	.detail-tab-box
+		width 100%
+		position fixed
+		top 0.91rem
+		left 0
+		z-index 5
+		background #fff
+		padding 0.2rem 0.32rem
+		.detail-tab
+			background #f8f7f6
+			border-radius 0.08rem
+			display flex
+			.tab-item
+				flex 1
+				padding 0.14rem 0 0.16rem
+				&:last-child
+					.text
+						border-right none
+				.text
+					width 100%
+					text-align center
+					font-size 0.3rem
+					line-height 0.3rem
+					color #888
+					border-right 0.01rem solid #d6d6d6
+					&.active
+						color #f8bd48
+	.wrapper
+		margin-top 0.91rem
+		.info-list
+			padding: 0 0.32rem 1.5rem
+			.list-item
+				display: flex
+				margin-top: 0.6rem
+				line-height: 0.3rem
+				font-size: 0.3rem
+				border-1px(#d6d6d6)
+				&.first-child
+					margin-top 0.4rem
+				.name
+					flex: 1
+					color: #999
+					overflow: hidden
+					text-overflow: ellipsis
+					white-space: nowrap
+				.value
+					flex: 1
+					color: #333
+					text-align: right

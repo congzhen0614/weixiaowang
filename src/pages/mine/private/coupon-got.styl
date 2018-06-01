@@ -1,0 +1,98 @@
+.mine-coupon
+	padding-top 0.88rem
+	//background-color #f3f4f5
+	.mine-coupon-top
+		position fixed
+		width 100%
+		left 0
+		top 0
+		z-index 3
+		line-height 0.88rem
+		height 0.88rem
+		background-color #fff
+		&.underline
+			border-bottom 0.01rem solid #d6d6d6
+		> .back-icon
+			position absolute
+			left 0.26rem
+			top 0
+			line-height 0.88rem
+			> img
+				display inline-block
+				width 0.6rem
+				height 0.6rem
+				vertical-align middle
+		.title
+			width 100%
+			font-size 0.34rem
+			color #523f1a
+			text-align center
+			vertical-align middle
+	// 列表
+	.coupon-list
+		width 100%
+		padding 0 0.32rem
+		.coupon-item-got
+			margin-top 0.32rem
+			width 100%
+			overflow hidden
+			border 0.01rem solid #d3d6d8
+			border-radius 0.1rem
+			.item-body
+				display flex
+				padding 0.5rem 0.4rem
+				background-color #fff
+				.left-part
+					text-align center
+					.price
+						margin-top 0.1rem
+						font-size 0
+						height 0.6rem
+						line-height 0.6rem
+						color #C7C7CC
+						> .big
+							font-size 0.6rem
+							vertical-align baseline
+						> .desc
+							font-size 0.2rem
+							vertical-align baseline
+					.condition
+						margin-top 0.12rem
+						font-size 0.2rem
+						line-height 1
+						color #C7C7CC
+				.center-part
+					margin-left 0.4rem
+					flex 1
+					.type
+						font-size 0.36rem
+						line-height 1
+						color #C7C7CC
+						font-weight 600
+					.remain
+						margin-top 0.2rem
+						font-size 0.2rem
+						line-height 1
+						color #C7C7CC
+					.deadline
+						margin-top 0.2rem
+						font-size 0.2rem
+						line-height 1
+						color #C7C7CC
+				.right-part
+					padding 0.02rem
+					.got-box
+						width 1.2rem
+						height 1.2rem
+						border-radius 50%
+						font-size 0.32rem
+						font-weight bold
+						line-height 1.2rem
+						color #C7C7CC
+						text-align center
+			.item-footer
+				padding 0.32rem 0.4rem
+				font-size 0.2rem
+				line-height 0.3rem
+				color #C7C7CC
+				background-color #f8f7f6

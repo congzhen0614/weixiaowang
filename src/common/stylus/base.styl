@@ -1,0 +1,47 @@
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-aspect-ratio: 1.5)
+	.border-1px
+	&::after
+		-webkit-transform: scaleY(0.7)
+		transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-aspect-ratio: 2)
+	.border-1px
+	&::after
+		-webkit-transform: scaleY(0.5)
+		transform: scaleY(0.5)
+
+body, html {
+	font-weight 200px
+	background-color
+	font-family 'PingFang SC','STHertiSC-Light','HelveTica-Light', Arial, sans-serif
+}
+.clearFix
+	display inline-block
+	&:after
+		display block
+		content "."
+		height 0
+		line-height 0
+		clear both
+		visibility hidden
+// 动画
+.animated
+	animation-duration 300ms !important
+// .list-item-arrow::before
+// 	content: ''
+// 	width: 0.4rem
+// 	height: 0.4rem
+// 	position: absolute
+// 	top: 50%
+// 	right: 0.75rem
+// 	margin-top: -0.2rem
+// 	background: transparent
+// 	border: 1px solid #dddddd
+// 	border-top: none
+// 	border-right: none
+// 	z-index: 2
+// 	-webkit-border-radius: 0
+// 		border-radius: 0
+// 	-webkit-transform: rotate(-135deg)
+// 		transform: rotate(-135deg)
+

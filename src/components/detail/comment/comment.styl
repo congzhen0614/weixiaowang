@@ -1,0 +1,162 @@
+@import '../../../common/stylus/mixin.styl'
+.comment
+	background-color: #fff
+	.title
+		padding: 0 0.2rem
+		line-height: 0.55rem
+		height: 0.6rem
+		font-size: 0.24rem
+		color: #646464
+		border-1px(#d6d6d6)
+		.comment-icon
+			display: inline-block
+			margin-right: 0.1rem
+			width: 0.3rem
+			vertical-align: middle
+		&.activity
+			> .comment-icon
+				margin-top: 0.1rem
+				float: right
+				display inline-block
+				width 0.3rem
+				height 0.3rem
+				margin-top: 0.1rem
+				vertical-align middle
+			> .text
+				color: #646464
+			> .right-text
+				color: #888888
+		.text
+			vertical-align: middle
+		.right-text
+			vertical-align: middle
+			float: right
+	.comment-list
+		border-1px(#e6e6e6)
+		.list-item
+			padding: 0.2rem
+			display: flex
+			width: 100%
+			padding-bottom: 0.2rem
+			margin-bottom: 0
+			border-1px(#f0f0f0)
+			.avatar
+				margin-right: 0.1rem
+				width: 0.8rem
+				height: 0.8rem
+				border-radius: 0.1rem
+				&.round
+					margin-right: 0.2rem
+					> img
+						border-radius: 50%
+						height 100%
+			.content
+				flex: 1
+				position: relative
+				.level
+					position: absolute
+					top: 0
+					right: 0
+					> img
+						display: inline-block
+						width: 0.3rem
+						margin-left: 0.16rem
+				.name
+					width: 100%
+					font-size: 0.28rem
+					color: #e46601
+					&.activity
+						color: #646464
+						vertical-align: middle
+						line-height: 0.8rem
+						> .comment-icon
+							margin-top: 0.24rem
+							margin-right: 0.1rem
+							width: 0.3rem
+							float: right
+						> .right-text
+							vertical-align: middle
+							float: right
+							font-size: 0.26rem
+							color: #232326
+						.c999999
+							color: #999999
+				.bottom
+					line-height: 1
+					color: #888888
+					font-size: 0
+					> div
+						display: inline-block
+						margin-top: 0.34rem
+						margin-right: 0.2rem
+						margin-bottom: 0.14rem
+						font-size: 0.24rem
+						vertical-align: bottom
+						> img
+							display: inline-block
+							width: 0.2rem
+							height: 0.2rem
+							vertical-align: middle
+						> span
+							vertical-align: middle							
+						> .delete-text
+							color: #232326
+				.time
+					margin-top: 0.2rem
+					font-size: 0.24rem
+					color: #646464
+				.text
+					margin: 0.15rem 0
+					font-size: 0.28rem
+					line-height: 0.38rem
+					color: #232326
+				.photos
+					display: flex
+					width: 100%
+					.item
+						width 32%
+						height 2rem
+						margin-right: 0.1rem
+						> img
+							height 100%
+					.split
+						width: 0.1rem		
+.show-all
+	text-align: center
+	line-height: 1.4
+	font-size: 0.28rem
+	color: #232326
+	> .text
+		display: inline-block
+		position: relative
+		border-bottom: 1px solid #232326
+		&.down::after
+			content: ''
+			position: absolute
+			width: 0.2rem
+			height: 0.2rem
+			right: -0.35rem
+			top: 0.06rem
+			border 1px solid #232326
+			border-top: none
+			border-right: none
+			transform: rotate(-45deg)
+		&.up::after
+			content: ''
+			position: absolute
+			width: 0.2rem
+			height: 0.2rem
+			right: -0.35rem
+			top: 50%
+			border 1px solid #232326
+			border-top: none
+			border-right: none
+			transform: rotate(135deg)
+	&.activity
+		margin-top: 0 !important
+		line-height: 0.74rem
+		font-size: 0.28rem
+		color: #888888
+		font-weight: bold
+		> .text
+			border-bottom: none

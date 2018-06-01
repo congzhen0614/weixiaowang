@@ -1,0 +1,40 @@
+{
+  "status": "0",
+  "data": [{
+    "shipperCode": "HHTT",
+    "name": "天天快递",
+    "phoneNumber": "400-188-8888"
+  }, {
+    "shipperCode": "EMS",
+    "name": "EMS",
+    "phoneNumber": "11183"
+  }, {
+    "shipperCode": "FEDEX",
+    "name": "联邦快递",
+    "phoneNumber": "400-889-1888"
+  }, {
+    "shipperCode": "STO",
+    "name": "申通快递",
+    "phoneNumber": "95543"
+  }, {
+    "shipperCode": "YD",
+    "name": "韵达快递",
+    "phoneNumber": "95546"
+  }, {
+    "shipperCode": "YTKD",
+    "name": "运通快递",
+    "phoneNumber": "0769-81156999"
+  }, {
+    "shipperCode": "YTO",
+    "name": "圆通速递",
+    "phoneNumber": "95554"
+  }, {
+    "shipperCode": "ZTO",
+    "name": "中通速递",
+    "phoneNumber": "95311"
+  }, {
+    "shipperCode": "SF",
+    "name": "顺丰快递",
+    "phoneNumber": "95338"
+  }]
+}

@@ -1,0 +1,92 @@
+.result
+	margin-top: 0.8rem
+	height 100%
+	.result-header
+		position: relative
+		width: 100%
+		height: 5.2rem
+		margin-top: -0.8rem
+		.close-text
+			font-size: 0.34rem
+			line-height: 0.88rem
+			color: #a17620
+			padding-right: 0.2rem
+			text-align: right
+			position relative
+			#mycanvas
+				position absolute
+				top: 0.2rem
+				right: 1.5rem
+		.price
+			padding: 0.2rem
+			text-align: center
+			font-size: 0.3rem
+			line-height: 0.6rem
+			color: rgb(106, 81, 32)
+			letter-spacing: 0.04rem
+			> .big
+				font-size: 0.6rem
+				vertical-align baseline
+		.result-text
+			text-align: center
+			font-size: 0.34rem
+			margin-top: 0.4rem
+			&.success
+				color: rgb(88, 178, 0)
+			&.fail
+				color: rgb(255, 59, 60)
+		&.success
+			background: url('success_bg.png') no-repeat center
+			background-size: 100% 100%
+		&.fail
+			background: url('fail_bg.png') no-repeat center
+			background-size: 100% 100%
+	.center-buttons
+		// height 30%
+		overflow hidden
+		display -webkit-box
+		-webkit-box-orient horizontal
+		-webkit-box-pack center
+		-webkit-box-align center
+		> div
+			width 100%
+			.pay-again
+				width: 2.34rem
+				margin-top 1rem
+				margin-left: auto
+				margin-right: auto
+				height: 1.14rem
+				background url('pay_again.png') no-repeat center
+				background-size 100%
+			.download-text
+				// margin-top 1rem
+				width: 5.3rem
+				margin-left: auto
+				margin-right: auto
+				height: 0.4rem
+				background url('download_text.png') no-repeat center
+				background-size 100%
+			.download-app
+				margin-top 0.5rem
+				width: 2.34rem
+				margin-left: auto
+				margin-right: auto
+				height: 1.14rem
+				background url('download_app.png') no-repeat center
+				background-size 100%
+			.bottom
+				width: 100%
+				margin-top 0.5rem
+				.logo
+					margin: 0 auto
+					width: 0.8rem
+					height: 0.8rem
+					background url('logo.png') no-repeat center
+					background-size 100%
+				.desc-text
+					width: 2.8rem
+					margin: 0.15rem auto 0
+					height: 0.32rem
+					background url('desc_text.png') no-repeat center
+					background-size 100%
+			

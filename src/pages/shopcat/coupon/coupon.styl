@@ -1,0 +1,179 @@
+.mine-coupon
+  background-color #f3f4f5
+  transition 0.5s
+  .mine-coupon-top
+    position fixed
+    width 100%
+    left 0
+    top 0
+    z-index 3
+    line-height 0.88rem
+    height 0.88rem
+    background-color #fff
+    &.underline
+      border-bottom 0.01rem solid #d6d6d6
+    > .back-icon
+      position absolute
+      left 0.26rem
+      top 0
+      line-height 0.88rem
+      > img
+        display inline-block
+        width 0.6rem
+        height 0.6rem
+        vertical-align middle
+    .title
+      width 100%
+      font-size 0.34rem
+      color #523f1a
+      text-align center
+      vertical-align middle
+// 浮动链接
+  .coupon-link
+    position fixed
+    top 0.88rem
+    left 0
+    z-index 9
+    width 100%
+    display flex
+    padding 0 0 0 0.2rem
+    line-height 0.8rem
+    background-color #fffaad
+    > .text
+      font-size 0.26rem
+      line-height inherit
+      color #6e5627
+    > .right-part
+      flex 1
+      font-size 0
+      padding 0 0.2rem
+      text-align right
+      line-height inherit
+      > span
+        display inline-block
+        font-size 0.26rem
+        line-height 0.52rem
+        color #f8bd48
+        padding 0 0.2rem
+        border 0.01rem solid #f8bd48
+        border-radius 0.1rem
+    > .close-icon
+      width 0.5rem
+      height 0.8rem
+      background url('close_icon.png') no-repeat
+      background-size 0.5rem 0.5rem
+      background-position 100% 0
+// 不适用优惠券
+  .not-use
+    margin-top 0.32rem
+    width 100%
+    display flex
+    line-height 0.88rem
+    background-color #fff
+    border 0.01rem solid #d3d6d8
+    border-radius 0.1rem
+    .text
+      padding-left 0.3rem
+      flex 1
+      font-size 0.28rem
+      color #52504c
+    .check-box
+      padding 0 0.3rem
+      > img
+        display inline-block
+        width 0.44rem
+        height 0.44rem
+        vertical-align middle
+// 列表
+  .coupon-list
+    width 100%
+    .coupon-item
+      margin-top 0.32rem
+      width 100%
+      overflow hidden
+      border 0.01rem solid #d3d6d8
+      border-radius 0.1rem
+      .item-body
+        display flex
+        padding 0.5rem 0.4rem
+        background-color #fff
+        position relative
+        .check-box
+          position absolute
+          right 0
+          top 50%
+          padding 0 0.32rem
+          margin-top -0.22rem
+          > img
+            display inline-block
+            width 0.44rem
+            height 0.44rem
+            vertical-align middle
+        .left-part
+          text-align center
+          .price
+            margin-top 0.1rem
+            height 0.6rem
+            line-height 0.6rem
+            color #ff6060
+            > .big
+              font-size 0.6rem
+              vertical-align baseline
+            > .desc
+              font-size 0.2rem
+              vertical-align baseline
+          .condition
+            margin-top 0.12rem
+            font-size 0.2rem
+            line-height 1
+            color #bebbb5
+        .center-part
+          margin-left 0.4rem
+          padding-top 0.18rem
+          flex 1
+          height 1rem
+          line-height 1rem
+          display -webkit-box
+          -webkit-box-orient horizonal
+          -webkit-box-pack center
+          -webkit-box-align center
+          > .box
+            width 100%
+            .type
+              font-size 0.36rem
+              line-height 1
+              color #52504c
+              font-weight 600
+            .remain
+              margin-top 0.2rem
+              font-size 0.2rem
+              line-height 1
+              color #bebbb5
+            .deadline
+              margin-top 0.26rem
+              font-size 0.2rem
+              line-height 1
+              color #bebbb5
+        .right-part
+          padding 0.02rem
+          .get-box
+            width 1.2rem
+            height 1.2rem
+            border 0.02rem solid #f8bd48
+            border-radius 50%
+            font-size 0.32rem
+            font-weight bold
+            line-height 1.2rem
+            color #ffb116
+            text-align center
+      .item-footer
+        padding 0.32rem 0.4rem
+        font-size 0.2rem
+        line-height 0.3rem
+        color #9c9890
+        background-color #f8f7f6
+      &.noUse
+        .price, .condition, .type, .deadline, .item-footer
+          color #c7c7cc !important
+.notAvailableStyle
+  color #C7C7CC!important

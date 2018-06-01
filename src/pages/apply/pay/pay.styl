@@ -1,0 +1,80 @@
+@import '../../../common/stylus/mixin.styl'
+.pay
+  // margin-top: 0.8rem
+  .amount
+    margin-top 0.8rem
+    display: flex
+    height 0.6rem
+    line-height: 0.6rem
+    font-size: 0.28rem
+    padding: 0px 0.2rem
+    background-color: rgb(255, 251, 207)
+    .desc
+      flex: 1
+      color: #3E4242
+      font-weight: bold
+      font-size: 0.28rem
+    .num
+      flex: 1
+      text-align: right
+      color: rgb(242, 48, 48)
+      font-size: 0.2rem
+      > .big
+        font-size: 0.28rem
+        vertical-align baseline
+  .type-list
+    padding-left: 0.4rem
+    .desc-text
+      position fixed
+      width 100%
+      bottom 2rem
+      left 0
+      text-align center
+      color #888888
+    .item
+      padding: 0.4rem 0.4rem 0.4rem 0
+      line-height: 0.8rem
+      font-size: 0
+      > .img
+        display: inline-block
+        width: 0.8rem
+        height: 0.8rem
+        vertical-align: middle
+        background-size 100%
+        &.alipay
+          background url('alipay.png') no-repeat center
+          background-size 100%
+        &.scene
+          background url('scene.png') no-repeat center
+          background-size 100%
+        &.weixin
+          background url('weixin.png') no-repeat center
+          background-size 100%
+      > .text
+        margin-left: 0.4rem
+        font-size: 0.32rem
+        color: rgb(149, 149, 149)
+        vertical-align: middle
+      > .checkbox
+        float: right
+        width: 0.44rem
+        height: 0.44rem
+        vertical-align: middle
+        background url('check.png') no-repeat center
+        background-size 100%
+        &.active
+          background url('check_active.png') no-repeat center
+          background-size 100%
+    .underline
+      border-1px(#d6d6d6)
+  .footer
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    font-size: 0.34rem
+    line-height: 1rem
+    // background: rgb(248, 192, 79)
+    background linear-gradient(to left, #fe7a56, #ff5050)
+    text-align: center
+    color: #fff

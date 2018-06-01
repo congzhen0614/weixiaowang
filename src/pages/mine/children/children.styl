@@ -1,0 +1,132 @@
+.mine-children
+	padding-top 0.88rem
+	background-color #fff
+	.mine-children-top
+		position fixed
+		width 100%
+		left 0
+		top 0
+		z-index 3
+		line-height 0.88rem
+		height 0.88rem
+		background-color #fff
+		&.underline
+			border-bottom 0.01rem solid #d6d6d6
+		> .back-icon
+			position absolute
+			left 0.26rem
+			top 0
+			line-height 0.88rem
+			> img
+				display inline-block
+				width 0.6rem
+				height 0.6rem
+				vertical-align middle
+		.title
+			width 100%
+			font-size 0.34rem
+			color #523f1a
+			text-align center
+			vertical-align middle
+		.add-btn
+			position absolute
+			right 0.1rem
+			top 0
+			font-size 0.34rem
+			line-height 0.88rem
+			color #f8bd48
+			padding 0 0.2rem
+	// 孩子列表
+	.children-list
+		width 100%
+		.children-item
+			width 100%
+			position relative
+			overflow hidden
+			&.deleteShow
+				.content
+					transform translate(-1.6rem, 0)
+				.delete-button
+					transform translate(-1.6rem, 0)
+			.delete-button
+				position absolute
+				top 0
+				right -1.6rem
+				width 1.6rem
+				height 100%
+				line-height 1.68rem
+				font-size 0.34rem
+				text-align center
+				background-color #f8bd48
+				transition 0.3s all linear
+			.content
+				position relative
+				padding 0.2rem 0.32rem
+				display flex
+				border-bottom 0.01rem solid #e6e6e6
+				transition 0.3s all linear
+				.left-part
+					width 1.28rem
+					height 1.28rem
+					border-radius 50%
+					text-align center
+					line-height 1.28rem
+					background-repeat no-repeat
+					background-size cover
+					background-position center center
+					// border-radius 50%
+					// overflow hidden
+					> img
+						display inline-block
+						width 100%
+						min-height 100%
+						vertical-align middle
+						border-radius 50%
+				.center-part
+					margin-left 0.32rem
+					height 1.28rem
+					flex 1
+					overflow hidden
+					display -webkit-box
+					-webkit-box-orient horizontal
+					-webkit-box-pack center
+					-webkit-box-align center
+					.box
+						width 100%
+						.name
+							font-size 0
+							line-height 0.34rem
+							.text
+								font-size 0.34rem
+								color #333
+								vertical-align middle
+							> img
+								margin-left 0.1rem
+								display inline-block
+								width 0.3rem
+								height 0.3rem
+								vertical-align middle
+							.active
+								margin-left 0.1rem
+								display inline-block
+								font-size 0.2rem
+								line-height 0.34rem
+								padding 0 0.16rem
+								color #fff
+								background-color #f8bd48
+								border-radius 0.16rem
+								vertical-align middle
+						.address
+							margin-top 0.22rem
+							font-size 0.26rem
+							line-height 0.34rem
+							color #888
+				.right-part
+					margin-left 0.32rem
+					line-height 1.28rem
+					> img
+						display inline-block
+						width 0.16rem
+						height 0.28rem
+						vertical-align middle
+		
