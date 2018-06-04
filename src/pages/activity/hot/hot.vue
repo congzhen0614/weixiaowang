@@ -9,7 +9,8 @@
         <div class="content-right">
           <p class="content-title">{{item.title}}</p>
           <p class="content-date">{{item.begin_time}}</p>
-          <p class="content-price">￥<span class="priceInt">{{item.cashdown | getInteger}}</span>{{item.cashdown | getFixed1}}</p>
+          <p class="content-price" v-if="item.cashdown!=0">￥<span class="priceInt">{{item.cashdown | getInteger}}</span>{{item.cashdown | getFixed1}}</p>
+          <p class="content-price" v-if="item.cashdown==0"><span class="priceInt">免费</span></p>
           <div class="content-bottom">
             <span class="ticket">票</span>
             <span class="tour">跟团</span>
@@ -47,9 +48,6 @@
       clickLink (linkStr) {
         window.location.href = linkStr
       }
-    },
-    filters: {
-      conversion: value => parseInt(value/1000)
     },
     watch: {}
   }

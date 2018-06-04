@@ -142,6 +142,8 @@ let isEmojiCharacter = (substring) => {
 		}
 	}
 }
+// 除以1000
+let conversion = value => parseInt(value/1000)
 
 export {
 	getInteger,
@@ -154,5 +156,6 @@ export {
   getEndData,
 	getPastTimeText,
 	hideMobile,
-	isEmojiCharacter
+	isEmojiCharacter,
+  conversion
 }
