@@ -550,6 +550,13 @@ export default {
     return fetch(`/activity/activityHome?${query}`, {}, 'get', 'json')
   },
   /*
+   活动页首页banner
+   */
+  itemPage (params) {
+    let query = qs.stringify(params)
+    return fetch(`/advert/itemPage?${query}`, {}, 'get', 'json')
+  },
+  /*
    活动列表页数据
    */
   listActivity (params) {

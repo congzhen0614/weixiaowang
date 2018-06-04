@@ -66,7 +66,7 @@
           lat: latitude !== '' ? latitude : '39',
           lng: longitude !== '' ? longitude : '116',
           city_id: this.cityId,
-          pageNum: this.pageNum,
+          page_number: this.pageNum,
           cls: 14
         }
       },
@@ -90,13 +90,20 @@
       }
     },
     created () {
+      this.loadImages()
       this.loadData()
     },
     mounted () {},
     methods: {
+      loadImages () {
+        this.$ajax.itemPage(this.params).then(res => {
+          this.adviceList = res.data.data[0].list
+        }, err => {
+          console.log(err)
+        })
+      },
       loadData () {
         this.$ajax.actHomeJson(this.params).then(res => {
-          this.adviceList = res.data.data.adviceList
           this.starList = res.data.data.starList
           this.list = res.data.data.list
           this.reload = true

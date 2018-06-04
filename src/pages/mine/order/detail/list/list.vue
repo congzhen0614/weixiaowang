@@ -19,7 +19,7 @@
           <!-- 拒绝退款 -->
           <span class="refuse-refund" v-if="item.trade_status === '9'">拒绝退款</span>
 					<!-- 如果是评价列表页 -->
-					<div v-if="entrance === 'evaluate'" class="btn-box" @click.prevent.stop="goEvaluate(item)">
+					<div v-if="entrance === 'evaluate'&&item.trade_status!=='7'" class="btn-box" @click.prevent.stop="goEvaluate(item)">
 						<span>去评价</span>
 					</div>
 					<!-- 入口是退款页 -->

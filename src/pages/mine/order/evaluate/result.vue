@@ -16,7 +16,7 @@
 			<transition enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
 					<div v-if="giftContentShow" class="dialog-box" @click="hideMask()">
 						<p class="integral">
-							<span class="number">100</span>
+							<span class="number">5</span>
 							<span class="text">积分</span>
 						</p>
 						<p class="desc-text">来自五星好评</p>
