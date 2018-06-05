@@ -38,6 +38,7 @@
         // 屏幕高度
         winHeight: window.innerHeight - 52 + 'px',
         cityId: '3501',
+        activityTypeList: [],
         adviceList: [],
         starList: [],
         list: [],
@@ -159,9 +160,6 @@
       },
       scrollToTop () {
         this.scroller.scrollTo(0, 0, 500) // scrollTo(x, y, time)
-      },
-      chooseItem (index) {
-        console.log(index)
       },
       chooseItem (index) {
         window.location.href = this.adviceList[index].link_url

@@ -8,7 +8,7 @@
     </div>
     <div class="queryShade" :style="{height: winHeight}" v-if="clickIndex>0" @click="clickHidden()">
       <ul :style="{'max-height': winHeight}" style="overflow: auto">
-        <li v-for="(item, index) in queryTypeList" @click.stop="clickLoadQuery(item.code)">{{ item.type_name }}<span></span></li>
+        <li v-for="(item, index) in queryTypeList" @click.stop="clickLoadQuery(item)">{{ item.type_name }}<span></span></li>
       </ul>
     </div>
     <div class="shade"></div>
@@ -38,6 +38,7 @@
         scroller: '',
         scrollHeight: 0,
         queryArray: ['活动类型', '活动区域', '适合年龄段', '其他'],
+        paramsObj: {},
         clickIndex: 0,
         titleFlag: false,
         list: [],
@@ -54,12 +55,13 @@
     computed: {
       params () {
         return {
+          cls: 14,
           lat: this.$route.query.lat,
           lng: this.$route.query.lng,
           city_id: this.$route.query.city_id,
+          type: this.$route.query.code,
           page_number: this.pageNum,
-          page_size: 20,
-          cls: 14
+          page_size: 20
         }
       },
       typeActivity () {
@@ -75,16 +77,43 @@
         return this.scrollHeight > window.innerHeight
       }
     },
-    created () {},
+    created () {
+      this.setActicityType()
+      this.paramsObj = this.params
+    },
     mounted () {
       this.loadEnumVelue()
-      this.loadData(this.params)
+      this.loadData()
     },
     methods: {
+      setActicityType () {
+        switch (parseInt(this.$route.query.code)) {
+          case 1:
+            this.queryArray[0] = '亲子活动'
+            break;
+          case 2:
+            this.queryArray[0] = '校园活动'
+            break;
+          case 3:
+            this.queryArray[0] = '节目剧场'
+            break;
+          case 4:
+            this.queryArray[0] = '游玩乐园'
+            break;
+          case 5:
+            this.queryArray[0] = '其他'
+            break;
+        }
+      },
       loadData (params) {
-        this.$ajax.listActivity(params).then(res => {
+        let param = params ? params : this.params
+        this.$ajax.listActivity(param).then(res => {
           this.loadMore = true
-          this.list = this.list.concat(res.data.data.list)
+          if (params) {
+            this.list = res.data.data.list
+          } else {
+            this.list = this.list.concat(res.data.data.list)
+          }
           this.$nextTick(() => {
             setTimeout(() => {
               this.initBetterScroll()
@@ -118,7 +147,7 @@
       listenScroll () {
         this.scroller.on('scroll', pos => {
           if (pos.y > 100) {
-            console.log('上拉刷新!')
+            this.loadData()
           }
           this.scrollHeight = -pos.y
         })
@@ -130,66 +159,65 @@
         } else {
           this.clickIndex = index + 1
         }
-        if (index === 0) {
-          this.queryTypeList = this.activity_type_list
-        } else if (index === 1) {
-          this.queryTypeList = []
-          this.region_list.forEach(item => {
-            this.queryTypeList.push({
-              code: item.id,
-              type_name: item.region
+        // activityType
+        switch (index) {
+          case 0:
+            this.queryTypeList = this.activity_type_list
+            break;
+          case 1:
+            this.queryTypeList = []
+            this.region_list.forEach(item => {
+              this.queryTypeList.push({
+                code: item.id,
+                type_name: item.region
+              })
             })
-          })
-        } else if (index === 2) {
-          this.queryTypeList = this.age_type_list
-        } else if (index === 3) {
-          this.queryTypeList = this.other_type_list
+            break;
+          case 2:
+            this.queryTypeList = this.age_type_list
+            break;
+          case 3:
+            this.queryTypeList = this.other_type_list
+            break;
         }
       },
       clickHidden () {
         this.clickIndex = 0
       },
-      clickLoadQuery (code) {
-        let params = {
-          lat: this.$route.query.lat,
-          lng: this.$route.query.lng,
-          city_id: this.$route.query.city_id,
-          page_number: this.pageNum,
-          page_size: 20,
-          cls: 14
-        }
+      clickLoadQuery (item) {
         this.clickIndex = 0
+        this.queryArray[this.activityType] = item.type_name
         switch (this.activityType) {
           case 0:
             // 活动类型
-            params.type = code
+            this.paramsObj.type = item.code
             break;
           case 1:
             // 活动地区
-            params.region_id = code
+            this.paramsObj.region_id = item.code
             break;
           case 2:
             // 年龄阶段
-            params.age = code
+            this.paramsObj.age = item.code
             break;
           case 3:
             // 其他
-            if (code==='1') {
+            if (item.code==='1') {
               // 按照距离赛选
-              params.near = 1
-            } else if (code==='2') {
+              this.paramsObj.near = 1
+            } else if (item.code==='2') {
               // 按照热度赛选
-              params.ishot = 1
-            } else if (code==='3') {
+              this.paramsObj.ishot = 1
+            } else if (item.code==='3') {
               // 按照时间赛选
-              params.ord_time = 1
-            } else if (code==='4') {
+              this.paramsObj.ord_time = 1
+            } else if (item.code==='4') {
               // 按照价格赛选
-              params.fee = 1
+              this.paramsObj.fee = 1
             }
             break;
         }
-        this.loadData(params)
+        this.loadData(this.paramsObj)
       },
       scrollToTop () {
         this.scroller.scrollTo(0, 0, 500) // scrollTo(x, y, time)
@@ -202,7 +230,7 @@
           this.loadMore = false
           this.pageNum += 1
           this.initBetterScroll()
-          this.loadData(this.params)
+          this.loadData(this.paramsObj)
         }
       }
     }
