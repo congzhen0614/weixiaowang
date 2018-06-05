@@ -78,6 +78,7 @@ const logisticsList = resolve => require(['@/pages/mine/order/logistics/logistic
 const doubleTwelve = resolve => require(['@/components/periodical-ording/double-twelve/index.vue'], resolve) // 双十二
 const newYear = resolve => require(['@/components/periodical-ording/newyear/index.vue'], resolve) // 双旦活动
 const activityIndex = resolve => require(['@/pages/activity/index.vue'], resolve) // 活动页首页
+const activityDetails = resolve => require(['@/pages/activity/activityDetails/index.vue'], resolve) // 活动详情页面
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -266,6 +267,9 @@ export default new Router({
 			}, { // 活动首页
         path: '/activityIndex',
         component: activityIndex
+      }, { // 活动首页
+        path: '/activityDetails',
+        component: activityDetails
       }
 		]
 	}]
