@@ -1,6 +1,6 @@
 <template>
   <div class="active-list-page">
-    <v-top :scrollTop="scrollHeight"></v-top>
+    <v-top :scrollTop="scrollHeight" @chooseItem="chooseItem"></v-top>
     <div ref="wrapper" class="wrapper" :style="{ height: winHeight }">
       <section ref="content" class="content">
         <v-banner :style="{ height: bannerHeight }" :listImg="listImg" class="banner" @chooseItem="chooseItem"></v-banner>
@@ -67,6 +67,7 @@
           lng: longitude !== '' ? longitude : '116',
           city_id: this.cityId,
           page_number: this.pageNum,
+          page_size: 20,
           cls: 14
         }
       },
@@ -78,7 +79,8 @@
         if (this.adviceList.length) {
           this.adviceList.forEach(item => {
             list.push({
-              url: item.logo
+              url: item.logo,
+              link: item.link_url
             })
           })
         } else {
@@ -160,6 +162,9 @@
       },
       chooseItem (index) {
         console.log(index)
+      },
+      chooseItem (index) {
+        window.location.href = this.adviceList[index].link_url
       }
     },
     watch: {
@@ -169,6 +174,7 @@
           this.loadMore = false
           this.pageNum += 1
           this.loadMoreList()
+          this.initBetterScroll()
         }
       }
     }

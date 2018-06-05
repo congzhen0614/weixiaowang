@@ -7,8 +7,8 @@ let Obj = new Vue()
 // 判断全局变量 NODE_ENV
 // 环境切换
 // let environment = process.env.NODE_ENV === 'development' ? 'dev' : 'product'
-// let environment = 'product' // 正式环境
-let environment = 'dev' // 测试环境
+let environment = 'product' // 正式环境
+// let environment = 'dev' // 测试环境
 
 
 // 线上
@@ -562,5 +562,12 @@ export default {
   listActivity (params) {
     let query = qs.stringify(params)
     return fetch(`/activity/listActivity?${query}`, {}, 'get', 'json')
+  },
+  /*
+   活动列表页数据
+   */
+  enumVelue (params) {
+    let query = qs.stringify(params)
+    return fetch(`/activity/enumVelue.do?${query}`, {}, 'get', 'json')
   }
 }
