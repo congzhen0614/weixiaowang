@@ -8,6 +8,10 @@
         <div class="interval"></div>
         <v-message></v-message>
         <div class="interval"></div>
+        <v-introduction></v-introduction>
+        <div class="interval"></div>
+        <v-comment></v-comment>
+        <v-footer></v-footer>
       </section>
     </div>
   </div>
@@ -18,13 +22,19 @@ import head from './top/top.vue'
 import banner from '@/components/common/banner/banner'
 import title from './title/title.vue'
 import message from './message/message.vue'
+import introduction from './introduction/introduction.vue'
+import comment from './comment/comment.vue'
+import footer from './footer/footer.vue'
 export default {
   name: '',
   components: {
     'v-head': head,
     'v-banner': banner,
     'v-title': title,
-    'v-message': message
+    'v-message': message,
+    'v-introduction': introduction,
+    'v-comment': comment,
+    'v-footer': footer
   },
   data () {
     return {
@@ -57,7 +67,7 @@ export default {
   },
   methods: {
     chooseItem (param) {
-      onsole.log(param)
+      console.log(param)
     }
   },
   watch: {}
