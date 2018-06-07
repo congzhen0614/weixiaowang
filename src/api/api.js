@@ -569,5 +569,9 @@ export default {
   enumVelue (params) {
     let query = qs.stringify(params)
     return fetch(`/activity/enumVelue.do?${query}`, {}, 'get', 'json')
+  },
+  activityDetil (params) {
+    let query = qs.stringify(params)
+    return fetch(`/activity/activityDetil.do?${query}`, {}, 'get', 'json')
   }
 }

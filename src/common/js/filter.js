@@ -98,6 +98,11 @@ let getPastTimeText = (time) => {
 	}
 }
 
+let getDate = (val) => {
+  let date = new Date(val)
+  return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日'
+}
+
 // 隐藏部分手机号
 let hideMobile = (mobile) => {
 	if (mobile.length < 7) {
@@ -157,5 +162,6 @@ export {
 	getPastTimeText,
 	hideMobile,
 	isEmojiCharacter,
-  conversion
+  conversion,
+  getDate
 }

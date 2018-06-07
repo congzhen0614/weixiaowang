@@ -1,11 +1,11 @@
 <template>
   <div class="activity-details-comment">
     <div class="title">
-      <p>最新评论(100)</p>
+      <p>最新评论({{ listData.comment_quantity }})</p>
     </div>
     <div class="content">
       <ul>
-        <li v-for="(item, index) in listData" :key="index">
+        <li v-for="(item, index) in listDatas" :key="index">
           <div class="user-message">
             <div class="right-icon"><img class="zan-icon" src="./zan-icon.png"/>100</div>
             <img src="./avatar.jpg"/>
@@ -42,8 +42,13 @@ export default {
   components: {},
   data () {
       return {
-        listData: [0, 1, 2, 3, 4]
+        listDatas: [0, 1, 2, 3, 4]
       }
+  },
+  props: {
+    listData: {
+      type: Object
+    }
   },
   created () {
   },

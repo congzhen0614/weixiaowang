@@ -1,10 +1,12 @@
 <template>
   <div class="activity-details-introduction">
     <p class="title">活动介绍</p>
-    <div class="content"></div>
+    <div class="content" v-html="listData.webhtml"></div>
     <div class="interval"></div>
     <p class="title">注意事项</p>
-    <div class="content"></div>
+    <div class="content">
+      {{ listData.attention }}
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,11 @@ export default {
   components: {},
   data () {
       return {}
+  },
+  props: {
+    listData: {
+      type: Object
+    }
   },
   created () {
   },

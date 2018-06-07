@@ -5,7 +5,7 @@
       <span>热门活动</span>
     </div>
     <ul class="content">
-      <li v-for="(item, index) in list" @click="clickLink(item.link)">
+      <li v-for="(item, index) in list" @click="clickLink(item)">
         <div class="content-right">
           <p class="content-title">{{item.title}}</p>
           <p class="content-date">{{item.begin_time}}</p>
@@ -45,8 +45,21 @@
     mounted () {
     },
     methods: {
-      clickLink (linkStr) {
-        window.location.href = linkStr
+      clickLink (item) {
+        if (item.link) {
+          window.location.href = item.link
+        } else {
+          this.$router.push({
+            path: '/activityDetails',
+            query: {
+              id: item.id,
+              cls: item.cls,
+              lat: item.lat,
+              lng: item.lng,
+              _uid: localStorage.getItem('userId')
+            }
+          })
+        }
       }
     },
     watch: {}

@@ -3,31 +3,31 @@
     <ul class="message-list">
       <li>
         <img src="./source-icon.png"/>
-        <span>亲子活动 | 西湖区 | 3~6岁</span>
+        <span>{{ listData.type }} | {{ listData.region_id }} | {{ listData.age }}</span>
         <p>来源</p>
       </li>
       <li>
         <img src="./data-icon.png"/>
-        <span>2017年10月1日至2018年2月1日</span>
+        <span>{{ listData.begin_time | getDate }}至{{ listData.end_time | getDate }}</span>
         <p>活动日期</p>
       </li>
       <li class="have-link">
         <img src="./ticket-price-icon.png"/>
-        <span>¥1000</span>
+        <span>￥{{ listData.min_fee }}至￥{{ listData.max_fee }}</span>
         <p>票价</p>
       </li>
       <li class="have-link">
         <img src="./people-number-icon.png"/>
-        <span>已报名15人/限30人报名</span>
+        <span><span class="applyed">已报名{{ listData.applyed_quantity }}人</span>/限{{ listData.apply_limit_quantity }}人报名</span>
         <p>报名人数</p>
       </li>
       <li class="have-link">
         <img src="./location-icon.png"/>
-        <p>浙江省杭州市下城区文晖路西湖文化广场地铁站口右拐杭州出版社</p>
+        <p>{{ listData.province_id }}{{ listData.city_id }}{{ listData.region_id }}{{ listData.address }}</p>
       </li>
     </ul>
     <div class="interval"></div>
-    <ul class="message-sponsor">
+    <ul class="message-sponsor" v-if="business">
       <li>
         <span class="attention">关注</span>
         <img src="./organizer-icon.png"/>
@@ -53,7 +53,15 @@ export default {
   name: '',
   components: {},
   data () {
-      return {}
+      return {
+        business: false,
+        businessList: []
+      }
+  },
+  props: {
+    listData: {
+      type: Object
+    }
   },
   created () {
   },
@@ -61,7 +69,14 @@ export default {
   },
   computed: {},
   methods: {},
-  watch: {}
+  watch: {
+    'listData.business_list' (val) {
+      if (val !== '[]') {
+        this.business = true
+        this.businessList = val.splice('[', '').splice(']','').split(',')
+      }
+    }
+  }
 }
 </script>
 

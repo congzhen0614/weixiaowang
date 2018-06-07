@@ -4,17 +4,17 @@
     <div class="wrapper" ref="wrapper" :style="{height: winHeight}">
       <section class="content" ref="content">
         <v-banner :style="{ height: bannerHeight }" :listImg="listImg" @chooseItem="chooseItem"></v-banner>
-        <v-title></v-title>
+        <v-title :listData="listData"></v-title>
         <div class="interval"></div>
-        <v-message></v-message>
+        <v-message :listData="listData"></v-message>
         <div class="interval"></div>
-        <v-introduction></v-introduction>
+        <v-introduction :listData="listData"></v-introduction>
         <div class="interval"></div>
-        <v-comment></v-comment>
+        <v-comment :listData="listData"></v-comment>
       </section>
     </div>
     <v-footer></v-footer>
-    <img v-show="showToTopBtn" @click="scrollToTop()" class="to-top-icon" src="../to_top_icon.png">
+    <img v-show="showToTopBtn" @click="scrollToTop()" class="to-top-icon" src="./to_top_icon.png">
   </div>
 </template>
 
@@ -55,7 +55,9 @@ export default {
       // 是否可以加载更多
       loadMore: true,
       // 页码
-      pageNum: 0
+      pageNum: 0,
+      // 数据
+      listData: {}
     }
   },
   created () {},
@@ -71,8 +73,7 @@ export default {
       if (this.bannerImages.length) {
         this.bannerImages.forEach(item => {
           list.push({
-            url: item.logo,
-            link: item.link_url
+            url: item
           })
         })
       } else {
@@ -82,12 +83,29 @@ export default {
         })
       }
       return list
+    },
+    params () {
+      return {
+        id: this.$route.query.id,
+        cls: this.$route.query.cls,
+        lat: this.$route.query.lat,
+        lng: this.$route.query.lng,
+        _uid: this.$route.query._uid
+      }
     }
   },
   methods: {
     loadData () {
-      this.$nextTick(() => {
-        this.initBetterScroll()
+      this.$ajax.activityDetil(this.params).then(res => {
+        this.listData = res.data.data
+        this.bannerImages = res.data.data.imgs
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.initBetterScroll()
+          }, 500)
+        })
+      }, err => {
+        console.log(err)
       })
     },
     // 初始化 scroller
