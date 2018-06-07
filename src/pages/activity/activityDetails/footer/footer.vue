@@ -2,7 +2,7 @@
   <div class="activity-details-footer">
     <footer>
       <div class="footer" v-if="commentFlag">
-        <span class="sign-up">我要报名</span>
+        <span class="sign-up" @click.stop="clickApply()">我要报名</span>
         <div class="footer-left">
           <div class="consulting" @click.stop="callUp()">
             <img src="./consulting-icon.png"/>
@@ -57,6 +57,14 @@ export default {
     },
     callUp () {
       window.location.href = 'tel:' + this.listData.tel
+    },
+    clickApply () {
+      this.$router.push({
+        path: '/applyActivity',
+        query: {
+          sid: this.listData.sid
+        }
+      })
     }
   },
   watch: {}

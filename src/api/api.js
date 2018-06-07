@@ -182,9 +182,9 @@ export default {
 	/*
 		票务列表
 	*/
-	listActivityTicket (params) {
-		return fetch('/activityTicket/listActivityTicket', params)
-	},
+	// listActivityTicket (params) {
+	// 	return fetch('/activityTicket/listActivityTicket', params)
+	// },
 	/*
 		生成订单
 	*/
@@ -593,5 +593,10 @@ export default {
   commentDel (params) {
     let query = qs.stringify(params)
     return fetch(`/comment/del?${query}`, {}, 'get', 'json')
+  },
+  // 票务管理列表
+  listActivityTicket (params) {
+    let query = qs.stringify(params)
+    return fetch(`/activityTicket/listActivityTicket?${query}`, {}, 'get', 'json')
   }
 }

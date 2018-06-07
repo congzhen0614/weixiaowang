@@ -80,6 +80,7 @@ const newYear = resolve => require(['@/components/periodical-ording/newyear/inde
 const activityIndex = resolve => require(['@/pages/activity/index.vue'], resolve) // 活动页首页
 const activityDetails = resolve => require(['@/pages/activity/activityDetails/index.vue'], resolve) // 活动详情页面
 const activityComment = resolve => require(['@/components/comment/activityComment.vue'], resolve) // 活动详情页面
+const applyActivity = resolve => require(['@/pages/activity/applyActivity/applyActivity.vue'], resolve) // 活动报名
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -274,6 +275,9 @@ export default new Router({
       }, { // 活动评论
         path: '/activityComment',
         component: activityComment
+      }, { // 活动报名
+        path: '/applyActivity',
+        component: applyActivity
       }
 		]
 	}]
