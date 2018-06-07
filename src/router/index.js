@@ -79,6 +79,7 @@ const doubleTwelve = resolve => require(['@/components/periodical-ording/double-
 const newYear = resolve => require(['@/components/periodical-ording/newyear/index.vue'], resolve) // 双旦活动
 const activityIndex = resolve => require(['@/pages/activity/index.vue'], resolve) // 活动页首页
 const activityDetails = resolve => require(['@/pages/activity/activityDetails/index.vue'], resolve) // 活动详情页面
+const activityComment = resolve => require(['@/components/comment/activityComment.vue'], resolve) // 活动详情页面
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -270,6 +271,9 @@ export default new Router({
       }, { // 活动首页
         path: '/activityDetails',
         component: activityDetails
+      }, { // 活动评论
+        path: '/activityComment',
+        component: activityComment
       }
 		]
 	}]

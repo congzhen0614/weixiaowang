@@ -10,10 +10,10 @@
         <div class="interval"></div>
         <v-introduction :listData="listData"></v-introduction>
         <div class="interval"></div>
-        <v-comment :listData="listData"></v-comment>
+        <v-comment :listData="listData" :scrollHeight="scrollHeight" :contentHeight="contentHeight"></v-comment>
       </section>
     </div>
-    <v-footer></v-footer>
+    <v-footer :listData="listData"></v-footer>
     <img v-show="showToTopBtn" @click="scrollToTop()" class="to-top-icon" src="./to_top_icon.png">
   </div>
 </template>
@@ -57,12 +57,15 @@ export default {
       // 页码
       pageNum: 0,
       // 数据
-      listData: {}
+      listData: {},
+      // content的高度
+      contentHeight: 0
     }
   },
   created () {},
   mounted () {
     this.loadData()
+    this.contentHeight = this.$refs.content.offsetHeight
   },
   computed: {
     showToTopBtn () {
@@ -90,7 +93,7 @@ export default {
         cls: this.$route.query.cls,
         lat: this.$route.query.lat,
         lng: this.$route.query.lng,
-        _uid: this.$route.query._uid
+        _uid: localStorage.getItem('userId')
       }
     }
   },

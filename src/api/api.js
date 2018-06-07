@@ -570,8 +570,28 @@ export default {
     let query = qs.stringify(params)
     return fetch(`/activity/enumVelue.do?${query}`, {}, 'get', 'json')
   },
+  // 活动详情
   activityDetil (params) {
     let query = qs.stringify(params)
     return fetch(`/activity/activityDetil.do?${query}`, {}, 'get', 'json')
+  },
+  // 评价-保存
+  commentSave (params) {
+    return fetch(`/comment/save`, params, 'post', 'json')
+  },
+  // 评价-列表
+  commentList (params) {
+    let query = qs.stringify(params)
+    return fetch(`/comment/list?${query}`, {}, 'get', 'json')
+  },
+  // 评价-详情
+  commentDetail (params) {
+    let query = qs.stringify(params)
+    return fetch(`/comment/detail?${query}`, {}, 'get', 'json')
+  },
+  // 评价-删除
+  commentDel (params) {
+    let query = qs.stringify(params)
+    return fetch(`/comment/del?${query}`, {}, 'get', 'json')
   }
 }

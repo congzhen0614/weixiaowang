@@ -42,21 +42,48 @@ export default {
   components: {},
   data () {
       return {
-        listDatas: [0, 1, 2, 3, 4]
+        listDatas: []
       }
   },
   props: {
     listData: {
       type: Object
+    },
+    scrollHeight: {
+      type: Number
+    },
+    contentHeight: {
+      type: Number
     }
   },
   created () {
   },
   mounted () {
+    this.loadCommentList()
   },
-  computed: {},
-  methods: {},
-  watch: {}
+  computed: {
+    params () {
+      return {
+        cls: this.listData.cls,
+        uid: localStorage.getItem('userId'),
+        sid: this.listData.sid,
+        pageNum: 1,
+        pageSize: 10
+      }
+    }
+  },
+  methods: {
+    loadCommentList () {
+      this.$ajax.commentList(this.params).then(res => {
+        this.listDatas = res.data.pageInfo.list
+      }, err => {
+        console.log(err)
+      })
+    }
+  },
+  watch: {
+    scrollHeight (val) {}
+  }
 }
 </script>
 
