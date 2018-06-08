@@ -71,6 +71,15 @@ export default {
       return {
         sid: this.$route.query.sid
       }
+    },
+    checkedTicket () {
+      let checkedTicket = []
+      this.ticketList.forEach(item => {
+        if (item.checkedNum > 0) {
+          checkedTicket.push(item)
+        }
+      })
+      return checkedTicket
     }
   },
   methods: {
@@ -120,9 +129,19 @@ export default {
           buttons: ['知道了']
         })
         return false
-      }},
+      }
+      return true
+    },
     clickNextStep () {
       if (!this.Judge()) return false
+      this.$router.push({
+        path: '/userinfo',
+        query: {
+          sid: this.$route.query.sid,
+          tickets: JSON.stringify(this.checkedTicket),
+          isRealName: this.$route.query.isRealName
+        }
+      })
     }
   },
   watch: {}

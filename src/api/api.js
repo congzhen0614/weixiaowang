@@ -598,5 +598,10 @@ export default {
   listActivityTicket (params) {
     let query = qs.stringify(params)
     return fetch(`/activityTicket/listActivityTicket?${query}`, {}, 'get', 'json')
+  },
+  // 提交活动报名订单接口
+  confirmOrder (params) {
+    // let query = qs.stringify(params)
+    return fetch(`/activetrade/confirm/order`, params, 'post', 'json')
   }
 }

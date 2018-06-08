@@ -62,7 +62,8 @@ export default {
       this.$router.push({
         path: '/applyActivity',
         query: {
-          sid: this.listData.sid
+          sid: this.listData.sid,
+          isRealName: this.listData.is_realname
         }
       })
     }
