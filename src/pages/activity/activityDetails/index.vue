@@ -127,7 +127,7 @@ export default {
     listenScroll () {
       this.scroller.on('scroll', pos => {
         if (pos.y >= 100 && this.reload) {
-          console.log('上拉到顶部刷新数据')
+          this.loadData()
         }
         this.scrollHeight = -pos.y
       })
