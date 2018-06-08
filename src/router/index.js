@@ -83,6 +83,7 @@ const activityComment = resolve => require(['@/components/comment/activityCommen
 const applyActivity = resolve => require(['@/pages/activity/applyActivity/applyActivity.vue'], resolve) // 活动报名
 const userinfo = resolve => require(['@/pages/activity/applyActivity/userinfo/userinfo.vue'], resolve) // 活动填写用户信息
 const realName = resolve => require(['@/pages/activity/applyActivity/realName/realName.vue'], resolve) // 活动填写用户信息
+const edituserInfo = resolve => require(['@/pages/activity/applyActivity/edituserInfo/edituserInfo.vue'], resolve) // 活动填写用户信息
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -286,6 +287,9 @@ export default new Router({
       }, { // 实名认证
         path: '/realName',
         component: realName
+      }, { // 编辑活动票实名制信息
+        path: '/edituserInfo',
+        component: edituserInfo
       }
 		]
 	}]

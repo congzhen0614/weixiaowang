@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import edit from '@/store/edit/edit'
 export default {
   name: '',
   components: {},
@@ -42,36 +43,37 @@ export default {
   },
   mounted () {
     this.setticketList()
+    console.log(edit)
   },
-  computed: {
-    params () {
-      return {
-        tradeId: 0,
-        uid: 0,
-        list: []
-      }
-    }
-  },
+  computed: {},
   methods: {
     setticketList () {
+      let checkedNum = []
       this.ticketList = JSON.parse(this.$route.query.tickets)
       this.ticketList.forEach(item => {
-        this.params.list.push({
+        for (var i = 0; i < item.checkedNum; i++) {
+          checkedNum.push(i)
+        }
+        edit.list.push({
           is_group: item.is_group,
           ticketId: item.id,
           ticketName: item.title,
           totalFee: item.fee,
-          kids: []
+          kids: checkedNum
         })
       })
-      console.log(this.params)
     },
     goBack () {
       this.$router.goBack()
     },
     personalInformation (i, j) {
-      console.log(i)
-      console.log(j)
+      this.$router.push({
+        path: '/edituserInfo',
+        query: {
+          i: i,
+          j: j
+        }
+      })
     }
   },
   watch: {}
