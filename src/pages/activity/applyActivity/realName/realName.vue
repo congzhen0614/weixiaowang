@@ -125,6 +125,14 @@ export default {
           this.Toast.success({
             title: '添加成功'
           })
+          this.$router.push({
+            path: './pay',
+            query: {
+              outtradeno: this.$route.query.outtradeno,
+              fee: this.$route.query.fee,
+              cls: 14
+            }
+          })
         } else {
           this.Toast.warning({
             title: res.data.result.msg

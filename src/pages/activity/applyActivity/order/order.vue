@@ -155,7 +155,18 @@ export default {
                 name: this.orderUserName,
                 mobile: this.orderuserPhone,
                 tickets: this.$route.query.tickets,
-                id: res.data.id
+                id: res.data.id,
+                outtradeno: res.data.no,
+                fee: parseFloat(this.cashdown)
+              }
+            })
+          } else {
+            this.$router.push({
+              path: './pay',
+              query: {
+                outtradeno: res.data.no,
+                fee: parseFloat(this.cashdown),
+                cls: 14
               }
             })
           }
