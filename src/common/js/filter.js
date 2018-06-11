@@ -149,7 +149,15 @@ let isEmojiCharacter = (substring) => {
 }
 // 除以1000
 let conversion = value => parseInt(value/1000)
-
+// 活动开始日期
+let activityDate = value => {
+  let month = new Date(value).getMonth() + 1
+  let date = new Date(value).getDate()
+  let hour = new Date(value).getHours()
+  let minute = new Date(value).getMinutes()
+  let seconds = new Date(value).getSeconds()
+  return month + '月' + date + '日' + hour + '时' + minute + '分'
+}
 export {
 	getInteger,
 	getFixed1,
@@ -163,5 +171,6 @@ export {
 	hideMobile,
 	isEmojiCharacter,
   conversion,
-  getDate
+  getDate,
+  activityDate
 }

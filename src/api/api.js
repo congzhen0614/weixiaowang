@@ -603,5 +603,10 @@ export default {
   confirmOrder (params) {
     // let query = qs.stringify(params)
     return fetch(`/activetrade/confirm/order`, params, 'post', 'json')
+  },
+  // 活动实名制
+  realName (params) {
+    console.log(params)
+    return fetch(`/activetrade/realName`, params, 'post', 'json')
   }
 }

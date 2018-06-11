@@ -18,16 +18,16 @@
         <li>
           <span>性别</span>
           <div class="gender">
-            <img v-if="gender===0" src="./check-icon.png" @click.stop="checkGirl()"/>
-            <img v-if="gender===1" src="./checked-icon.png"/>
+            <img v-if="gender==='男'" src="./check-icon.png" @click.stop="checkGirl()"/>
+            <img v-if="gender==='女'" src="./checked-icon.png"/>
             <p>
               <img src="./girl-icon.png">
               <span>女</span>
             </p>
           </div>
           <div class="gender">
-            <img v-if="gender===1" src="./check-icon.png" @click.stop="checkBoy()"/>
-            <img v-if="gender===0" src="./checked-icon.png"/>
+            <img v-if="gender==='女'" src="./check-icon.png" @click.stop="checkBoy()"/>
+            <img v-if="gender==='男'" src="./checked-icon.png"/>
             <p>
               <img src="./boy-icon.png">
               <span>男</span>
@@ -60,7 +60,7 @@ export default {
   data () {
       return {
         name: '',
-        gender: 0,
+        gender: '男',
         parentName: '',
         parentPhone: '',
         relationship: ''
@@ -69,9 +69,17 @@ export default {
   created () {
   },
   mounted () {
+    this.getKidsList()
   },
   computed: {},
   methods: {
+    getKidsList () {
+      this.name = edit.list[this.$route.query.i].kids[this.$route.query.j - 1].kidName
+      this.gender = edit.list[this.$route.query.i].kids[this.$route.query.j - 1].kidSex
+      this.parentName = edit.list[this.$route.query.i].kids[this.$route.query.j - 1].parentsName
+      this.parentPhone = edit.list[this.$route.query.i].kids[this.$route.query.j - 1].parentsPhone
+      this.relationship = edit.list[this.$route.query.i].kids[this.$route.query.j - 1].relation
+    },
     goBack () {
       this.$router.goBack()
     },
@@ -79,18 +87,18 @@ export default {
       console.log('点击头像')
     },
     checkBoy () {
-      this.gender = 0
+      this.gender = '男'
     },
     checkGirl () {
-      this.gender = 1
+      this.gender = '女'
     },
     confirm () {
-      edit.list[this.$route.query.i].kids[this.$route.query.j] = {
-        name: this.name,
-        gender: this.gender,
-        parentName: this.parentName,
-        parentPhone: this.parentPhone,
-        relationship: this.relationship
+      edit.list[this.$route.query.i].kids[this.$route.query.j - 1] = {
+        kidName: this.name,
+        kidSex: this.gender,
+        parentsName: this.parentName,
+        parentsPhone: this.parentPhone,
+        relation: this.relationship
       }
       this.$router.goBack()
     }

@@ -36,6 +36,7 @@ export default {
   created () {
   },
   mounted () {
+    console.log(this.$route.query)
   },
   computed: {
     params () {
@@ -61,19 +62,35 @@ export default {
         })
         return false
       }
-      if (this.$route.query.isRealName==='0') {
-        console.log('不需要实名验证')
-      } else {
-        this.$router.push({
-          path: '/realName',
-          query: {
-            activityId: this.$route.query.sid,
-            name: this.orderUserName,
-            mobile: this.orderuserPhone,
-            tickets: this.$route.query.tickets
-          }
-        })
-      }
+      this.$router.push({
+        path: '/activityOrder',
+        query: {
+          activityId: this.$route.query.sid,
+          logo: this.$route.query.logo,
+          title: this.$route.query.title,
+          beginTime: this.$route.query.beginTime,
+          cashdown: this.$route.query.cashdown,
+          ticket: this.$route.query.ticket,
+          isgroup: this.$route.query.isgroup,
+          name: this.orderUserName,
+          mobile: this.orderuserPhone,
+          tickets: this.$route.query.tickets,
+          isRealName: this.$route.query.isRealName
+        }
+      })
+//      if (this.$route.query.isRealName==='0') {
+//        console.log('不需要实名验证')
+//      } else {
+//        this.$router.push({
+//          path: '/realName',
+//          query: {
+//            activityId: this.$route.query.sid,
+//            name: this.orderUserName,
+//            mobile: this.orderuserPhone,
+//            tickets: this.$route.query.tickets
+//          }
+//        })
+//      }
     }
   },
   watch: {

@@ -63,6 +63,12 @@ export default {
         path: '/applyActivity',
         query: {
           sid: this.listData.sid,
+          logo: this.listData.logo,
+          title: this.listData.title,
+          beginTime: this.listData.begin_time,
+          cashdown: this.listData.cashdown,
+          ticket: this.listData.ticket,
+          isgroup: this.listData.isgroup,
           isRealName: this.listData.is_realname
         }
       })

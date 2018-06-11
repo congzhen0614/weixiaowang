@@ -138,6 +138,12 @@ export default {
         path: '/userinfo',
         query: {
           sid: this.$route.query.sid,
+          logo: this.$route.query.logo,
+          title: this.$route.query.title,
+          beginTime: this.$route.query.beginTime,
+          cashdown: this.$route.query.cashdown,
+          ticket: this.$route.query.ticket,
+          isgroup: this.$route.query.isgroup,
           tickets: JSON.stringify(this.checkedTicket),
           isRealName: this.$route.query.isRealName
         }

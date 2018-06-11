@@ -18,7 +18,7 @@
           <li @click.stop="personalInformation(i, j)" v-for="j in item.checkedNum">
             <span>票{{ j }}</span>
             <img src="./link-icon.png"/>
-            <p>输入报名人信息</p>
+            <p>{{ kidList[i].kids[j-1].kidName ? kidList[i].kids[j-1].kidName : '输入报名人信息' }}</p>
           </li>
         </ul>
       </div>
@@ -36,23 +36,56 @@ export default {
   components: {},
   data () {
       return {
-        ticketList: []
+        ticketList: [],
+        kidList: []
       }
   },
   created () {
   },
   mounted () {
     this.setticketList()
-    console.log(edit)
+    this.getKidList()
+    this.loadData()
   },
-  computed: {},
+  computed: {
+    params () {
+      return {
+        uid: localStorage.getItem('userId'),
+        cls: 14,
+        id: this.$route.query.id
+      }
+    }
+  },
   methods: {
+    loadData () {
+      this.$ajax.tradeDetail(this.params).then(res => {
+        edit.tradeId = res.data.activeTrainView.trade.id
+        res.data.activeTrainView.tradeDetails.forEach((item) => {
+          edit.list.forEach(editItem => {
+            if (editItem.ticketName === item.applyUserName) {
+              editItem.tradeDetailId = item.tradeDetailId
+            }
+          })
+        })
+      }, err => {
+        console.log(err)
+      })
+    },
     setticketList () {
-      let checkedNum = []
       this.ticketList = JSON.parse(this.$route.query.tickets)
+      if (edit.list.length > 0) return false
       this.ticketList.forEach(item => {
+        let checkedNum = []
         for (var i = 0; i < item.checkedNum; i++) {
-          checkedNum.push(i)
+          checkedNum.push({
+            kidName: '',
+            kidSex: '男',
+            kidImageUrl: '',
+            parentsName: '',
+            parentsPhone: '',
+            relation: '',
+            tradeDetailId: ''
+          })
         }
         edit.list.push({
           is_group: item.is_group,
@@ -62,6 +95,9 @@ export default {
           kids: checkedNum
         })
       })
+    },
+    getKidList () {
+      this.kidList = edit.list
     },
     goBack () {
       this.$router.goBack()
@@ -73,6 +109,13 @@ export default {
           i: i,
           j: j
         }
+      })
+    },
+    confirmOrder () {
+      this.$ajax.realName(edit).then(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
       })
     }
   },

@@ -84,6 +84,7 @@ const applyActivity = resolve => require(['@/pages/activity/applyActivity/applyA
 const userinfo = resolve => require(['@/pages/activity/applyActivity/userinfo/userinfo.vue'], resolve) // 活动填写用户信息
 const realName = resolve => require(['@/pages/activity/applyActivity/realName/realName.vue'], resolve) // 活动填写用户信息
 const edituserInfo = resolve => require(['@/pages/activity/applyActivity/edituserInfo/edituserInfo.vue'], resolve) // 活动填写用户信息
+const activityOrder = resolve => require(['@/pages/activity/applyActivity/order/order.vue'], resolve) // 活动订单结算
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -290,6 +291,9 @@ export default new Router({
       }, { // 编辑活动票实名制信息
         path: '/edituserInfo',
         component: edituserInfo
+      }, { // 活动订单结算
+		    path: '/activityOrder',
+        component: activityOrder
       }
 		]
 	}]
