@@ -27,23 +27,26 @@
       </li>
     </ul>
     <div class="interval"></div>
-    <ul class="message-sponsor" v-if="business">
-      <li>
+    <ul class="message-sponsor" v-if="businessList.length>0">
+      <li v-for="(item, index) in businessList" :key="index">
         <span class="attention">关注</span>
-        <img src="./organizer-icon.png"/>
+        <!--<span class="attentioned">已关注</span>-->
+        <img :src="item.logo"/>
         <div>
-          <span class="organizer">主办方</span>
-          <p>杭州微校互联科技有限公</p>
+          <span class="organizer" v-if="item.role===1">主办方</span>
+          <span class="organizer" v-if="item.role!==1">协办方</span>
+          <p>{{ item.name }}</p>
         </div>
       </li>
-      <li>
-        <span class="attentioned">已关注</span>
-        <img src="./co-organizer-icon.png"/>
-        <div>
-          <span class="co-organizer">协办方</span>
-          <p>杭州微校互联科技有限公司华北地区分公司</p>
-        </div>
-      </li>
+      <!--<li>-->
+        <!--<span class="attention">关注</span>-->
+        <!--<span class="attentioned">已关注</span>-->
+        <!--<img src="./co-organizer-icon.png"/>-->
+        <!--<div>-->
+          <!--<span class="co-organizer">协办方</span>-->
+          <!--<p>杭州微校互联科技有限公司华北地区分公司</p>-->
+        <!--</div>-->
+      <!--</li>-->
     </ul>
   </div>
 </template>
@@ -54,7 +57,6 @@ export default {
   components: {},
   data () {
       return {
-        business: false,
         businessList: []
       }
   },
@@ -71,10 +73,8 @@ export default {
   methods: {},
   watch: {
     'listData.business_list' (val) {
-      if (val !== '[]') {
-        this.business = true
-        this.businessList = val.splice('[', '').splice(']','').split(',')
-      }
+      this.businessList = JSON.parse(val)
+      console.log(this.businessList)
     }
   }
 }

@@ -10,7 +10,7 @@
         <div class="ticketList">
           <div class="ticket-title">{{ item.title }}<span class="group-icon" v-if="item.is_group==='1'"></span></div>
           <div class="ticket-price">
-            <span style="margin-right: 0.4rem">总金额 ￥{{ item.fee * item.checkedNum }}</span>
+            <span style="margin-right: 0.4rem">总金额1 ￥{{ item.fee * item.checkedNum }}</span>
             <span>票数 {{ item.checkedNum }}</span>
           </div>
         </div>
@@ -59,8 +59,14 @@ export default {
   methods: {
     loadData () {
       this.$ajax.tradeDetail(this.params).then(res => {
+        if (res.data.result.status==='-1') {
+          this.Toast.warning({
+            title: res.data.result.msg
+          })
+          return false
+        }
         edit.tradeId = parseInt(res.data.activeTrainView.trade.id)
-        res.data.activeTrainView.tradeDetails.forEach((item) => {
+        res.data.activeTrainView.tradeDetails.forEach(item => {
           edit.list.forEach(editItem => {
             if (editItem.ticketName === item.applyUserName) {
               editItem.kids.forEach(obj => {
@@ -115,7 +121,15 @@ export default {
     },
     confirmOrder () {
       this.$ajax.realName(edit).then(res => {
-        console.log(res)
+        if (res.data.result.status==='0') {
+          this.Toast.success({
+            title: '添加成功'
+          })
+        } else {
+          this.Toast.warning({
+            title: res.data.result.msg
+          })
+        }
       }, err => {
         console.log(err)
       })

@@ -606,7 +606,6 @@ export default {
   },
   // 活动实名制
   realName (params) {
-    console.log(params)
     return fetch(`/activetrade/realName`, params, 'post', 'json')
   }
 }

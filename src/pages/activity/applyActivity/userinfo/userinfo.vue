@@ -36,7 +36,6 @@ export default {
   created () {
   },
   mounted () {
-    console.log(this.$route.query)
   },
   computed: {
     params () {
