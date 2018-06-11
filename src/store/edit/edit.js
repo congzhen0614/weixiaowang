@@ -1,5 +1,5 @@
 export default {
   tradeId: 0,
-  uid: localStorage.getItem('userId'),
+  uid: parseInt(localStorage.getItem('userId')),
   list: []
 }

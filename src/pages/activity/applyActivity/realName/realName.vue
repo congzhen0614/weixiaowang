@@ -59,11 +59,13 @@ export default {
   methods: {
     loadData () {
       this.$ajax.tradeDetail(this.params).then(res => {
-        edit.tradeId = res.data.activeTrainView.trade.id
+        edit.tradeId = parseInt(res.data.activeTrainView.trade.id)
         res.data.activeTrainView.tradeDetails.forEach((item) => {
           edit.list.forEach(editItem => {
             if (editItem.ticketName === item.applyUserName) {
-              editItem.tradeDetailId = item.tradeDetailId
+              editItem.kids.forEach(obj => {
+                obj.tradeDetailId = parseInt(item.tradeDetailId)
+              })
             }
           })
         })
@@ -79,7 +81,7 @@ export default {
         for (var i = 0; i < item.checkedNum; i++) {
           checkedNum.push({
             kidName: '',
-            kidSex: '男',
+            kidSex: 1,
             kidImageUrl: '',
             parentsName: '',
             parentsPhone: '',
@@ -88,8 +90,8 @@ export default {
           })
         }
         edit.list.push({
-          is_group: item.is_group,
-          ticketId: item.id,
+          is_group: parseInt(item.is_group),
+          ticketId: parseInt(item.id),
           ticketName: item.title,
           totalFee: item.fee,
           kids: checkedNum

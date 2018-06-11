@@ -18,16 +18,16 @@
         <li>
           <span>性别</span>
           <div class="gender">
-            <img v-if="gender==='男'" src="./check-icon.png" @click.stop="checkGirl()"/>
-            <img v-if="gender==='女'" src="./checked-icon.png"/>
+            <img v-if="gender===1" src="./check-icon.png" @click.stop="checkGirl()"/>
+            <img v-if="gender===2" src="./checked-icon.png"/>
             <p>
               <img src="./girl-icon.png">
               <span>女</span>
             </p>
           </div>
           <div class="gender">
-            <img v-if="gender==='女'" src="./check-icon.png" @click.stop="checkBoy()"/>
-            <img v-if="gender==='男'" src="./checked-icon.png"/>
+            <img v-if="gender===2" src="./check-icon.png" @click.stop="checkBoy()"/>
+            <img v-if="gender===1" src="./checked-icon.png"/>
             <p>
               <img src="./boy-icon.png">
               <span>男</span>
@@ -60,7 +60,7 @@ export default {
   data () {
       return {
         name: '',
-        gender: '男',
+        gender: 1,
         parentName: '',
         parentPhone: '',
         relationship: ''
@@ -87,15 +87,15 @@ export default {
       console.log('点击头像')
     },
     checkBoy () {
-      this.gender = '男'
+      this.gender = 1
     },
     checkGirl () {
-      this.gender = '女'
+      this.gender = 2
     },
     confirm () {
       edit.list[this.$route.query.i].kids[this.$route.query.j - 1] = {
         kidName: this.name,
-        kidSex: this.gender,
+        kidSex: parseInt(this.gender),
         parentsName: this.parentName,
         parentsPhone: this.parentPhone,
         relation: this.relationship
