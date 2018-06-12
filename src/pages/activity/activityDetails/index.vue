@@ -1,6 +1,6 @@
 <template>
   <div class="activity-details">
-    <v-head></v-head>
+    <v-head @clickType="clickType"></v-head>
     <div class="wrapper" ref="wrapper" :style="{height: winHeight}">
       <section class="content" ref="content">
         <v-banner :style="{ height: bannerHeight }" :listImg="listImg" @chooseItem="chooseItem"></v-banner>
@@ -15,6 +15,8 @@
     </div>
     <v-footer :listData="listData"></v-footer>
     <img v-show="showToTopBtn" @click="scrollToTop()" class="to-top-icon" src="./to_top_icon.png">
+    <v-share @closeShare="closeShare" v-if="share"></v-share>
+    <v-more @closeMore="closeMore" v-if="more"></v-more>
   </div>
 </template>
 
@@ -26,6 +28,8 @@ import message from './message/message.vue'
 import introduction from './introduction/introduction.vue'
 import comment from './comment/comment.vue'
 import footer from './footer/footer.vue'
+import share from './top/share.vue'
+import more from './top/more.vue'
 import BScroll from 'better-scroll'
 export default {
   name: 'activity-details',
@@ -36,7 +40,9 @@ export default {
     'v-message': message,
     'v-introduction': introduction,
     'v-comment': comment,
-    'v-footer': footer
+    'v-footer': footer,
+    'v-share': share,
+    'v-more': more
   },
   data () {
     return {
@@ -59,7 +65,11 @@ export default {
       // 数据
       listData: {},
       // content的高度
-      contentHeight: 0
+      contentHeight: 0,
+      // 分享
+      share: false,
+      // 更多
+      more: false
     }
   },
   created () {},
@@ -145,6 +155,19 @@ export default {
         }
       })
     },
+    clickType (val) {
+      if (val==='分享') {
+        this.share = true
+      } else if (val==='更多') {
+        this.more = true
+      }
+    },
+    closeShare () {
+      this.share = false
+    },
+    closeMore () {
+      this.more = false
+    }
   },
   watch: {
     scrollHeight (val) {

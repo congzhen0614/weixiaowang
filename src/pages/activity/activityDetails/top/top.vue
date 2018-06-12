@@ -1,13 +1,13 @@
 <template>
   <div class="activity-details-top">
     <header>
-      <div class="head-icon" @click.stop="clickMore()">
+      <div class="head-icon" @click.stop="clickMore('更多')">
         <img src="./more-icon.png"/>
       </div>
-      <div class="head-icon" @click.stop="clickShare()">
+      <div class="head-icon" @click.stop="clickShare('分享')">
         <img src="./share-icon.png"/>
       </div>
-      <div class="head-icon" @click.stop="clickCollec()">
+      <div class="head-icon" @click.stop="clickCollec('收藏')">
         <img v-if="!collected" src="./collect-icon.png"/>
         <img v-if="collected" src="./collected-icon.png"/>
       </div>
@@ -30,14 +30,14 @@ export default {
   mounted () {},
   computed: {},
   methods: {
-    clickCollec () {
-      console.log('收藏')
+    clickCollec (item) {
+      this.$emit('clickType', item)
     },
-    clickShare () {
-      console.log('分享')
+    clickShare (item) {
+      this.$emit('clickType', item)
     },
-    clickMore () {
-      console.log('更多')
+    clickMore (item) {
+      this.$emit('clickType', item)
     },
     goback () {
       this.$router.goBack()
