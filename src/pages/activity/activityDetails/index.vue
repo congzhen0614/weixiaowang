@@ -1,6 +1,6 @@
 <template>
   <div class="activity-details">
-    <v-head @clickType="clickType"></v-head>
+    <v-head @clickType="clickType" :listData="listData"></v-head>
     <div class="wrapper" ref="wrapper" :style="{height: winHeight}">
       <section class="content" ref="content">
         <v-banner :style="{ height: bannerHeight }" :listImg="listImg" @chooseItem="chooseItem"></v-banner>

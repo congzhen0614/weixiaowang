@@ -7,7 +7,7 @@
       <div class="head-icon" @click.stop="clickShare('分享')">
         <img src="./share-icon.png"/>
       </div>
-      <div class="head-icon" @click.stop="clickCollec('收藏')">
+      <div class="head-icon" @click.stop="clickCollec()">
         <img v-if="!collected" src="./collect-icon.png"/>
         <img v-if="collected" src="./collected-icon.png"/>
       </div>
@@ -26,12 +26,28 @@ export default {
       collected: false
     }
   },
+  props: {
+    listData: {
+      type: Object
+    }
+  },
   created () {},
   mounted () {},
   computed: {},
   methods: {
-    clickCollec (item) {
-      this.$emit('clickType', item)
+    clickCollec () {
+      let param = {
+        sid: this.listData.sid,
+        uid: localStorage.getItem('userId'),
+        cls: 14
+      }
+      this.$ajax.addCollect(param).then(res => {
+        if (res.data.result.status==='0') {
+          this.collected = true
+        }
+      }, err => {
+        console.log(err)
+      })
     },
     clickShare (item) {
       this.$emit('clickType', item)
