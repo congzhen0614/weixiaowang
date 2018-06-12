@@ -137,8 +137,13 @@ export default {
       this.scroller.scrollTo(0, 0, 500)
     },
     // 点击banner
-    chooseItem (param) {
-      console.log(param)
+    chooseItem () {
+      this.$router.push({
+        path: '/bannerImages',
+        query: {
+          listImg: JSON.stringify(this.listImg)
+        }
+      })
     },
   },
   watch: {

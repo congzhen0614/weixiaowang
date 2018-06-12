@@ -7,7 +7,7 @@
     <section>
       <ul>
         <li v-for="(item, index) in ticketList" :key="index">
-          <div class="ticket-left">
+          <div class="ticket-left" @click.stop="checkTicket()">
             <span class="radius-top"></span>
             <span class="radius-bottom"></span>
             <div class="ticket-top">
@@ -146,6 +146,14 @@ export default {
           isgroup: this.$route.query.isgroup,
           tickets: JSON.stringify(this.checkedTicket),
           isRealName: this.$route.query.isRealName
+        }
+      })
+    },
+    checkTicket () {
+      this.$router.push({
+        path: '/ticketList',
+        query: {
+          ticketList: JSON.stringify(this.ticketList)
         }
       })
     }
