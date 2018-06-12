@@ -18,7 +18,7 @@
       </li>
       <li class="have-link">
         <img src="./people-number-icon.png"/>
-        <span><span class="applyed">已报名{{ listData.applyed_quantity }}人</span>/限{{ listData.apply_limit_quantity }}人报名</span>
+        <span><span class="applyed" @click.stop="checkApplued()">已报名{{ listData.applyed_quantity }}人</span>/限{{ listData.apply_limit_quantity }}人报名</span>
         <p>报名人数</p>
       </li>
       <li class="have-link">
@@ -70,11 +70,20 @@ export default {
   mounted () {
   },
   computed: {},
-  methods: {},
+  methods: {
+    checkApplued () {
+      this.$router.push({
+        path: '/applyedQuantity',
+        query: {
+          sid: this.listData.sid,
+          cls: 14
+        }
+      })
+    }
+  },
   watch: {
     'listData.business_list' (val) {
       this.businessList = JSON.parse(val)
-      console.log(this.businessList)
     }
   }
 }

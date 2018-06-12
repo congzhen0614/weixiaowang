@@ -85,6 +85,7 @@ const userinfo = resolve => require(['@/pages/activity/applyActivity/userinfo/us
 const realName = resolve => require(['@/pages/activity/applyActivity/realName/realName.vue'], resolve) // 活动填写用户信息
 const edituserInfo = resolve => require(['@/pages/activity/applyActivity/edituserInfo/edituserInfo.vue'], resolve) // 活动填写用户信息
 const activityOrder = resolve => require(['@/pages/activity/applyActivity/order/order.vue'], resolve) // 活动订单结算
+const applyedQuantity = resolve => require(['@/pages/activity/activityDetails/message/applyedQuantity/applyedQuantity.vue'], resolve) // 差价活动人列表
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -294,6 +295,9 @@ export default new Router({
       }, { // 活动订单结算
 		    path: '/activityOrder',
         component: activityOrder
+      }, { // 活动参加人
+		    path: '/applyedQuantity',
+        component: applyedQuantity
       }
 		]
 	}]
