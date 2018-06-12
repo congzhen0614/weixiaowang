@@ -43,7 +43,7 @@ export default {
       }
       this.$ajax.addCollect(param).then(res => {
         if (res.data.result.status==='0') {
-          this.collected = true
+          this.collected = !this.collected
         }
       }, err => {
         console.log(err)
