@@ -1,5 +1,5 @@
 <template>
-  <header ref="top" class="book-header" :style="headerStyle">
+  <header ref="top" class="activity-header" :style="headerStyle">
     <div class="back-icon" @click="goHome()">
       <img ref="homeIcon" src="./home_icon.png">
     </div>

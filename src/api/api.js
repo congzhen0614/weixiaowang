@@ -607,5 +607,10 @@ export default {
   // 活动实名制
   realName (params) {
     return fetch(`/activetrade/realName`, params, 'post', 'json')
+  },
+  // 获取已经参加人列表
+  listApplyUser (params) {
+    let query = qs.stringify(params)
+    return fetch(`/activityApply/listApplyUser?${query}`, {}, 'post', 'json')
   }
 }
