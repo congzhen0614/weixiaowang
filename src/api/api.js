@@ -213,7 +213,7 @@ export default {
 		评论列表
 	*/
 	listComment (params) {
-		return fetch('/activecomment/listComment', params)
+		return fetch('/comment/list', params)
 	},
 	/*
 		删除评论
@@ -612,5 +612,9 @@ export default {
   listApplyUser (params) {
     let query = qs.stringify(params)
     return fetch(`/activityApply/listApplyUser?${query}`, {}, 'post', 'json')
+  },
+  // 点赞或者取消赞
+  zan (params) {
+    return fetch(`/comment/zan`, params, 'post', 'json')
   }
 }

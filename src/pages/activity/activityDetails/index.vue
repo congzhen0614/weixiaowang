@@ -10,10 +10,10 @@
         <div class="interval"></div>
         <v-introduction :listData="listData"></v-introduction>
         <div class="interval"></div>
-        <v-comment :listData="listData" :scrollHeight="scrollHeight" :contentHeight="contentHeight"></v-comment>
+        <v-comment :listData="listData" :scrollHeight="scrollHeight" :contentHeight="contentHeight" @comment="comment"></v-comment>
       </section>
     </div>
-    <v-footer :listData="listData"></v-footer>
+    <v-footer :listData="listData" :commentItem="commentItem" :commentFlag="commentFlag"></v-footer>
     <img v-show="showToTopBtn" @click="scrollToTop()" class="to-top-icon" src="./to_top_icon.png">
     <v-share @closeShare="closeShare" v-if="share"></v-share>
     <v-more @closeMore="closeMore" v-if="more"></v-more>
@@ -69,7 +69,10 @@ export default {
       // 分享
       share: false,
       // 更多
-      more: false
+      more: false,
+      // 评论内容
+      commentItem: {},
+      commentFlag: true
     }
   },
   created () {},
@@ -167,6 +170,10 @@ export default {
     },
     closeMore () {
       this.more = false
+    },
+    comment (item) {
+      this.commentFlag = !this.commentFlag
+      this.commentItem = item
     }
   },
   watch: {

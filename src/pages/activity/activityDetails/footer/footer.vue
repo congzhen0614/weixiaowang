@@ -30,13 +30,18 @@ export default {
   components: {},
   data () {
       return {
-        commentFlag: true,
         tel: ''
       }
   },
   props: {
     listData: {
       type: Object
+    },
+    commentItem: {
+      type: Object
+    },
+    commentFlag: {
+      type: Boolean
     }
   },
   created () {
@@ -51,7 +56,10 @@ export default {
         query: {
           cls: this.listData.cls,
           sid: this.listData.sid,
-          areaId: this.listData.area_id
+          areaId: this.listData.area_id,
+          tocontent: this.commentItem.content,
+          toid: this.commentItem.id,
+          touid: this.commentItem.uid
         }
       })
     },

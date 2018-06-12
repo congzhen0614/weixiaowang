@@ -1,31 +1,30 @@
 <template>
   <div class="activity-details-comment">
     <div class="title">
-      <p>最新评论({{ listData.comment_quantity }})</p>
+      <p>最新评论({{ commentQuantity }})</p>
     </div>
     <div class="content">
       <ul>
-        <li v-for="(item, index) in listDatas" :key="index">
+        <li v-for="(item, index) in commentList" :key="index">
           <div class="user-message">
-            <div class="right-icon"><img class="zan-icon" src="./zan-icon.png"/>100</div>
-            <img src="./avatar.jpg"/>
-            <p>谁家陌上青年郎</p>
+            <div class="right-icon"><img class="zan-icon" src="./zan-icon.png"/>{{ item.zan_quantity }}</div>
+            <img :src="item.avatar"/>
+            <p>{{ item.name }}</p>
           </div>
           <div class="user-comment">
-            <p>静看庭前花开花落，意随天外云卷云舒。</p>
-            <img src="./avatar.jpg"/>
-            <img src="./avatar.jpg"/>
+            <p>{{ item.content }}</p>
+            <img :src="item.imgs"/>
             <div>
               <div class="button-icon">
-                <span class="location-icon"></span>2公里
+                <span class="location-icon"></span>{{ item.area }}
               </div>
               <div class="button-icon">
-                <span class="time-icon"></span>1小时前
+                <span class="time-icon"></span>{{ item.created_at | createdTime }} 小时前
               </div>
-              <div class="button-icon">
-                <span class="comment-icon"></span>100
+              <div class="button-icon" @click.stop="clickComment(item)">
+                <span class="comment-icon"></span>{{ item.comment_quantity }}
               </div>
-              <div class="button-icon">
+              <div class="button-icon" v-if="uid==item.uid">
                 <span class="delete-icon"></span>删除
               </div>
             </div>
@@ -42,7 +41,11 @@ export default {
   components: {},
   data () {
       return {
-        listDatas: []
+        uid: localStorage.getItem('userId') ? localStorage.getItem('userId') : 0,
+        sid: 0,
+        cls: 0,
+        commentList: [],
+        commentQuantity: 0,
       }
   },
   props: {
@@ -59,30 +62,44 @@ export default {
   created () {
   },
   mounted () {
-    this.loadCommentList()
+  },
+  filters: {
+    createdTime (val) {
+      let createdDate = new Date(val).getTime()
+      let todayDate = new Date().getTime()
+      let data = (todayDate - createdDate)/(1000 * 60 * 60)
+      return parseInt(data)
+    }
   },
   computed: {
     params () {
       return {
-        cls: this.listData.cls,
+        cls: this.cls,
         uid: localStorage.getItem('userId'),
-        sid: this.listData.sid,
-        pageNum: 1,
-        pageSize: 10
+        sid: this.sid
       }
     }
   },
   methods: {
     loadCommentList () {
       this.$ajax.commentList(this.params).then(res => {
-        this.listDatas = res.data.pageInfo.list
+        this.commentQuantity = res.data.pageInfo.list.length
+        this.commentList = res.data.pageInfo.list
       }, err => {
         console.log(err)
       })
+    },
+    clickComment (item) {
+      this.$emit('comment', item)
     }
   },
   watch: {
-    scrollHeight (val) {}
+    scrollHeight (val) {},
+    listData (val) {
+      this.sid = val.sid
+      this.cls = val.cls
+      this.loadCommentList()
+    }
   }
 }
 </script>

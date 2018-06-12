@@ -54,11 +54,11 @@ export default {
         sid: this.$route.query.sid,
         area: this.$route.query.areaId,
         // 评论评论的内容
-        tocontent: 0,
+        tocontent: this.$route.query.tocontent,
         // 评论那条评论
-        toid: 0,
+        toid: this.$route.query.toid,
         // 评论谁的评论
-        touid: 0,
+        touid: this.$route.query.touid,
         uid: localStorage.getItem('userId')
       }
     }
