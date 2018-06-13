@@ -616,5 +616,10 @@ export default {
   // 点赞或者取消赞
   zan (params) {
     return fetch(`/comment/zan`, params, 'post', 'json')
+  },
+  // 活动点赞用户列表
+  zanList (params) {
+    let query = qs.stringify(params)
+    return fetch(`/activecomment/getZanList?${query}`, {}, 'get', 'json')
   }
 }

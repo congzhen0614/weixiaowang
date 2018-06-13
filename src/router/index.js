@@ -89,6 +89,7 @@ const applyedQuantity = resolve => require(['@/pages/activity/activityDetails/me
 const ticketList = resolve => require(['@/pages/activity/applyActivity/ticketList/ticketList.vue'], resolve) // 活动活动票列表
 const bannerImages = resolve => require(['@/pages/activity/activityDetails/bannerImages/bannerImages.vue'], resolve) // 活动活动票列表
 const commentList = resolve => require(['@/pages/activity/activityDetails/comment/commentList/commentList.vue'], resolve) // 活动评论列表
+const commentDetail = resolve => require(['@/pages/activity/activityDetails/comment/commentDetail/commentDetail.vue'], resolve) // 活动评论详情
 
 // 页面间切换动画
 const pageTransition = resolve => require(['@/pages/pageTransition.vue'], resolve)
@@ -310,6 +311,9 @@ export default new Router({
       }, { // 活动评论列表页面
         path: '/commentList',
         component: commentList
+      }, { // 活动评论详情页
+		    path: '/commentDetail',
+        component: commentDetail
       }
 		]
 	}]
