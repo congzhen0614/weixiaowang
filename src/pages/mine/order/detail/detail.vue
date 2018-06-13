@@ -202,7 +202,9 @@
         <!-- 活动报名选票列表 -->
         <div class="activity-ticket">
           <ul>
-            <li v-for="(item, index) in info.tradeDetails" :key="index"></li>
+            <li v-for="(item, index) in info.tradeDetails" :key="index">
+              <p class="name"></p>
+            </li>
           </ul>
         </div>
         <!-- 联系方式(活动) -->

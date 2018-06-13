@@ -36,7 +36,7 @@
 										<!-- <span class="text">已退款</span> -->
 									</div>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '12'" class="status">
+									<div v-if="item.trade_status === '12'&&cls!=='14,19'" class="status">
 										<img v-if="item.complete" src="./complete_logo.png">
 										<span class="text fail">订单失效</span>
 									</div>
