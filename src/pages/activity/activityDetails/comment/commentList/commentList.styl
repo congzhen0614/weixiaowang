@@ -1,0 +1,122 @@
+.activity-comment-list
+  header
+    position fixed
+    left 0
+    top 0
+    width 100%
+    background-color #FCFAF8
+    padding 0.14rem 0.26rem
+    img
+      width 0.6rem
+      height 0.6rem
+      float left
+    p
+      height 0.6rem
+      line-height 0.6rem
+      font-size 0.34rem
+      color #523F1A
+      text-align center
+      margin-left -0.86rem
+  .content
+    margin-top 0.88rem
+    li
+      padding 0 0.2rem
+      overflow hidden
+      border-bottom 1px solid #E6E6E6
+      padding-top 0.4rem
+      .user-message
+        height 0.52rem
+        line-height 0.52rem
+        .right-icon
+          position relative
+          float right
+          .zan-icon
+            position absolute
+            display block
+            top 50%
+            left -0.34rem
+            float left
+            width 0.24rem
+            height 0.24rem
+            margin-top -0.12rem
+        > img
+          width 0.52rem
+          height 0.52rem
+          border-radius 50%
+          margin-right 0.2rem
+          float left
+        > p
+          height 0.52rem
+          line-height 0.52rem
+          font-size 0.26rem
+          color #9C9890
+      .user-comment
+        margin-left 0.72rem
+        > p
+          padding 0.34rem 0
+          font-size 0.34rem
+          color #333
+        > img
+          width 1.2rem
+          height 1.2rem
+          border-radius 2px
+          float left
+          margin-right 0.1rem
+        > div
+          clear both
+          overflow hidden
+          padding 0.3rem 0
+          .button-icon
+            float left
+            margin-right 0.4rem
+            font-size 0.24rem
+            height 0.24rem
+            line-height 0.24rem
+            > span
+              display block
+              width 0.24rem
+              height 0.24rem
+              background-repeat no-repeat
+              background-size 100%
+              float left
+              margin-right 0.1rem
+            .location-icon
+              width 0.2rem
+              background-image url("../location-icon.png")
+            .time-icon
+              background-image url("../time-icon.png")
+            .comment-icon
+              background-image url("../comment.png")
+            .delete-icon
+              background-image url("../delete-icon.png")
+            > p
+              font-size 0.24rem
+              color #9C9890
+              width 20px
+    li:last-child
+      border-bottom none
+  footer
+    .add-comment
+      padding 0.14rem 0.2rem
+      position fixed
+      bottom 0
+      left 0
+      width 100%
+      height 1rem
+      background-color #fff
+      box-shadow 0 1px 1px 2px rgba(0, 0, 0, 0.1)
+      .comment-input
+        width 100%
+        height 100%
+        padding 0.1rem
+        border-radius 0.1rem
+        border 1px solid #C7C7CC
+        background-color #FCFAF8
+        > span
+          font-size 0.3rem
+          color #C7C7CC
+        > img
+          float right
+          width 0.38rem
+          height 0.38rem
+          margin-top 2px

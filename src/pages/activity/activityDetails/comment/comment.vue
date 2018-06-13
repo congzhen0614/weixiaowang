@@ -5,9 +5,13 @@
     </div>
     <div class="content">
       <ul>
-        <li v-for="(item, index) in commentList" :key="index">
+        <li v-for="(item, index) in commentList" :key="index" @click.stop="clickTocommentList()">
           <div class="user-message">
-            <div class="right-icon"><img class="zan-icon" src="./zan-icon.png"/>{{ item.zan_quantity }}</div>
+            <div class="right-icon" @click.stop="clickZan(item)">
+              <img class="zan-icon" src="./zan-icon.png" v-if="item.is_zan===0"/>
+              <img class="zan-icon" src="./zaned-icon.png" v-if="item.is_zan===1"/>
+              {{ item.zan_quantity }}
+            </div>
             <img :src="item.avatar"/>
             <p>{{ item.name }}</p>
           </div>
@@ -90,7 +94,36 @@ export default {
       })
     },
     clickComment (item) {
-      this.$emit('comment', item)
+      // this.$emit('comment', item)
+    },
+    clickZan (item) {
+      let param = {
+        cls : item.cls,
+        _uid: localStorage.getItem('userId'),
+        event_id: item.sid,
+        comment_id : item.id
+      }
+      this.$ajax.zan(param).then(res => {
+        if (res.data.result.status==0) {
+          this.reload()
+        }
+      }, err => {
+        console.log(err)
+      })
+    },
+    reload () {
+      this.commentList = []
+      this.loadCommentList()
+    },
+    clickTocommentList () {
+      this.$router.push({
+        path: '/commentList',
+        query: {
+          params: JSON.stringify(this.params),
+          areaId: this.listData.area_id,
+          sid: this.listData.sid
+        }
+      })
     }
   },
   watch: {
