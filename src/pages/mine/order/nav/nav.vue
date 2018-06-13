@@ -8,24 +8,6 @@
 </template>
 
 <script>
-	// 杂志订单状态数组
-	// let periodicalOrderList = [{
-	// 	text: '全部',
-	// 	tradeStatus: ''
-	// },{
-	// 	text: '待付款',
-	// 	tradeStatus: '1'
-	// },{
-	// 	text: '待收货',
-	// 	tradeStatus: '2'
-	// },{
-	// 	text: '已收货',
-	// 	tradeStatus: '4'
-	// },{
-	// 	text: '退款',
-	// 	tradeStatus: '7'
-	// }]
-
 	// 图书订单状态数组
 	let bookOrderList = [{
 		text: '全部',

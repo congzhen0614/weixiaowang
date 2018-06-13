@@ -44,6 +44,14 @@
 									<div v-if="item.trade_status === '5'" class="status">
 										<img src="./complete_logo.png">
 									</div>
+                  <!-- 免费体验票 -->
+                  <div v-if="item.cls === '14' && item.total_fee == 0" class="status">
+                    <span class="text">免费体验票</span>
+                  </div>
+                  <!-- 现场缴费 -->
+                  <div v-if="item.cls === '14' && item.total_fee > 0" class="status">
+                    <span class="text">现场缴费</span>
+                  </div>
 								</div>
 								<p class="id">订单号: {{ item.no }}</p>
 								<p class="price">实付: ¥{{ parseFloat(item.total_fee) + parseFloat(item.delivery_fee) | reserveDecimal }}</p>

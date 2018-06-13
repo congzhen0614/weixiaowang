@@ -28,7 +28,7 @@ export default {
       }, {
         src: require('./activity_logo.png'),
         title: '活动培训',
-        cls: '13',
+        cls: '14,19',
         path: '/mine/order'
       }, {
         src: require('./shopmall_logo.png'),
