@@ -8,7 +8,7 @@
     <section>
       <div class="comment-content">
         <div class="comment-title">
-          <div class="zan">
+          <div class="zan" @click.stop="clickZan(comment)">
             <img class="zan-icon" src="./zan-icon.png" v-if="comment.is_zan===0"/>
             <img class="zan-icon" src="./zaned-icon.png" v-if="comment.is_zan===1"/>
             <span class="zan-quantity">{{ comment.zan_quantity }}</span>
@@ -145,12 +145,11 @@ export default {
     },
     getComment () {
       this.comment = JSON.parse(this.$route.query.comment)
-      console.log(this.comment)
     },
     goBack () {
       this.$router.goBack()
     },
-    clickComment (item) {
+    clickComment () {
       this.$router.push({
         path: '/activityComment',
         query: {
@@ -161,6 +160,19 @@ export default {
           toid: this.comment.id,
           touid: this.comment.uid
         }
+      })
+    },
+    clickZan (item) {
+      let param = {
+        cls : item.cls,
+        _uid: localStorage.getItem('userId'),
+        event_id: item.sid,
+        comment_id : item.id
+      }
+      this.$ajax.zan(param).then(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
       })
     }
   },

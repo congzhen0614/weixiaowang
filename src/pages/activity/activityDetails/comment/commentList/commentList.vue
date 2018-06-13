@@ -107,7 +107,13 @@ export default {
       this.loadData()
     },
     clickTocommentDetail (item) {
-      console.log(item)
+      this.$router.push({
+        path: '/commentDetail',
+        query: {
+          comment: JSON.stringify(item),
+          areaId: this.$route.query.areaId
+        }
+      })
     },
     clickComment (item) {
       this.$router.push({
