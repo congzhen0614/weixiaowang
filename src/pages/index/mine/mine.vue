@@ -158,9 +158,6 @@
 			},
 			// 顶部的样式
 			topStyleObj () {
-				if (this.scrollerTop < 44) {
-					return
-				}
 				let opacity = (this.scrollTop) / 100
 				return {
 					backgroundColor: `rgba(248, 189, 72, ${opacity})`
