@@ -31,7 +31,7 @@
 		methods: {
 			updateSwiper () {
 				if (this.bannerSwiper) {
-					this.bannerSwiper.update()
+					this.bannerSwiper.update
 				} else {
 					this.bannerSwiper = new Swiper('.swiper-container', {
 						pagination: '.swiper-pagination',
