@@ -121,7 +121,8 @@ export default {
         query: {
           params: JSON.stringify(this.params),
           areaId: this.listData.area_id,
-          sid: this.listData.sid
+          sid: this.listData.sid,
+          businessid: this.listData.businessid
         }
       })
     }

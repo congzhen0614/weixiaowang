@@ -39,13 +39,13 @@
         </div>
         <div class="comment-list">
           <ul>
-            <li v-for="(item, index) in commentList" :key="index" @click.stop="clickTocommentDetail(item)">
+            <li v-for="(item, index) in commentList" :key="index">
               <div class="user-message">
-                <div class="right-icon" @click.stop="clickZan(item)">
-                  <img class="zan-icon" src="./zan-icon.png" v-if="item.is_zan===0"/>
-                  <img class="zan-icon" src="./zaned-icon.png" v-if="item.is_zan===1"/>
-                  {{ item.zan_quantity }}
-                </div>
+                <!--<div class="right-icon" @click.stop="clickZan(item)">-->
+                  <!--<img class="zan-icon" src="./zan-icon.png" v-if="item.is_zan===0"/>-->
+                  <!--<img class="zan-icon" src="./zaned-icon.png" v-if="item.is_zan===1"/>-->
+                  <!--{{ item.zan_quantity }}-->
+                <!--</div>-->
                 <img :src="item.avatar"/>
                 <p>{{ item.name }}</p>
               </div>
@@ -183,7 +183,16 @@ export default {
         comment_id : item.id
       }
       this.$ajax.zan(param).then(res => {
-        console.log(res)
+        if (res.data.result.status==='0') {
+          if (item.is_zan === 0) {
+            item.is_zan = 1
+            item.zan_quantity += 1
+          } else {
+            item.is_zan = 0
+            item.zan_quantity -= 1
+          }
+          this.loadZanList()
+        }
       }, err => {
         console.log(err)
       })
@@ -195,18 +204,39 @@ export default {
       this.moreFlag = false
     },
     clickShield () {
-      console.log('Shield')
+      this.moreFlag = false
+      this.Toast.warning({
+        title: '暂未开放，敬请期待。'
+      })
     },
     clickReport () {
-      this.$ajax.report().then(res => {
-        console.log(res)
+      let params = {
+        sid: this.comment.sid,
+        _uid: localStorage.getItem('userId')
+      }
+      this.$ajax.report(params).then(res => {
+        if (res.data.msg==='success') {
+          this.moreFlag = false
+          this.Toast.success({
+            title: '举报成功'
+          })
+        }
       }, err => {
         console.log(err)
       })
     },
     clickFollow () {
-      this.$ajax.focusBusiness().then(res => {
-        console.log(res)
+      let params = {
+        _uid: localStorage.getItem('userId'),
+        business_id: this.$route.query.businessid
+      }
+      this.$ajax.focusBusiness(params).then(res => {
+        if (res.data.msg==='success') {
+          this.moreFlag = false
+          this.Toast.success({
+            title: '关注成功'
+          })
+        }
       }, err => {
         console.log(err)
       })

@@ -111,7 +111,8 @@ export default {
         path: '/commentDetail',
         query: {
           comment: JSON.stringify(item),
-          areaId: this.$route.query.areaId
+          areaId: this.$route.query.areaId,
+          businessid: this.$route.query.businessid
         }
       })
     },
