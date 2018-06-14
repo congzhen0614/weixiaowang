@@ -7,8 +7,8 @@ let Obj = new Vue()
 // 判断全局变量 NODE_ENV
 // 环境切换
 // let environment = process.env.NODE_ENV === 'development' ? 'dev' : 'product'
-let environment = 'product' // 正式环境
-// let environment = 'dev' // 测试环境
+// let environment = 'product' // 正式环境
+let environment = 'dev' // 测试环境
 
 
 // 线上
@@ -621,5 +621,15 @@ export default {
   zanList (params) {
     let query = qs.stringify(params)
     return fetch(`/activecomment/getZanList?${query}`, {}, 'get', 'json')
+  },
+  // 举报
+  report (params) {
+    let query = qs.stringify(params)
+    return fetch(`/common/report?${query}`, {}, 'get', 'json')
+  },
+  // 关注商家
+  focusBusiness (params) {
+    let query = qs.stringify(params)
+    return fetch(`/circleofuser/focusBusiness?${query}`, {}, 'get', 'json')
   }
 }

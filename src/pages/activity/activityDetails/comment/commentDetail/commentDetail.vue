@@ -2,7 +2,7 @@
   <div class="activity-comment-detail">
     <header>
       <img src="../../../../../common/icons/back_icon.png" @click.stop="goBack()"/>
-      <span class="more-icon"></span>
+      <span class="more-icon" @click.stop="clickShowMore()"></span>
       <p>详情</p>
     </header>
     <section>
@@ -29,11 +29,11 @@
         <div class="zan-list">
           <p>
             <span class="link-icon"></span>
-            100人赞过
+            {{ zanQuantity }}人赞过
           </p>
           <ul>
-            <li>
-              <img src="../../../../../common/icons/avatar.jpg"/>
+            <li v-for="(item, index) in zanList">
+              <img :src="item.avatar"/>
             </li>
           </ul>
         </div>
@@ -80,6 +80,15 @@
         </div>
       </div>
     </footer>
+    <div class="more-list" v-if="moreFlag">
+      <section class="mask" @click.stop="clickCloseMore()"></section>
+      <ul>
+        <li @click.stop="clickShield()">屏蔽该评论</li>
+        <li @click.stop="clickReport()">举报</li>
+        <li @click.stop="clickFollow()">关注</li>
+        <li @click.stop="clickCloseMore()">取消</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -91,7 +100,10 @@ export default {
     return {
       comment: {},
       commentList: [],
-      uid: localStorage.getItem('userId') ? localStorage.getItem('userId') : 0
+      uid: localStorage.getItem('userId') ? localStorage.getItem('userId') : 0,
+      moreFlag: false,
+      zanList: [],
+      zanQuantity: 0
     }
   },
   created () {
@@ -114,7 +126,7 @@ export default {
       return {
         cls: this.comment.cls,
         _uid: localStorage.getItem('userId'),
-        toid: this.comment.uid,
+        toid: this.comment.id,
         event_id: this.comment.sid,
         page_number: 1
       }
@@ -138,7 +150,8 @@ export default {
     },
     loadZanList () {
       this.$ajax.zanList(this.zanParams).then(res => {
-        console.log(res)
+        this.zanList = res.data.data.listUser
+        this.zanQuantity = this.zanList.length
       }, err => {
         console.log(err)
       })
@@ -170,6 +183,29 @@ export default {
         comment_id : item.id
       }
       this.$ajax.zan(param).then(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
+      })
+    },
+    clickShowMore () {
+      this.moreFlag = true
+    },
+    clickCloseMore () {
+      this.moreFlag = false
+    },
+    clickShield () {
+      console.log('Shield')
+    },
+    clickReport () {
+      this.$ajax.report().then(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
+      })
+    },
+    clickFollow () {
+      this.$ajax.focusBusiness().then(res => {
         console.log(res)
       }, err => {
         console.log(err)

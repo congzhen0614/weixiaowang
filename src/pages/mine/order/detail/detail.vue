@@ -203,13 +203,16 @@
         <div class="activity-ticket">
           <ul>
             <li v-for="(item, index) in info.tradeDetails" :key="index">
-              <p class="name"></p>
+              <div class="qrcode-images"></div>
+              <p class="name">{{ item.applyUserName }}</p>
+              <p class="qrcode">{{ item.qrcode }}</p>
+              <!--<span class="refund-button" v-if="info.trade.trade_status==='13'&&info.trade.total_fee>0">申请退款</span>-->
             </li>
           </ul>
         </div>
         <!-- 联系方式(活动) -->
         <section v-if="cls === '14,19'" class="activity-service">
-          <p class="tel">
+          <p class="tel" @click.stop="clickCall(info.active.tel)">
             <span class="label-name">活动举办方电话</span>
             <span class="text">{{ info.active.tel }}</span>
             <img src="./tel_icon.png">
@@ -318,6 +321,9 @@
         this.$ajax.tradeDetail(this.params).then(res => {
           if (this.cls === '14,19') {
             this.info = res.data.activeTrainView
+            this.$nextTick(() => {
+              this.setQrcode()
+            })
           } else {
             this.info = res.data.bookMagazineView
             this.acceptStation = this.info.express.accept_station
@@ -452,6 +458,22 @@
             shipper_code: item.shipper_code
           }
         })
+      },
+      setQrcode () {
+        let qrcodeImages = document.getElementsByClassName('qrcode-images')
+        this.info.tradeDetails.forEach((item, index) => {
+          let qrcode = new QRCode(qrcodeImages[index], {
+            text: item.qrcode,
+            width: 50,
+            height: 50,
+            colorDark: '#5573B7',
+            colorLight: '#fff'
+          })
+          console.log(qrcode)
+        })
+      },
+      clickCall (phone) {
+        window.location.href = 'tel' + phone
       }
     },
     components: {
