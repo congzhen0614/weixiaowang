@@ -6,7 +6,7 @@
     </div>
     <div class="content">
       <ul class="media-list">
-        <li v-for="(item, index) in starList" class="img-item" @click="clickLink(item.link)">
+        <li v-for="(item, index) in starList" class="img-item" @click="clickLink(item)">
           <img :src="item.logo">
         </li>
       </ul>
@@ -28,8 +28,21 @@
     mounted () {
     },
     methods: {
-      clickLink (linkStr) {
-        window.location.href = linkStr;
+      clickLink (item) {
+        if (item.link) {
+          window.location.href = item.link
+        } else {
+          this.$router.push({
+            path: '/activityDetails',
+            query: {
+              id: item.id,
+              cls: item.cls,
+              lat: item.lat,
+              lng: item.lng,
+              _uid: localStorage.getItem('userId')
+            }
+          })
+        }
       }
     },
     watch: {}

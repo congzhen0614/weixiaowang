@@ -209,6 +209,10 @@ export default {
           setTimeout(() => {
             this.$router.goBack()
           }, 1000)
+        } else {
+          this.Toast.warning({
+            title: res.data.result.msg
+          })
         }
       }, err => {
         console.log(err)
