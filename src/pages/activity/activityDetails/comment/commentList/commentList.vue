@@ -19,7 +19,7 @@
             </div>
             <div class="user-comment">
               <p>{{ item.content }}</p>
-              <img :src="item.imgs"/>
+              <img v-if="item.img_quantity>0" v-for="img in item.images" :src="img"/>
               <div>
                 <div class="button-icon">
                   <span class="location-icon"></span>{{ item.area }}
@@ -30,7 +30,7 @@
                 <div class="button-icon" @click.stop="clickComment(item)">
                   <span class="comment-icon"></span>{{ item.comment_quantity }}
                 </div>
-                <div class="button-icon" v-if="uid==item.uid">
+                <div class="button-icon" v-if="uid==item.uid" @click.stop="clickDelete(item)">
                   <span class="delete-icon"></span>删除
                 </div>
               </div>
@@ -83,6 +83,9 @@ export default {
       this.params = JSON.parse(this.$route.query.params)
       this.$ajax.commentList(this.params).then(res => {
         this.commentList = res.data.pageInfo.list
+        this.commentList.forEach((item, index) => {
+          this.commentList[index].images = item.imgs.split(',')
+        })
       }, err => {
         console.log(err)
       })
@@ -127,6 +130,21 @@ export default {
           toid: item !== undefined ? item.id : '',
           touid: item !== undefined ? item.uid : ''
         }
+      })
+    },
+    clickDelete (item) {
+      let params = {
+        id: item.id,
+        cls: item.cls,
+        toid: 0
+      }
+      this.$ajax.commentDel(params).then(res => {
+        if (res.data.result.status==='0') {
+          this.commentList = []
+          this.loadData()
+        }
+      }, err => {
+        console.log(err)
       })
     }
   },

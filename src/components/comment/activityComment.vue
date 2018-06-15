@@ -38,7 +38,8 @@ export default {
         // 图片文件
         imgFile: {},
         // 上传图片返回数组
-        imgList: []
+        imgList: [],
+        publishFlag: true
       }
   },
   created () {
@@ -183,11 +184,12 @@ export default {
     },
     // 上传图片
     uploadImg (formData) {
+      this.publishFlag = false
       this.$ajax.upLiadImages(formData).then(res => {
-        console.log(res)
         res.data.paths.forEach(item => {
           this.imgList.push(item)
         })
+        this.publishFlag = true
       }, err => {
         console.log(err)
       })
@@ -198,6 +200,7 @@ export default {
       this.imgList.splice(index, 1)
     },
     publishComment () {
+      if (!this.publishFlag) return false
       this.$ajax.commentSave(this.params).then(res => {
         if (res.data.result.status==='0') {
           this.Toast.success({

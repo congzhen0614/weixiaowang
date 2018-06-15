@@ -591,8 +591,7 @@ export default {
   },
   // 评价-删除
   commentDel (params) {
-    let query = qs.stringify(params)
-    return fetch(`/comment/del?${query}`, {}, 'get', 'json')
+    return fetch('/comment/del', params, 'post', 'json')
   },
   // 票务管理列表
   listActivityTicket (params) {

@@ -20,7 +20,7 @@
         </div>
         <div class="comment-detail">
           <p>{{ comment.content }}</p>
-          <img :src="comment.imgs"/>
+          <img v-if="comment.img_quantity>0" v-for="img in comment.images" :src="img"/>
           <div class="comment-icons">
             <p><span class="location-icon"></span>2公里</p>
             <p><span class="time-icon"></span>1小时前</p>
@@ -41,17 +41,12 @@
           <ul>
             <li v-for="(item, index) in commentList" :key="index">
               <div class="user-message">
-                <!--<div class="right-icon" @click.stop="clickZan(item)">-->
-                  <!--<img class="zan-icon" src="./zan-icon.png" v-if="item.is_zan===0"/>-->
-                  <!--<img class="zan-icon" src="./zaned-icon.png" v-if="item.is_zan===1"/>-->
-                  <!--{{ item.zan_quantity }}-->
-                <!--</div>-->
                 <img :src="item.avatar"/>
                 <p>{{ item.name }}</p>
               </div>
               <div class="user-comment">
                 <p>{{ item.content }}</p>
-                <img :src="item.imgs"/>
+                <img v-if="item.img_quantity>0" v-for="img in item.images" :src="img"/>
                 <div>
                   <div class="button-icon">
                     <span class="location-icon"></span>{{ item.area }}
@@ -62,7 +57,7 @@
                   <div class="button-icon" @click.stop="clickComment(item)">
                     <span class="comment-icon"></span>{{ item.comment_quantity }}
                   </div>
-                  <div class="button-icon" v-if="uid==item.uid">
+                  <div class="button-icon" v-if="uid==item.uid" @click.stop="clickDelete(item)">
                     <span class="delete-icon"></span>删除
                   </div>
                 </div>
@@ -144,6 +139,9 @@ export default {
     loadCommentList () {
       this.$ajax.commentList(this.commentParams).then(res => {
         this.commentList = res.data.pageInfo.list
+        this.commentList.forEach((item, index) => {
+          this.commentList[index].images = item.imgs.split(',')
+        })
       }, err => {
         console.log(err)
       })
@@ -167,7 +165,7 @@ export default {
         path: '/activityComment',
         query: {
           cls: 14,
-          sid: this.$route.query.sid,
+          sid: this.comment.sid,
           areaId: this.$route.query.areaId,
           tocontent: this.comment.content,
           toid: this.comment.id,
@@ -236,6 +234,21 @@ export default {
           this.Toast.success({
             title: '关注成功'
           })
+        }
+      }, err => {
+        console.log(err)
+      })
+    },
+    clickDelete (item) {
+      let params = {
+        id: item.id,
+        cls: item.cls,
+        toid: 0
+      }
+      this.$ajax.commentDel(params).then(res => {
+        if (res.data.result.status==='0') {
+          this.commentList = []
+          this.loadCommentList()
         }
       }, err => {
         console.log(err)
