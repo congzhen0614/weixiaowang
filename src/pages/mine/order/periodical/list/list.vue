@@ -14,24 +14,24 @@
 								<div class="title">
 									<span class="number">共{{ item.item_quantity }}件</span>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '1'" class="status">
+									<div v-if="item.trade_status === '1'&&cls!=='14,19'" class="status">
 										<span class="text">待付款</span>
 									</div>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '2'" class="status">
+									<div v-if="item.trade_status === '2'&&cls!=='14,19'" class="status">
 										<span class="text">已付款</span>
 									</div>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '3'" class="status">
+									<div v-if="item.trade_status === '3'&&cls!=='14,19'" class="status">
 										<span class="text">发货中</span>
 									</div>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '4'" class="status">
+									<div v-if="item.trade_status === '4'&&cls!=='14,19'" class="status">
 										<img src="./complete_logo.png">
 										<span class="text">已收货</span>
 									</div>
 									<!-- 待付款 -->
-									<div v-if="item.trade_status === '7'" class="status">
+									<div v-if="item.trade_status === '7'&&cls!=='14,19'" class="status">
 										<img src="./refund_logo.png">
 										<!-- <span class="text">已退款</span> -->
 									</div>
@@ -41,7 +41,7 @@
 										<span class="text fail">订单失效</span>
 									</div>
 									<!-- 完成 -->
-									<div v-if="item.trade_status === '5'" class="status">
+									<div v-if="item.trade_status === '5'&&cls!=='14,19'" class="status">
 										<img src="./complete_logo.png">
 									</div>
                   <!-- 免费体验票 -->
@@ -59,29 +59,29 @@
 						</div>
 						<!-- 底部按钮 -->
 						<!-- 待付款 -->
-						<div v-if="item.trade_status === '1'" class="list-bottom">
+						<div v-if="item.trade_status === '1'&&cls!=='14,19'" class="list-bottom">
 							<button class="button" @click.stop="goPay(item)">去付款</button>
 						</div>
             <!-- 已付款 -->
-            <div v-if="item.trade_status === '2'" class="list-bottom">
+            <div v-if="item.trade_status === '2'&&cls!=='14,19'" class="list-bottom">
               <button class="button" @click.prevent.stop="refundBtn(item.id, item.no)">申请退款</button>
             </div>
             <!-- 取消退款 -->
-            <div v-if="item.trade_status === '8'" class="list-bottom">
+            <div v-if="item.trade_status === '8'&&cls!=='14,19'" class="list-bottom">
               <button class="button" @click.prevent.stop="cancelRefundBtn()">取消退款</button>
             </div>
             <!-- 已发货 -->
-            <div v-if="item.trade_status === '3'" class="list-bottom">
+            <div v-if="item.trade_status === '3'&&cls!=='14,19'" class="list-bottom">
               <!-- 查看物流 -->
               <button class="button check-logistics" @click.stop="checkLogistics(item)">查看物流</button>
               <!-- 确认收货 -->
               <button class="button" @click.stop="confirmReceipt(item)">确认收货</button>
             </div>
 						<!-- 已发货 -->
-						<div v-if="item.trade_status === '4'" class="list-bottom">
+						<div v-if="item.trade_status === '4'&&cls!=='14,19'" class="list-bottom">
 							<button class="button">去评价</button>
 						</div>
-						<div v-if="item.trade_status === '12'" class="list-bottom">
+						<div v-if="item.trade_status === '12'&&cls!=='14,19'" class="list-bottom">
 							<!-- <button class="button">去评价</button> -->
 						</div>
 					</div>

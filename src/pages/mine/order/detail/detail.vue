@@ -212,9 +212,9 @@
         </div>
         <!-- 联系方式(活动) -->
         <section v-if="cls === '14,19'" class="activity-service">
-          <p class="tel" @click.stop="clickCall(info.active.tel)">
+          <p class="tel">
             <span class="label-name">活动举办方电话</span>
-            <span class="text">{{ info.active.tel }}</span>
+            <a class="text" href="tel:4008470068">{{ info.active.tel }}</a>
             <img src="./tel_icon.png">
           </p>
           <p class="time">
@@ -471,9 +471,6 @@
           })
           console.log(qrcode)
         })
-      },
-      clickCall (phone) {
-        window.location.href = 'tel' + phone
       }
     },
     components: {
