@@ -120,7 +120,7 @@
 				this.Toast.loading({
 					title: '加载中...'
 				})
-				this.$ajax.getAjax('/book/open?itemIds=3100,3101,3102,3103')
+				this.$ajax.getAjax('/book/open?itemIds=4313,3577,3572,3571,3570,3568,3566,3104,3081,4314,4312')
 					.then(res => {
 						// console.log(res)
 						let list = res.data.pageInfo.list
@@ -289,5 +289,5 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-	@import './index.styl'	
+	@import './index.styl'
 </style>
