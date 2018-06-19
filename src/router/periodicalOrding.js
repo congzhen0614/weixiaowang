@@ -7,6 +7,7 @@ const periodicalOrdingHome = resolve => require(['@/components/periodical-ording
 const periodicalOrdingOrder = resolve => require(['@/components/periodical-ording/order/order.vue'], resolve) // 下单页
 const periodicalOrdingMain = resolve => require(['@/components/periodical-ording/order/main.vue'], resolve) // 下单页内容部分
 const periodicalOrdingLeave = resolve => require(['@/components/periodical-ording/leave/leave.vue'], resolve) // 下单留言
+const periodicalOrdingAddresslist = resolve => require(['@/components/periodical-ording/address/index.vue'], resolve) // 下单地址
 const periodicalOrdingAddress = resolve => require(['@/components/periodical-ording/address/address.vue'], resolve) // 下单地址
 const periodicalOrdingDetail = resolve => require(['@/components/periodical-ording/detail/detail.vue'], resolve) // 刊物详情
 // 广东深圳
@@ -80,11 +81,17 @@ export default {
 				keepAlive: true
 			}
 		}, { // 地址
-			path: 'address',
-			component: periodicalOrdingAddress,
-			meta: {
-				keepAlive: true
-			}
-		}]
+      path: 'addresslist',
+      component: periodicalOrdingAddresslist,
+      meta: {
+        keepAlive: true
+      }
+    }, { // 地址
+      path: 'address',
+      component: periodicalOrdingAddress,
+      meta: {
+        keepAlive: true
+      }
+    }]
 	}
 }

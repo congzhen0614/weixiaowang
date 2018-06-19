@@ -117,12 +117,12 @@
 					title: '提交中...'
 				})
 				let params = {}
-				params._uid = localStorage.getItem('userId')
+				params.uid = localStorage.getItem('userId')
 				params.name = this.address.name
 				params.mobile = this.address.mobile
-				params.province_id = this.address.areaValList[0]
-				params.city_id = this.address.areaValList[1]
-				params.region_id = this.address.areaValList[2]
+				params.provinceId = this.address.areaValList[0]
+				params.cityId = this.address.areaValList[1]
+				params.regionId = this.address.areaValList[2]
 				params.address = this.address.address
 				let addressList = localStorage.getItem('addressList') ? JSON.parse(localStorage.getItem('addressList')) : []
 				// 如果存在 id 则更新，不存在则添加
@@ -131,26 +131,13 @@
 				}
 				// 调用设置地址接口，新增和更新为同一个
 				this.$ajax.addressUpdate(params).then(res => {
-					if (res.data.msg === 'success') {
-						setTimeout(() => {
-							this.$ajax.addressList({
-								_uid: localStorage.getItem('userId')
-							}).then(res => {
-								let _that = this
-								this.address.id = res.data.data.filter(item => {
-									return item.address === _that.address.address
-								})[0].id
-								// 目前只能存在一个地址，先将地址列表清空
-								addressList = []
-								addressList.push(this.address)
-								localStorage.setItem('addressList', JSON.stringify(addressList))
-								this.$root.Bus.$emit('updateAddress', JSON.stringify(this.address))
-								this.$router.goBack()
-							}, err => {
-								console.log(err)
-							})
-						}, 200)
-					}
+          if (res.data.result.status==='0') {
+            this.$router.goBack()
+          } else {
+            this.Toast.warning({
+              title: res.data.result.msg
+            })
+          }
 				}, err => {
 					console.log(err)
 				})

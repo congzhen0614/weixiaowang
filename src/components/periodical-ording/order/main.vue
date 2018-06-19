@@ -10,15 +10,15 @@
 							<span class="name">{{ address.name }}</span>
 							<span class="mobile">{{ address.mobile }}</span>
 						</div>
-						<div class="address-text">{{ address | getFullAddress }}</div>
+						<div class="address-text">{{ address.provinceName }}{{ address.cityName }}{{ address.regionName }}{{ address.address }}</div>
 					</div>
 				</div>
-				<div class="left-part" v-if="!hasDefaultAddress" @click="modifyAddress('order/address')">
+				<div class="left-part" v-if="!hasDefaultAddress" @click="modifyAddress('order/addresslist')">
 					<div class="no-address">
 						请前往设置您的收货地址
 					</div>
 				</div>
-				<div class="right-arrow" @click="modifyAddress('order/address')">
+				<div class="right-arrow" @click="modifyAddress('order/addresslist')">
 					<img src="./arrow_right.png">
 				</div>
 			</div>
@@ -95,7 +95,8 @@
 				nowSum: 0,
 				leaveText: '',
 				defaultAddressChange: false,
-				isDoubleEleven: false
+				isDoubleEleven: false,
+        address: {}
 			}
 		},
 		computed: {
@@ -122,24 +123,6 @@
 			},
 			totalSum () {
 				return (parseFloat(this.nowSum) + parseFloat(this.carriage) - parseFloat(this.discount)).toFixed(1)
-			},
-			address () {
-				let obj = {}
-				if (!this.hasDefaultAddress) {
-					return {
-						cityArea: '',
-						name: '',
-						mobile: '',
-						address: ''
-					}
-				}
-				if (!this.defaultAddressChange) {
-					obj = JSON.parse(localStorage.getItem('addressList'))[0]
-				}
-				// 监听过一次后重置
-				this.defaultAddressChange = false
-				obj = JSON.parse(localStorage.getItem('addressList'))[0]
-				return obj
 			}
 		},
 		created () {
@@ -153,6 +136,11 @@
 			if (this.$route.query.entrance && this.$route.query.entrance === 'doubleEleven') {
 				this.isDoubleEleven = true
 			}
+      // 地址
+      this.$root.Bus.$on('chooseAddress', value => {
+        this.address = value
+        this.hasDefaultAddress = true
+      })
 		},
 		mounted () {
 			// 首先清空购物车，双十一不用清空
@@ -284,77 +272,44 @@
 			},
 			// 不是双十一活动的话，通过购物车提交
 			submitByShopcat () {
-				// 暂不用
-				let firstPromiseArr = []
-				let quantityParamsArr = []
-				this.listData.forEach((item, index) => {
-					let _uid = localStorage.getItem('userId') // 用户 id
-					let host = this.Host // 接口地址
-					let _urlSave = `${host}/api/shop_cart/save`
-					firstPromiseArr.push(this.$ajax.postAjax(`${_urlSave}`, {
-						_uid: _uid,
-						id: item.id,
-						cls: '2'
-					}))
-					if (item.number > 1) {
-						quantityParamsArr.push({
-							_uid: _uid,
-							id: item.id,
-							cls: '2',
-							quantity: item.number
-						})
-					}
-				})
-				let _itemIds = ''
-				let _addressId = this.address.id
-				let _quantity = 0
-				Promise.all(firstPromiseArr).then(values => {
-					// 取出最后完全返回数据
-					let _result = this.getListResult(values)
-					let quantityPromiseArr = this.getQuantityPromiseArr(_result, quantityParamsArr)
-					Promise.all(quantityPromiseArr).then(res => {
-						// 获取购物车列表
-						this.$ajax.shopcatList().then(res => {
-							console.log(res.data.data.item_list.length)
-							// 计算总数
-							res.data.data.item_list.forEach(item => {
-								console.log('quantity: ' + parseInt(item.quantity))
-								_quantity += parseInt(item.quantity)
-							})
-							_itemIds = getWithCommaString(res.data.data.item_list, 'id')
-							let params = {}
-							params._uid = localStorage.getItem('userId')
-							params.quantity = _quantity
-							params.item_ids = _itemIds
-							params.cls = '2'
-							params.address_id = _addressId
-							params.child_id = ''
-							params.is_use_quantity = ''
-							params.remark = this.leaveText
-							// 调用提交订单接口
-							this.$ajax.tradeConfirm(params).then(res => {
-								let data = res.data
-								// 下一个页面需要的数据
-								let fee = (parseFloat(res.data.data.item_total_fee) + parseFloat(res.data.data.delivery_fee)).toFixed(1)
-								let outtradeno = data.data.no
-								let cls = '2'
-								let protocol = window.location.protocol
-								let host = window.location.host
-								let href = ''
-								if (this.isDoubleEleven) {
-									href = `${protocol}//${host}/periodical/double-eleven`
-								} else {
-									href = `${protocol}//${host}/periodical/ording`
-								}
-								window.location.href = `${protocol}//${host}/pay?&cls=${cls}&fee=${fee}&outtradeno=${outtradeno}&href=${href}`
-							}, err => {
-								console.log(err)
-							})
-						}, err => {
-							console.log(err)
-						})
-					})
-				})
+			  let params = {}
+        params.couponUserId = null
+        params.addressId = this.address.id
+        params.remark = this.leaveText
+        params.uid = localStorage.getItem('userId')
+        params.items = []
+			  JSON.parse(this.$route.query.selectedData).forEach(item => {
+          params.items.push({
+            item_id: item.id,
+            quantity: item.number
+          })
+        })
+        this.$ajax.tradeConfirmBook(params).then(res => {
+          if (res.data.result.status==='0') {
+            let data = res.data
+            // 下一个页面需要的数据
+            console.log(res.data)
+            let fee = parseFloat(res.data.total_fee)
+            console.log(parseFloat(res.data.total_fee))
+            let outtradeno = data.no
+            let cls = '2'
+            let protocol = window.location.protocol
+            let host = window.location.host
+            let href = ''
+            if (this.isDoubleEleven) {
+              href = `${protocol}//${host}/periodical/double-eleven`
+            } else {
+              href = `${protocol}//${host}/periodical/ording`
+            }
+            window.location.href = `${protocol}//${host}/pay?&cls=${cls}&fee=${fee}&outtradeno=${outtradeno}&href=${href}`
+          } else {
+            this.Toast.warning({
+              title: res.data.result.msg
+            })
+          }
+        }, err => {
+          console.log(err)
+        })
 			}
 		},
 		components: {

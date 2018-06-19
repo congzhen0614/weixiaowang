@@ -120,7 +120,7 @@
 				this.Toast.loading({
 					title: '加载中...'
 				})
-				this.$ajax.getAjax('/book/open?itemIds=4313,3577,3572,3571,3570,3568,3566,3104,3081,4314,4312')
+				this.$ajax.getAjax('/book/open?itemIds=4314,4313,4312,3577,3572,3571,3570,3568,3566,3104,3081')
 					.then(res => {
 						// console.log(res)
 						let list = res.data.pageInfo.list
