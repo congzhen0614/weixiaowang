@@ -120,10 +120,18 @@
 				this.Toast.loading({
 					title: '加载中...'
 				})
-				this.$ajax.getAjax('/book/open?itemIds=4314,4313,4312,3577,3572,3571,3570,3568,3566,3104,3081')
+				this.$ajax.getAjax('/book/open?itemIds=4313,3577,3572,3571,3570,3568,3566,3104,3081,4314,4312')
 					.then(res => {
-						// console.log(res)
-						let list = res.data.pageInfo.list
+            let list = []
+            let after = []
+            res.data.pageInfo.list.forEach(item => {
+              if (item.id==='4314'||item.id==='4312') {
+                after.push(item)
+              } else {
+                list.push(item)
+              }
+            })
+            list = list.concat(after)
 						// 总页数
 						this.pages = res.data.pageInfo.pages
 						list.forEach((item, index) => {
@@ -131,6 +139,7 @@
 							item.detail_img = []
 						})
 						this.listData = getDistinctArray(list, this.listData, 'id')
+            console.log(this.listData)
 						// 如果存在类型
 						if (type) {
 							type === 'refresh' ? this.$refs.home.finishPullToRefresh() : this.$refs.home.finishInfinite()

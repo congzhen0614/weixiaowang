@@ -13,7 +13,7 @@
 		<empty v-if="!addressList.length"></empty>
 		<ul v-if="addressList.length" class="input-list">
 			<li v-for="(address, index) in addressList" class="input-item" @click="openAddressItem(address)">
-				<section class="header">
+				<section class="header" @touchstart="showDeleteButton(address.id)" @touchend="clearLoop(address.id)">
 					<div class="main">
 						<div class="left-part">
 							<div class="box">
@@ -46,6 +46,11 @@
 		},
 		computed: {
 		},
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+        vm.loadData()
+      })
+    },
 		created () {
 			this.loadData()
 		},
@@ -56,9 +61,8 @@
 		methods: {
 			// 加载数据
 			loadData () {
-				this.$ajax.addressList({
-					// _uid: localStorage.getItem('userId')
-				}).then(res => {
+        this.addressList = []
+				this.$ajax.addressList().then(res => {
 					if (res.data.pageInfo.list && res.data.pageInfo.list.length) {
 						this.addressList = res.data.pageInfo.list
 					}
@@ -84,7 +88,30 @@
 			openAddressItem (address) {
 				this.$root.Bus.$emit('chooseAddress', address)
 				this.$router.goBack()
-			}
+			},
+      showDeleteButton (id) {
+        clearInterval(this.Loop)
+        var _this = this
+        this.Loop = setTimeout(function() {
+          this.Dialog.alert({
+            title: '温馨提示',
+            msg: '确定删除此地址？',
+            buttons: ['取消', '确定']
+          }, (res) => {
+            if (res.buttonIndex === 2) {
+              this.$ajax.addressDelete(id).then(res => {
+                this.loadData()
+              }, err => {
+                console.log(err)
+              })
+              return
+            }
+          })
+        }.bind(this), 300)
+      },
+      clearLoop (e) {
+        clearInterval(this.Loop)
+      }
 		},
 		components: {
 			empty
