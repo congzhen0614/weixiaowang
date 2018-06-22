@@ -15,6 +15,7 @@
 		},
 		created () {
 			// 设置 history
+      c
 			localStorage.setItem('historyLength', parseInt(localStorage.getItem('historyLength')) + 1)
 			// 判断浏览器
 			if (this.isWeixin) {

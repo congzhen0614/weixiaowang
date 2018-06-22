@@ -120,26 +120,39 @@
 				this.Toast.loading({
 					title: '加载中...'
 				})
-				this.$ajax.getAjax('/book/open?itemIds=4313,3577,3572,3571,3570,3568,3566,3104,3081,4314,4312')
+				this.$ajax.getAjax('/book/open?itemIds=4313,3577,4312,3572,3571,3570,3568,3566,3104,3081,4314,4336,4338,4337')
 					.then(res => {
             let list = []
             let after = []
+            let third = {}
             res.data.pageInfo.list.forEach(item => {
-              if (item.id==='4314'||item.id==='4312') {
+              if (item.id==='4312') {
+                third = item
+              } else if (item.id==='4314'||item.id==='4336'||item.id==='4338'||item.id==='4337') {
                 after.push(item)
               } else {
                 list.push(item)
               }
             })
+            for (let i = 0; i < after.length; i++) {
+              for (let j = 0; j < after.length - 1 - i; j++) {
+                if (after[j].id > after[j+1].id) {
+                  var temp = after[j+1]
+                  after[j+1] = after[j]
+                  after[j] = temp
+                }
+              }
+            }
             list = list.concat(after)
 						// 总页数
+            list.splice(2, 0, third)
+            console.log(list)
 						this.pages = res.data.pageInfo.pages
 						list.forEach((item, index) => {
 							item.number = 0
 							item.detail_img = []
 						})
 						this.listData = getDistinctArray(list, this.listData, 'id')
-            console.log(this.listData)
 						// 如果存在类型
 						if (type) {
 							type === 'refresh' ? this.$refs.home.finishPullToRefresh() : this.$refs.home.finishInfinite()
@@ -238,7 +251,7 @@
 				let apiUrl = 'https://www.51weixiao.com/app-api/api/user/wxLogin'
 				let redirectUrl = encodeURIComponent(`${apiUrl}?finalUrl=${_href}`)
 				let appId = 'wx701b0e6e6faac47c'
-				let _url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=` + redirectUrl + `&response_type=code&scope=snsapi_base&state=1#wechat_redirect`
+				let _url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=` + redirectUrl + `&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect`
 				window.location.href = _url
 			},
 			// 重置历史记录
