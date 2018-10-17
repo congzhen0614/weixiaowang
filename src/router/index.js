@@ -75,6 +75,7 @@ const mineMessageFunction = resolve => require(['@/pages/mine/message/function/f
 const logisticsList = resolve => require(['@/pages/mine/order/logistics/logistics.vue'], resolve) // 我的页面-物流详情
 
 // 活动页面
+const getPacket = resolve => require(['@/pages/activities/getPacket/getPacket.vue'], resolve)
 const doubleTwelve = resolve => require(['@/components/periodical-ording/double-twelve/index.vue'], resolve) // 双十二
 const newYear = resolve => require(['@/components/periodical-ording/newyear/index.vue'], resolve) // 双旦活动
 const activityIndex = resolve => require(['@/pages/activity/index.vue'], resolve) // 活动页首页
@@ -314,6 +315,9 @@ export default new Router({
       }, { // 活动评论详情页
 		    path: '/commentDetail',
         component: commentDetail
+      }, {
+		    path: '/getPacket',
+        component: getPacket
       }
 		]
 	}]

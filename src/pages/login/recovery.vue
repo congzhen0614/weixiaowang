@@ -118,6 +118,7 @@
 					code: this.code,
 					sign: getMd5(this.mobile+this.salt)
 				}
+				console.log(this.salt)
 				// 验证验证码
 				this.$ajax.validateVerifyCode(_data)
 					.then((res) => {
