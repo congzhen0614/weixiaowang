@@ -22,7 +22,9 @@ export default {
   name: 'get-packet',
   data () {
     return {
-      mobile: ''
+      mobile: '',
+      openid: '',
+      nickname: ''
     }
   },
   computed: {
@@ -30,8 +32,8 @@ export default {
       let param = {
         logintype: this.isWeixin ? 1 : 0, // 登录类型
         mobile: this.mobile, // 手机号码
-        nickname: localStorage.getItem('userId'), // 昵称
-        otheraccount: localStorage.getItem('wxOpenId') // openId
+        nickname: this.nickname, // 昵称
+        otheraccount: this.openid // openId
       }
       return param
     },
@@ -48,12 +50,9 @@ export default {
     if (this.isWeixin) {
       if (this.$route.query.hasOwnProperty('status')) {
         if (parseInt(this.$route.query.status) === 0) {
-          localStorage.setItem('userId', this.$route.query.uid)
-          localStorage.setItem('wxOpenId', this.$route.query.openid)
+          this.openid = this.$route.query.openid
+          this.nickname = this.$route.query.nickname
           this.clickLoginAndGet()
-          // console.log(wx)
-          // window.location.href = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=' + this.$route.query.ak + '&openid=' + this.$route.query.openid + '&lang=zh_CN'
-          // window.location.href = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code'
         }
       }
     }
@@ -61,14 +60,22 @@ export default {
   methods: {
     clickGet () {
       if (!this.hasPhoneNumber) return
-      this.$ajax.getPacket().then(res => {
-        this.Dialog.alert({
-          title: '领取成功!',
-          msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
-          buttons: ['暂不', '去看看']
-        }, res => {
-          console.log(res.buttonIndex)
-        })
+      this.$ajax.getPacket(this.params).then(res => {
+        if (res.data.result.status === '0') {
+          this.Dialog.alert({
+            title: '领取成功!',
+            msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
+            buttons: ['暂不', '去看看']
+          }, res => {
+            if (this.isIos) {
+              window.location.href = this.iosDownload
+            } else {
+              window.location.href = this.androidDownload
+            }
+          })
+        } else {
+          this.Toast.fail({title: res.data.result.msg})
+        }
       }, err => {
         this.Toast.fail({title: err.data.data.tip})
       }).catch(err => {
@@ -76,14 +83,22 @@ export default {
       })
     },
     clickLoginAndGet () {
-      this.$ajax.getPacket().then(res => {
-        this.Dialog.alert({
-          title: '领取成功!',
-          msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
-          buttons: ['暂不', '去看看']
-        }, res => {
-          console.log(res.buttonIndex)
-        })
+      this.$ajax.getPacket(this.params).then(res => {
+        if (res.data.result.status === '0') {
+          this.Dialog.alert({
+            title: '领取成功!',
+            msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
+            buttons: ['暂不', '去看看']
+          }, res => {
+            if (this.isIos) {
+              window.location.href = this.iosDownload
+            } else {
+              window.location.href = this.androidDownload
+            }
+          })
+        } else {
+          this.Toast.fail({title: res.data.result.msg})
+        }
       }, err => {
         this.Toast.fail({title: err.data.data.tip})
       }).catch(err => {
@@ -97,8 +112,7 @@ export default {
       let apiUrl = 'https://www.51weixiao.com/app-api/api/user/wxLogin'
       let redirectUrl = encodeURIComponent(`${apiUrl}?finalUrl=${_href}`)
       let appId = 'wx701b0e6e6faac47c'
-      // let _url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=` + redirectUrl + `&response_type=code&scope=snsapi_base&state=1#wechat_redirect`
-      let _url = `https://open.weixin.qq.com/connect/qrconnect?appid=${appId}&redirect_uri=` + redirectUrl + `&response_type=code&scope=snsapi_login&state=1#wechat_redirect`
+      let _url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=` + redirectUrl + `&response_type=code&scope=snsapi_base&state=1#wechat_redirect`
       window.location.href = _url
     }
   }

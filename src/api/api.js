@@ -633,6 +633,6 @@ export default {
   },
   // 领取优惠券
   getPacket (params) {
-    return fetch(`/user/register`, params, 'post', 'json')
+    return fetch(`/v1/user/register`, params, 'post', 'json')
   }
 }
