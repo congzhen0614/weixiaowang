@@ -10,7 +10,6 @@ let Obj = new Vue()
 let environment = 'product' // 正式环境
 // let environment = 'dev' // 测试环境
 
-
 // 线上
 let productHost = location.protocol + '//app.51weixiao.com'
 // 测试
