@@ -4,7 +4,7 @@
     <div class="packet-content">
       <input v-if="!isWeixin" class="packet-mobile" type="number" placeholder="请在此输入您的手机" v-model="mobile">
       <span v-if="!isWeixin" class="click-get" :class="{'no-phone': !hasPhoneNumber}" @click="clickGet">点击领取</span>
-      <span v-if="isWeixin" class="click-get" @click="wxLogin">点击微信登录并领取</span>
+      <span v-if="isWeixin" class="click-get" @click="clickLoginAndGet">点击微信登录并领取</span>
       <span class="packet-rule">优惠券规则</span>
       <p class="rule-content">
         1、每个红包内包含30元图书优惠券</br>
@@ -25,8 +25,8 @@ export default {
       iosDownload: 'https://itunes.apple.com/us/app/wei-xiao-wang/id885798822?l=zh&ls=1&mt=8',
       androidDownload: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.hzxuanma.wwwdr',
       mobile: '',
-      openid: '',
-      nickname: ''
+      unionid: localStorage.getItem('unionid'),
+      nickname: localStorage.getItem('nickname')
     }
   },
   computed: {
@@ -35,7 +35,7 @@ export default {
         logintype: this.isWeixin ? 1 : 0, // 登录类型
         mobile: this.mobile, // 手机号码
         nickname: this.nickname, // 昵称
-        otheraccount: this.openid // openId
+        otheraccount: this.unionid // unionid
       }
       return param
     },
@@ -52,8 +52,10 @@ export default {
     if (this.isWeixin) {
       if (this.$route.query.hasOwnProperty('status')) {
         if (parseInt(this.$route.query.status) === 0) {
-          this.openid = this.$route.query.openid
-          this.nickname = this.$route.query.nickname
+          localStorage.setItem('unionid', this.$route.query.unionid)
+          localStorage.setItem('nickname', this.$route.query.nickname)
+          this.unionid = localStorage.getItem('unionid')
+          this.nickname = localStorage.getItem('nickname')
           this.clickLoginAndGet()
         }
       }
@@ -87,29 +89,33 @@ export default {
       })
     },
     clickLoginAndGet () {
-      this.$ajax.getPacket(this.params).then(res => {
-        if (res.data.result.status === '0') {
-          this.Dialog.alert({
-            title: '领取成功!',
-            msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
-            buttons: ['暂不', '去看看']
-          }, btn => {
-            if (btn.buttonIndex === 2) {
-              if (this.isIos) {
-                window.location.href = this.iosDownload
-              } else {
-                window.location.href = this.androidDownload
+      if (localStorage.getItem('unionid') && localStorage.getItem('nickname')) {
+        this.$ajax.getPacket(this.params).then(res => {
+          if (res.data.result.status === '0') {
+            this.Dialog.alert({
+              title: '领取成功!',
+              msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
+              buttons: ['暂不', '去看看']
+            }, btn => {
+              if (btn.buttonIndex === 2) {
+                if (this.isIos) {
+                  window.location.href = this.iosDownload
+                } else {
+                  window.location.href = this.androidDownload
+                }
               }
-            }
-          })
-        } else {
-          this.Toast.fail({title: res.data.result.msg})
-        }
-      }, err => {
-        this.Toast.fail({title: err.data.data.tip})
-      }).catch(err => {
-        this.Toast.fail({title: err})
-      })
+            })
+          } else {
+            this.Toast.fail({title: res.data.result.msg})
+          }
+        }, err => {
+          this.Toast.fail({title: err.data.data.tip})
+        }).catch(err => {
+          this.Toast.fail({title: err})
+        })
+      } else {
+        this.wxLogin()
+      }
     },
     wxLogin () {
       // 微信登陆返回到当前页面

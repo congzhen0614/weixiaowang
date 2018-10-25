@@ -406,10 +406,10 @@ input {
   font-family: "aui_iconfont";
   src: url('aui-iconfont.2.0.ttf') format('truetype');
 }
-@font-face {
-  font-family: "ping-fang";
-  src: url('PingFang.ttc') format('truetype');
-}
+/*@font-face {*/
+  /*font-family: "ping-fang";*/
+  /*src: url('PingFang.ttc') format('truetype');*/
+/*}*/
 .aui-iconfont {
   position: relative;
   font-family:"aui_iconfont" !important;
