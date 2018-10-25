@@ -7,7 +7,7 @@ let Obj = new Vue()
 // 判断全局变量 NODE_ENV
 // 环境切换
 // let environment = process.env.NODE_ENV === 'development' ? 'dev' : 'product'
-// et environment = 'product' // 正式环境
+// let environment = 'product' // 正式环境
 let environment = 'dev' // 测试环境
 
 // 线上

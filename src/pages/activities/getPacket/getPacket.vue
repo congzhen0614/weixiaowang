@@ -22,6 +22,8 @@ export default {
   name: 'get-packet',
   data () {
     return {
+      iosDownload: 'https://itunes.apple.com/us/app/wei-xiao-wang/id885798822?l=zh&ls=1&mt=8',
+      androidDownload: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.hzxuanma.wwwdr',
       mobile: '',
       openid: '',
       nickname: ''
@@ -66,11 +68,13 @@ export default {
             title: '领取成功!',
             msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
             buttons: ['暂不', '去看看']
-          }, res => {
-            if (this.isIos) {
-              window.location.href = this.iosDownload
-            } else {
-              window.location.href = this.androidDownload
+          }, btn => {
+            if (btn.buttonIndex === 2) {
+              if (this.isIos) {
+                window.location.href = this.iosDownload
+              } else {
+                window.location.href = this.androidDownload
+              }
             }
           })
         } else {
@@ -89,11 +93,13 @@ export default {
             title: '领取成功!',
             msg: '去登录微校网“我的-我的优惠券”查看(若暂未安装微校网APP请先下载安装)',
             buttons: ['暂不', '去看看']
-          }, res => {
-            if (this.isIos) {
-              window.location.href = this.iosDownload
-            } else {
-              window.location.href = this.androidDownload
+          }, btn => {
+            if (btn.buttonIndex === 2) {
+              if (this.isIos) {
+                window.location.href = this.iosDownload
+              } else {
+                window.location.href = this.androidDownload
+              }
             }
           })
         } else {
