@@ -1,0 +1,120 @@
+.player
+  margin-top 0.4rem
+  .player-title
+    text-align center
+    font-size 0.4rem
+    font-weight 500
+    color #333333
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+  .player-details
+    margin-top 0.6rem
+    display flex
+    height 5.5rem
+    justify-content space-between
+    .player-details-sides
+      position relative
+      width 0.4rem
+      > img
+        margin-top -0.38rem
+        position absolute
+        width 100%
+        top 50%
+        left 0
+    @-webkit-keyframes myRotate{
+      from{-webkit-transform: rotate(0deg)}
+      to{-webkit-transform: rotate(360deg)}
+    }
+    @-moz-keyframes myRotate{
+      from{-moz-transform: rotate(0deg)}
+      to{-moz-transform: rotate(359deg)}
+    }
+    @keyframes myRotate{
+      from{transform: rotate(0deg)}
+      to{transform: rotate(359deg)}
+    }
+    .player-details-center
+      position relative
+      height 5.5rem
+      width 5.5rem
+      .play-icon
+        width 1rem
+        height 1rem
+        margin 0 auto
+        position absolute
+        left 50%
+        top 50%
+        margin-top -0.5rem
+        margin-left -0.5rem
+      .face-icon
+        width 3.37rem
+        height 3.37rem
+        margin 0 auto
+        position absolute
+        left 50%
+        top 50%
+        margin-top -1.67rem
+        margin-left -1.67rem
+        border-radius 50%
+      .disc-icon
+        height 100%
+        width 100%
+      .rotate
+        animation: myRotate 10s linear infinite;
+        -moz-animation: myRotate 10s linear infinite;
+        -webkit-animation: myRotate 10s linear infinite;
+  .player-time-box
+    margin-top 0.6rem
+    display flex
+    justify-content space-between
+    .player-time
+      font-size 0.24rem
+      color #333333
+    .player-start-time
+      margin-right 0.2rem
+    .player-ended-time
+      margin-left 0.2rem
+    .player-line
+      width 100%
+      height 0.4rem
+      position relative
+      > img
+        margin-left -0.2rem
+        position absolute
+        height 0.4rem
+        width 0.4rem
+        z-index 9999
+        left 0%
+        top 0
+      .player-back-line
+        width 100%
+        height 2px
+        border-radius 2px
+        background-color #BFC5C5C5
+        position absolute
+        margin-top -2px
+        top 50%
+        left 0
+      .player-plan-line
+        width 0%
+        height 2px
+        border-radius 4px
+        background-color #F8BD48
+        position absolute
+        margin-top -2px
+        top 50%
+        left 0
+        z-index 99
+      .player-cach-line
+        width 0%
+        height 2px
+        border-radius 4px
+        background-color #6BC512
+        position absolute
+        margin-top -2px
+        top 50%
+        left 0%
+        z-index 9
