@@ -1,21 +1,18 @@
 <template>
   <main class="player">
-    <audio class="my-audio" ref="myAudio" preload="load">
-      <source src="https://media.hhdd.com/storys2/share/25666/8587d07d0832b2233f5b4e60005cc649.mp3?auth_key=1543828538-0-0-0b84ef87d5bbfdb2c32e9fe9155d6f7d" type="audio/ogg" />
-      <source src="https://media.hhdd.com/storys2/share/25666/8587d07d0832b2233f5b4e60005cc649.mp3?auth_key=1543828538-0-0-0b84ef87d5bbfdb2c32e9fe9155d6f7d" type="audio/mpeg" />
-    </audio>
-    <h2 class="player-title">音频集数名称音频集数名称音频集数名称音频集数名称音频集数名称音频集数名称</h2>
+    <audio class="my-audio" ref="myAudio" preload="load"></audio>
+    <h2 class="player-title">{{ title }}</h2>
     <section class="player-details">
-      <div class="player-details-sides">
+      <div class="player-details-sides" @click="onPrev">
         <img src="./spypIcon/prev-icon.png" />
       </div>
       <div class="player-details-center">
         <img class="disc-icon" src="./spypIcon/disc-icon.png" :class="{rotate: isPlay}" />
-        <img class="face-icon" src="./spypIcon/ceshi.jpg"     :class="{rotate: isPlay}" />
+        <img class="face-icon" :src="logo"     :class="{rotate: isPlay}" />
         <img class="play-icon" src="./spypIcon/play-icon.png" v-if="!isPlay" @click="clickPlay" />
         <img class="play-icon" src="./spypIcon/paus-icon.png" v-if="isPlay"  @click="clickPaus" />
       </div>
-      <div class="player-details-sides">
+      <div class="player-details-sides" @click="onNext">
         <img src="./spypIcon/next-icon.png" />
       </div>
     </section>
@@ -43,13 +40,18 @@ export default {
       progress: '0%', // 播放进度
       duration: '00:00', // 音频长度
       timeRanges: '', // 缓存进度
-      currentTime: '00:00' // 当前播放进度
+      currentTime: '00:00', // 当前播放进度
+      playerList: [],
+      index: 0,
+      title: '',
+      logo: ''
     }
   },
   created () {
   },
   mounted () {
   },
+  props: ['spypEpisodesList'],
   computed: {
     durationStr: {
       get () {
@@ -77,11 +79,12 @@ export default {
       }
     },
     clickPlay () {
-      this.isPlay = !this.isPlay
+      this.isPlay = true
       const audio = this.$refs.myAudio
+      audio.src = this.playerList[this.index].url
       audio.play()
-      this.durationStr = audio.duration
       this.player = setInterval(() => {
+        this.durationStr = audio.duration
         this.currentTimeStr = audio.currentTime
         this.progress = audio.currentTime / audio.duration * 100 + '%'
         this.cache = audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%'
@@ -91,7 +94,7 @@ export default {
       }, 500)
     },
     clickPaus () {
-      this.isPlay = !this.isPlay
+      this.isPlay = false
       const audio = this.$refs.myAudio
       audio.pause()
       clearInterval(this.player)
@@ -115,9 +118,35 @@ export default {
       this.cache = num * 100 + '%'
       this.progress = num * 100 + '%'
       audio.currentTime = audio.duration * num
+    },
+    onPrev () {
+      if (this.index > 0) {
+        this.index -= 1
+        if (this.isPlay) {
+          this.clickPlay()
+        } else {
+          this.clickPaus()
+        }
+      }
+    },
+    onNext () {
+      if (this.index < this.playerList.length) {
+        this.index += 1
+        if (this.isPlay) {
+          this.clickPlay()
+        } else {
+          this.clickPaus()
+        }
+      }
     }
   },
-  watch: {}
+  watch: {
+    spypEpisodesList (val) {
+      this.playerList = val.pageInfo.list
+      this.title = this.playerList[this.index].name
+      this.logo = val.logo
+    }
+  }
 }
 </script>
 

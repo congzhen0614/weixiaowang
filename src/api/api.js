@@ -8,7 +8,7 @@ let Obj = new Vue()
 // 环境切换
 // let environment = process.env.NODE_ENV === 'development' ? 'dev' : 'product'
 let environment = 'product' // 正式环境
-// let environment = 'dev' // 测试环境
+// +let environment = 'dev' // 测试环境
 
 // 线上
 let productHost = location.protocol + '//app.51weixiao.com'
@@ -633,5 +633,17 @@ export default {
   // 领取优惠券
   getPacket (params) {
     return fetch(`/v1/user/register`, params, 'post', 'json')
+  },
+  // 音频专辑目录接口
+  spypEpisodes (id) {
+    return fetch(`/spyp/${id}/episodes`, {}, 'get', 'json')
+  },
+  // 音频专辑详情接口
+  spypInfo (id) {
+    return fetch(`/spyp/${id}`, {}, 'get', 'json')
+  },
+  // 主播主页
+  spypAnchor (id) {
+    return fetch(`/spyp/anchor/${id}`, {}, 'get', 'json')
   }
 }
