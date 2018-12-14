@@ -74,6 +74,7 @@ const mineMessageOrder = resolve => require(['@/pages/mine/message/order/order.v
 const mineMessageFunction = resolve => require(['@/pages/mine/message/function/function.vue'], resolve) // 我的页面-功能中心
 const logisticsList = resolve => require(['@/pages/mine/order/logistics/logistics.vue'], resolve) // 我的页面-物流详情
 const spypDetails = resolve => require(['@/pages/spyp/spypList/spypDetails/spypDetails.vue'], resolve) // 视听详情页
+const spypAlbum = resolve => require(['@/pages/spyp/spypList/spypAlbum.vue'], resolve)
 
 // 活动页面
 const getPacket = resolve => require(['@/pages/activities/getPacket/getPacket.vue'], resolve)
@@ -322,6 +323,9 @@ export default new Router({
       }, {
 		    path: '/spypDetails',
         component: spypDetails
+      }, {
+		    path: '/spypAlbum',
+        component: spypAlbum
       }
 		]
 	}]

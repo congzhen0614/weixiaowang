@@ -7,8 +7,8 @@ let Obj = new Vue()
 // 判断全局变量 NODE_ENV
 // 环境切换
 // let environment = process.env.NODE_ENV === 'development' ? 'dev' : 'product'
-let environment = 'product' // 正式环境
-// +let environment = 'dev' // 测试环境
+// let environment = 'product' // 正式环境
+let environment = 'dev' // 测试环境
 
 // 线上
 let productHost = location.protocol + '//app.51weixiao.com'
@@ -212,7 +212,8 @@ export default {
 		评论列表
 	*/
 	listComment (params) {
-		return fetch('/comment/list', params)
+	  let param = qs.stringify(params)
+		return fetch(`/comment/list?${param}`, params, 'get')
 	},
 	/*
 		删除评论
@@ -645,5 +646,9 @@ export default {
   // 主播主页
   spypAnchor (id) {
     return fetch(`/spyp/anchor/${id}`, {}, 'get', 'json')
+  },
+  // 关注取消关注主播
+  spypAnchorFocus (params) {
+    return fetch('/spyp/anchor/focus', params, 'post', 'json')
   }
 }

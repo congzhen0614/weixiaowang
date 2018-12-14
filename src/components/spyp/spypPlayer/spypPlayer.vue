@@ -122,6 +122,7 @@ export default {
     onPrev () {
       if (this.index > 0) {
         this.index -= 1
+        this.title = this.playerList[this.index].name
         if (this.isPlay) {
           this.clickPlay()
         } else {
@@ -132,6 +133,7 @@ export default {
     onNext () {
       if (this.index < this.playerList.length) {
         this.index += 1
+        this.title = this.playerList[this.index].name
         if (this.isPlay) {
           this.clickPlay()
         } else {

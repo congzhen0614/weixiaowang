@@ -158,6 +158,24 @@ let activityDate = value => {
   let seconds = new Date(value).getSeconds()
   return month + '月' + date + '日' + hour + '时' + minute + '分'
 }
+
+let timeInterval = value => {
+  let thisDate = new Date().getTime()
+  let setDate = new Date(value).getTime()
+  let oneDay = 24 * 60 * 60 * 1000
+  let date = (thisDate - setDate) / oneDay
+  if (date < 1) {
+    return Math.floor((thisDate - setDate) / 60 / 60 / 1000) + '小时前'
+  } else if (date > 1 && date < 2) {
+    return '1天前'
+  } else if (date > 2 && date < 3) {
+    return '2天前'
+  } else if (date > 7 && date < 30) {
+    return '1周前'
+  } else if (date > 30) {
+    return '1个月前'
+  }
+}
 export {
 	getInteger,
 	getFixed1,
@@ -172,5 +190,6 @@ export {
 	isEmojiCharacter,
   conversion,
   getDate,
-  activityDate
+  activityDate,
+  timeInterval
 }
